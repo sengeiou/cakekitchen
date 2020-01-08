@@ -26,12 +26,12 @@
   height:30vh;
 }
 .popup .popupbody{
-  height: calc( 70vh - 110rpx );
+  height: calc( 70vh - 150rpx );
   background: white;
   border-top-left-radius: 40rpx;
   border-top-right-radius: 40rpx;
 }
 
-.popup .popupbottom .btn{
+.popup  .btn{
   border-radius: 40rpx;
 }

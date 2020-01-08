@@ -1,6 +1,12 @@
-import { AppBase } from "../../appbase";
-import { ApiConfig } from "../../apis/apiconfig";
-import { ContentApi } from "../../apis/content.api";
+import {
+  AppBase
+} from "../../appbase";
+import {
+  ApiConfig
+} from "../../apis/apiconfig";
+import {
+  ContentApi
+} from "../../apis/content.api";
 var WxParse = require('../../wxParse/wxParse');
 
 class Content extends AppBase {
@@ -17,19 +23,25 @@ class Content extends AppBase {
     var title = this.Base.options.title;
     var contentapi = new ContentApi();
     var that = this;
-    contentapi.get({ keycode: keycode }, function (data) {
+    contentapi.get({
+      keycode: keycode
+    }, function(data) {
       if (data == null) {
         WxParse.wxParse('content', 'html', "请去后台设置文字内容:" + keycode, that, 10);
-        that.setData({ title: title });
+        that.setData({
+          title: title
+        });
         wx.setNavigationBarTitle({
           title: title,
         })
       } else {
         console.log(7777 + data.content);
-      data.content = that.Base.util.HtmlDecode(data.content);
-        console.log(6666+data.content);
-      WxParse.wxParse('content', 'html', data.content, that, 10);
-        that.setData({ title: data.name }); 
+        data.content = that.Base.util.HtmlDecode(data.content);
+        console.log(6666 + data.content);
+        WxParse.wxParse('content', 'html', data.content, that, 10);
+        that.setData({
+          title: data.name
+        });
         wx.setNavigationBarTitle({
           title: data.name,
         })
