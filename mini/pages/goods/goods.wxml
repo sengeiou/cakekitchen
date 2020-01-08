@@ -1,0 +1,77 @@
+<!--pages/goods/goods.wxml-->
+<view class="statusheader">
+  <view class="statusblock"></view>
+  <view class=" flex-row  flex-center">
+    <view class=" padding-20 h100"bindtap="backPage">
+      <image class="icon-15" src="{{uploadpath}}resource/{{res.backwhite}}"></image>
+    </view>
+    <view class="flex-1"></view>
+    <view class="minubar "></view>
+  </view>
+</view>
+
+
+<view>
+  <swiper bindchange="photochange" class="photolist" autoplay="true">
+    <swiper-item class="photolist" wx:for="{{photolist}}" wx:key="k">
+      <image class="photolist" src="{{uploadpath}}goodsphoto/{{item.photo}}"></image>
+    </swiper-item>
+  </swiper>
+  <view class="photolable h6">{{photocurrent+1}}/{{photolist.length}}</view>
+</view>
+<view class="white-block padding-20">
+
+  <view class="flex-row ">
+    <view class="  flex-1">
+      <view class="flex-row flex-bottom">
+        <view class="margin-right-5 txt-primary h4">¥</view>
+        <view class="flex-1 txt-primary h3 ">{{pricerange}}</view>
+      </view>
+      <view class=" h3 ">{{info.name}}</view>
+    </view>
+
+    <view>
+      <button size="mini" open-type="share" class="white-block">
+        <image class="icon-15" src="{{uploadpath}}resource/{{res.share}}"></image>
+      </button>
+    </view>
+  </view>
+</view>
+<view class="margin-top-10 white-block padding-20">
+  <view class="flex-row">
+    <view class="margin-right-10 h6 txt-gray">运费</view>
+    <view class="margin-right-20 h6 flex-1">{{instinfo.expressstr}}</view>
+    <view class=" txt-gray h6">已售 {{info.salescount}}</view>
+  </view>
+</view>
+<view class="margin-top-10 white-block padding-20" bindtap="openContent" data-title='配送服务' data-keycode='service'>
+  <view class="flex-row flex-center">
+    <view class="margin-right-10 h6 txt-gray">服务</view>
+    <view class="margin-right-20 h6 flex-1">{{instinfo.service}}</view>
+    <view>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
+    </view>
+  </view>
+</view>
+<view class="white-block padding-20">
+  <view class="flex-row flex-center">
+    <view class="margin-right-10 h6 txt-gray">已选</view>
+    <view class="margin-right-20 h6 flex-1">商品规格；配送时间；配送区域</view>
+    <view>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
+    </view>
+  </view>
+</view>
+
+
+
+
+<view class="popup" wx:if="{{showexpresspropt==true}}">
+  <view class="blankclick" bindtap="toggleExpressPopup"></view>
+  <view class="popupbody  padding-20">
+
+  </view>
+    <view class="padding-20 white-block">
+      <view class="btn primary-block h4 text-center padding-10" bindtap="toggleExpressPopup">确定</view>
+    </view>
+</view>

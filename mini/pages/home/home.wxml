@@ -1,0 +1,87 @@
+<!--pages/home/home.wxml-->
+<view class="statusheader white-block">
+  <view class="statusblock"></view>
+  <view class="white-block flex-row  flex-center">
+    <view class=" padding-20 flex-1  h100 ">
+      <view class="searchbox gray-block padding-10 flex-row flex-center">
+        <view class="h100 margin-left-10 margin-right-10">
+          <image class="icon-15" src="{{uploadpath}}resource/{{res.search}}"></image>
+        </view>
+        <view class="flex-1 txt-gray h6">{{instinfo.searchtxt}}</view>
+      </view>
+    </view>
+    <view class="minubar "></view>
+  </view>
+</view>
+<view class="headerblock"></view>
+<view>
+  <swiper class="indexbanner" autoplay="true">
+    <swiper-item class="indexbanner" wx:for="{{indexbanner}}" wx:key="k">
+      <image class="indexbanner" src="{{uploadpath}}indexbanner/{{item.img}}" bindtap="bannerclick" id='{{item.path}}'></image>
+    </swiper-item>
+  </swiper>
+</view>
+<view class="white-block">
+  <view class="flex-row flex-wrap flex-center">
+    <view class="w25 " wx:for="{{catlist}}" wx:key="k">
+      <view class="text-center margin-top-10">
+        <image class="icon-30" src="{{uploadpath}}goodscategory/{{item.icon}}"></image>
+      </view>
+      <view class="text-center margin-top-5 margin-bottom-10 h6">{{item.name}}</view>
+    </view>
+  </view>
+</view>
+<view class="white-block padding-20">
+  <view class="margin-top h6 text-center">{{instinfo.hotgoods}}</view>
+</view>
+<view class="white-block">
+  <scroll-view class="w100" scroll-x="true">
+    <view class="padding-20">
+      <view class="flex-row">
+        <view class="w60 " wx:for="{{hotgoods}}" bindtap="goGoods" data-goods_id="{{item.goods_id}}">
+          <image class="hotgoods" src="{{uploadpath}}goods/{{item.goods_photo}}"></image>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<block wx:for="{{indexcat}}" wx:key="k">
+  <view class="white-block padding-20">
+    <view class="margin-top h6 text-center">{{item.name}}</view>
+  </view>
+  <view class="white-block flex-row flex-wrap" >
+    <view class="w50 " wx:for="{{item.goodslist}}" wx:key="k1">
+      <view class="catgoods white-block" bindtap="goGoods" data-goods_id="{{item.id}}">
+        <view>
+          <image src="{{uploadpath}}goods/{{item.goods_photo}}"></image>
+        </view>
+        <view class="name padding-20">
+          {{item.goods_name}}
+        </view>
+        <view class="padding-20">
+
+          <view class="flex-row flex-bottom">
+            <view class="h6 txt-primary margin-right-5">¥</view>
+            <view class="flex-1 txt-primary">{{item.goods_price}}</view>
+            <view class="buy border-primary txt-primary h6 ">
+              购买
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+<view class="white-block">
+  <image class="w100 " src="{{uploadpath}}inst/{{instinfo.indexviewall}}" mode="widthFix"></image>
+</view>
+<view class="padding-20 white-block">
+  <view class="flex-row flex-center ">
+    <view class="flex-1"></view>
+    <view class="txt-gray border viewmore h5">View More</view>
+    <view class="flex-1"></view>
+  </view>
+</view>
+<view class="txt-gray text-center margin-top-10 h6 padding-10">
+  云易创技术支持
+</view>

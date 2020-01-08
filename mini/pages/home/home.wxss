@@ -1,0 +1,56 @@
+/* pages/home/home.wxss */
+
+.searchbox {
+  border-radius: 50rpx;
+}
+
+.indexbanner {
+  width: 750rpx;
+  height: 1050rpx;
+}
+
+.w25 {
+  width: 25vw;
+}
+
+.w50 {
+  width: 362rpx;
+}
+
+.w60 {
+  width: 60vw;
+}
+
+.hotgoods {
+  border: 4rpx white solid;
+  box-shadow: 0 4px 10px rgba(47, 54, 70, 0.1);
+  width: 300rpx;
+  height: 330rpx;
+  margin-right: 20rpx;
+}
+
+.catgoods {
+  box-shadow: 0 2px 8px rgba(93, 113, 127, 0.08);
+  margin: 13rpx;
+  margin-left: 26rpx;
+  width: 336rpx;
+}
+
+.catgoods .name {
+  height: 80rpx;
+}
+
+.catgoods image {
+  width: 336rpx;
+  height: 336rpx;
+}
+
+.catgoods .buy {
+  border: 1rpx solid #c4a769;
+  padding: 5rpx 10rpx 5rpx 10rpx;
+}
+
+.viewmore {
+  border-radius: 3rpx;
+  padding: 5rpx 50rpx 5rpx 50rpx;
+}
