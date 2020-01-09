@@ -124,6 +124,10 @@ view, navigator, input, text, textarea {
   overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
 }
 
+.hr1{
+  height:2rpx;
+}
+
 .h1 {
   font-size: 64rpx !important;
 }
@@ -211,6 +215,9 @@ button[disabled][type=primary] {
 .margin-top-10 {
   margin-top: 20rpx;
 }
+.margin-top-20 {
+  margin-top: 40rpx;
+}
 
 .margin-top-5 {
   margin-top: 10rpx;
@@ -235,7 +242,9 @@ button[disabled][type=primary] {
 .border-radius-50 {
   border-radius: 50%;
 }
-
+.h10{
+  height:20rpx;
+}
 .icon-5 {
   width: 10rpx;
   height: 10rpx;
@@ -273,6 +282,10 @@ button[disabled][type=primary] {
 .icon-50 {
   width: 100rpx;
   height: 100rpx;
+}
+.icon-75 {
+  width: 150rpx;
+  height: 150rpx;
 }
 
 .border-raidus-50 {

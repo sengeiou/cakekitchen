@@ -9,6 +9,38 @@ import { ApiConfig } from 'apiconfig';
 export class GoodsApi{
 
 
+    attrlist(json, callback, showLoading = true) {
+
+        if (showLoading)
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'goods/attrlist',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
+
     catlist(json, callback, showLoading = true) {
 
         if (showLoading)
@@ -19,6 +51,38 @@ export class GoodsApi{
         console.log(json);
         wx.request({
             url: ApiConfig.GetApiUrl() + 'goods/catlist',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
+
+    commentlist(json, callback, showLoading = true) {
+
+        if (showLoading)
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'goods/commentlist',
             data: json,
             method: 'POST',
             dataType: 'json',
@@ -105,6 +169,38 @@ export class GoodsApi{
         })
     }
 
+    info(json, callback, showLoading = true) {
+
+        if (showLoading)
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'goods/info',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
+
     photolist(json, callback, showLoading = true) {
 
         if (showLoading)
@@ -137,7 +233,7 @@ export class GoodsApi{
         })
     }
 
-    attrlist(json, callback, showLoading = true) {
+    purchaselist(json, callback, showLoading = true) {
 
         if (showLoading)
             ApiConfig.ShowLoading();
@@ -146,7 +242,7 @@ export class GoodsApi{
         console.log(header);
         console.log(json);
         wx.request({
-            url: ApiConfig.GetApiUrl() + 'goods/attrlist',
+            url: ApiConfig.GetApiUrl() + 'goods/purchaselist',
             data: json,
             method: 'POST',
             dataType: 'json',
@@ -169,7 +265,7 @@ export class GoodsApi{
         })
     }
 
-    info(json, callback, showLoading = true) {
+    recommlist(json, callback, showLoading = true) {
 
         if (showLoading)
             ApiConfig.ShowLoading();
@@ -178,7 +274,7 @@ export class GoodsApi{
         console.log(header);
         console.log(json);
         wx.request({
-            url: ApiConfig.GetApiUrl() + 'goods/info',
+            url: ApiConfig.GetApiUrl() + 'goods/recommlist',
             data: json,
             method: 'POST',
             dataType: 'json',

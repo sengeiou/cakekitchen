@@ -274,7 +274,8 @@ export class AppBase {
     return this.Page.data;
   }
   viewPhoto(e) {
-    var img = e.currentTarget.id;
+    console.log("viewPhoto",e);
+    var img = e.currentTarget.dataset.url;
     console.log(img);
     wx.previewImage({
       urls: [img],

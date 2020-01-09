@@ -1,37 +1,79 @@
 /* pages/goods/goods.wxss */
-.photolist{
-  width:100vw;
+
+.photolist {
+  width: 100vw;
   height: 100vw;
 }
-.photolable{
+
+.photolable {
   background: black;
-  color:white;
-  padding:6rpx 20rpx 6rpx 20rpx;
+  color: white;
+  padding: 6rpx 20rpx 6rpx 20rpx;
   position: absolute;
   margin-top: -80rpx;
   right: 30rpx;
   border-radius: 24rpx;
 }
 
-
-.popup{
-  width:100vw;
-  height:100vh;
+.popup {
+  width: 100vw;
+  height: 100vh;
   position: fixed;
   top: 0px;
-  left:0px;
-  background: rgba(0,0,0,0.4);
+  left: 0px;
+  background: rgba(0, 0, 0, 0.4);
 }
-.popup .blankclick{
-  height:30vh;
+
+.popup .blankclick {
+  height: 30vh;
 }
-.popup .popupbody{
-  height: calc( 70vh - 150rpx );
+
+.popup .popupbody {
+  height: calc(70vh - 150rpx);
   background: white;
   border-top-left-radius: 40rpx;
   border-top-right-radius: 40rpx;
 }
 
-.popup  .btn{
+.popup  .btn {
   border-radius: 40rpx;
+}
+
+.commentlabel {
+  background: #f3f1f1;
+  font-size: 20rpx;
+  padding: 4rpx 18rpx 4rpx 18rpx;
+  border-radius: 40rpx;
+}
+
+.commentreply {
+  background: #f3f1f1;
+  color: #aaa;
+  border-radius: 8rpx;
+}
+
+.undertab {
+  width: 50rpx;
+  height: 10rpx;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.recommgoods {
+  width: 340rpx;
+}
+.recommgoods.v0 {
+  margin-right: 15rpx;
+}
+.recommgoods.v1 {
+  margin-left: 15rpx;
+}
+
+.recommgoods .name{
+  height: 80rpx;
+}
+
+.recommgoods .photo image {
+  width: 340rpx;
+  height: 340rpx;
 }

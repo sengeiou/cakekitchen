@@ -1,8 +1,11 @@
 <!--pages/goods/goods.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+
+
 <view class="statusheader">
   <view class="statusblock"></view>
   <view class=" flex-row  flex-center">
-    <view class=" padding-20 h100"bindtap="backPage">
+    <view class=" padding-20 h100" bindtap="backPage">
       <image class="icon-15" src="{{uploadpath}}resource/{{res.backwhite}}"></image>
     </view>
     <view class="flex-1"></view>
@@ -63,15 +66,131 @@
   </view>
 </view>
 
+<view class="margin-top-10 white-block padding-20" wx:if="{{commentlist.length==0}}">
+  <view class="flex-row flex-center">
+    <view class="margin-right-10 h5 flex-1">商品评价</view>
+    <view class="margin-right-10 h6 txt-gray">暂无评价</view>
+  </view>
+</view>
+<view class="margin-top-10 white-block padding-20" wx:if="{{commentlist.length>0}}">
+  <view class="flex-row flex-center">
+    <view class="margin-right-10 h5 flex-1">商品评价</view>
+    <view class="margin-right-10 h6 txt-gray">查看全部</view>
+    <view>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
+    </view>
+  </view>
+  <view class="margin-top-10 ">
+    <view class="flex-row">
+      <view class="margin-right-10 commentlabel">好评{{rankA}}</view>
+      <view class="margin-right-10 commentlabel">中评{{rankB}}</view>
+      <view class="margin-right-10 commentlabel">差评{{rankC}}</view>
+    </view>
+  </view>
+  <view class=" h10 "></view>
+  <block wx:for="{{commentlist}}" wx:key="k">
+    <view class="flex-row flex-center margin-top-10 ">
+      <image class="icon-30 border-radius-50 margin-right-10" src="{{item.member_avatarUrl}}"></image>
+      <view class="h6 flex-1"> {{item.member_nickName}} </view>
+      <image class="icon-30 " src="{{uploadpath}}resource/{{res.rankA}}" wx:if="{{item.rank=='A'}}"></image>
+      <image class="icon-30 " src="{{uploadpath}}resource/{{res.rankB}}" wx:if="{{item.rank=='B'}}"></image>
+      <image class="icon-30 " src="{{uploadpath}}resource/{{res.rankC}}" wx:if="{{item.rank=='C'}}"></image>
+    </view>
+    <view class="margin-top-10 h6">
+      {{item.comment}}
+    </view>
+    <view class="margin-top-10 h6 flex-row">
+      <view wx:if="{{item.photo1!=''}}">
+        <image class="icon-75 margin-right-10" src="{{uploadpath}}goodscomment/{{item.photo1}}" bindtap="viewPhoto" data-url="{{uploadpath}}goodscomment/{{item.photo1}}"></image>
+      </view>
+      <view wx:if="{{item.photo2!=''}}">
+        <image class="icon-75  margin-right-10" src="{{uploadpath}}goodscomment/{{item.photo2}}" bindtap="viewPhoto" data-url="{{uploadpath}}goodscomment/{{item.photo2}}"></image>
+      </view>
+      <view wx:if="{{item.photo3!=''}}">
+        <image class="icon-75  margin-right-10" src="{{uploadpath}}goodscomment/{{item.photo3}}" bindtap="viewPhoto" data-url="{{uploadpath}}goodscomment/{{item.photo3}}"></image>
+      </view>
+    </view>
+    <view class="margin-top-10 commentreply h6 padding-10" wx:if="{{item.status=='B'}}">
+      商家回复：{{item.reply}}
+    </view>
+  </block>
+</view>
 
+<view class="margin-top-10 white-block ">
+  <view class="flex-row">
+    <view class="flex-1 flex-row" bindtap="changetab" data-tab="0">
+      <view class="flex-1"></view>
+      <view>
+        <view class="padding-10">商品详情</view>
+        <view class="flex-row">
+          <view class="flex-1"></view>
+          <view class="undertab  {{intab=='0'?'primary-block':''}}"></view>
+          <view class="flex-1"></view>
+        </view>
+      </view>
+      <view class="flex-1"></view>
+    </view>
+    <view class="flex-1 flex-row" bindtap="changetab" data-tab="1">
+      <view class="flex-1"></view>
+      <view>
+        <view class="padding-10">购买记录</view>
+        <view class="flex-row">
+          <view class="flex-1"></view>
+          <view class="undertab  {{intab=='1'?'primary-block':''}}"></view>
+          <view class="flex-1"></view>
+        </view>
+      </view>
+      <view class="flex-1"></view>
+    </view>
+  </view>
+  <view class="padding-20" wx:if="{{intab==0}}">
+    <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+  </view>
+  <view class="" wx:if="{{intab==1}}">
+    <view class="gray-block flex-row">
+      <view class="flex-1 padding-10 text-center">买家</view>
+      <view class="flex-1 padding-10 text-center">成交时间</view>
+      <view class="flex-1 padding-10 text-center">数量</view>
+    </view>
+    <view class="border-bottom flex-row flex-center" wx:for="{{purchaselist}}" wx:key="k">
+      <view class="flex-1 padding-10 text-center h6">{{item.member_nickName}}</view>
+      <view class="flex-1 padding-10 text-center h6">{{item.purchase_date_formatting}}</view>
+      <view class="flex-1 padding-10 text-center h6">{{item.count}}</view>
+    </view>
+  </view>
+</view>
 
+<view class="margin-top-10 white-block padding-20">
+  <view class="flex-row flex-center">
+    <view class="flex-1 hr1 gray-block"></view>
+    <view class="margin-left-10 margin-right">推荐商品</view>
+    <view class="flex-1 hr1 gray-block"></view>
+  </view>
+  <view class="margin-top-10 flex-row flex-wrap">
+    <view class="recommgoods v{{idx%2}}" wx:for="{{recommlist}}" wx:key='key' wx:for-index='idx'  bindtap="goGoods" data-goods_id="{{item.id}}">
+      <view class="photo">
+        <image src="{{uploadpath}}goods/{{item.photo}}"></image>
+      </view>
+      <view class="name  padding-20">{{item.name}}</view>
+      <view class="padding-20">
+          <view class="flex-row flex-bottom">
+            <view class="h6 txt-primary margin-right-5">¥</view>
+            <view class="flex-1 txt-primary">{{item.price}}</view>
+            <view class="buy border-primary txt-primary h6 ">
+              购买
+            </view>
+          </view>
+        </view>
+    </view>
+  </view>
+</view>
 
 <view class="popup" wx:if="{{showpopup==true}}">
-  <view class="blankclick" bindtap="toggleExpressPopup"></view>
+  <view class="blankclick" bindtap="togglePopup"></view>
   <view class="popupbody  padding-20">
 
   </view>
-    <view class="padding-20 white-block">
-      <view class="btn primary-block h4 text-center padding-10" bindtap="togglePopup">确定</view>
-    </view>
+  <view class="padding-20 white-block">
+    <view class="btn primary-block h4 text-center padding-10" bindtap="togglePopup">确定</view>
+  </view>
 </view>

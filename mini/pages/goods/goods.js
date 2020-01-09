@@ -27,11 +27,18 @@ class Content extends AppBase {
     this.Base.setMyData({
       photolist: [],
       attrlist: [],
+      commentlist: [],
+      purchaselist: [],
+      recommlist: [],
+      rankA: 0,
+      rankB: 0,
+      rankC: 0,
       info: {},
       photocurrent: 0,
       pricerange: "",
       showModalStatus: false,
-      showpopup: false
+      showpopup: false,
+      intab: 0
     });
   }
   onMyShow() {
@@ -41,6 +48,9 @@ class Content extends AppBase {
     goodsapi.info({
       id: this.Base.options.id
     }, (info) => {
+
+      var content = that.Base.util.HtmlDecode(info.content);
+      WxParse.wxParse('content', 'html', content, that, 10);
       this.Base.setMyData({
         info
       });
@@ -50,6 +60,16 @@ class Content extends AppBase {
     }, (photolist) => {
       this.Base.setMyData({
         photolist
+      });
+    });
+    goodsapi.commentlist({
+      goods_id: this.Base.options.id
+    }, (ret) => {
+      this.Base.setMyData({
+        commentlist: ret.commentlist,
+        rankA: ret.rankA,
+        rankB: ret.rankB,
+        rankC: ret.rankC
       });
     });
     goodsapi.attrlist({
@@ -81,6 +101,18 @@ class Content extends AppBase {
         attrlist
       });
     });
+    goodsapi.purchaselist({
+      goods_id: this.Base.options.id
+    }, (purchaselist) => {
+      this.Base.setMyData({
+        purchaselist
+      });
+    });
+    goodsapi.recommlist({}, (recommlist) => {
+      this.Base.setMyData({
+        recommlist
+      });
+    });
   }
 
   photochange(e) {
@@ -103,6 +135,12 @@ class Content extends AppBase {
       showpopup: !showpopup
     });
   }
+  changetab(e) {
+    var tab = e.currentTarget.dataset.tab;
+    this.Base.setMyData({
+      intab: tab
+    });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -110,4 +148,5 @@ body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 body.photochange = content.photochange;
 body.togglePopup = content.togglePopup;
+body.changetab = content.changetab;
 Page(body)
