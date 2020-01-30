@@ -59,7 +59,7 @@
 <view class="white-block padding-20" bindtap="togglePopup">
   <view class="flex-row flex-center">
     <view class="margin-right-10 h6 txt-gray">已选</view>
-    <view class="margin-right-20 h6 flex-1">商品规格；配送时间；配送区域</view>
+    <view class="margin-right-20 h6 flex-1">商品规格；配送时间；配送方式</view>
     <view>
       <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
@@ -167,30 +167,89 @@
     <view class="flex-1 hr1 gray-block"></view>
   </view>
   <view class="margin-top-10 flex-row flex-wrap">
-    <view class="recommgoods v{{idx%2}}" wx:for="{{recommlist}}" wx:key='key' wx:for-index='idx'  bindtap="goGoods" data-goods_id="{{item.id}}">
+    <view class="recommgoods v{{idx%2}}" wx:for="{{recommlist}}" wx:key='key' wx:for-index='idx' bindtap="goGoods" data-goods_id="{{item.id}}">
       <view class="photo">
         <image src="{{uploadpath}}goods/{{item.photo}}"></image>
       </view>
       <view class="name  padding-20">{{item.name}}</view>
       <view class="padding-20">
-          <view class="flex-row flex-bottom">
-            <view class="h6 txt-primary margin-right-5">¥</view>
-            <view class="flex-1 txt-primary">{{item.price}}</view>
-            <view class="buy border-primary txt-primary h6 ">
-              购买
-            </view>
+        <view class="flex-row flex-bottom">
+          <view class="h6 txt-primary margin-right-5">¥</view>
+          <view class="flex-1 txt-primary">{{item.price}}</view>
+          <view class="buy border-primary txt-primary h6 ">
+            购买
           </view>
         </view>
+      </view>
     </view>
   </view>
 </view>
-
+<block ></block>
 <view class="popup" wx:if="{{showpopup==true}}">
   <view class="blankclick" bindtap="togglePopup"></view>
   <view class="popupbody  padding-20">
-
+    <view class="flex-row">
+      <view>
+        <image wx:if="{{currentattr==null}}" class='icon-75' src="{{uploadpath}}goods/{{info.photo}}"></image>
+        <image wx:if="{{currentattr!=null}}" class='icon-75' src="{{uploadpath}}goods/{{currentattr.photo}}"></image>
+      </view>
+      <view class="margin-left-10 flex-1">
+        <view class="flex-row flex-bottom">
+          <view class="margin-right-5 txt-primary h5">¥</view>
+          <view class="flex-1 txt-primary h4 " wx:if="{{currentattr==null}}">{{pricerange}}</view>
+          <view class="flex-1 txt-primary h4 " wx:if="{{currentattr!=null}}">{{currentattr.price}}</view>
+        </view>
+        <view class=" h5 ">{{info.name}}</view>
+        <view class="flex-row ">
+          <view class=" h6 txt-gray ">选择</view>
+          <view class=" h6 txt-gray margin-left-10" wx:if="{{currentattr==null}}">商品规格</view>
+          <view class=" h6 txt-primary margin-left-10" wx:if="{{currentattr!=null}}">{{currentattr.name}}</view>
+          <view class=" h6 txt-gray margin-left-10 " wx:if="{{currentexpresstime==null}}">配送时间</view>
+          <view class=" h6 txt-primary margin-left-10 " wx:if="{{currentexpresstime!=null}}">{{currentexpresstime.name}}</view>
+          <view class=" h6 txt-gray margin-left-10 " wx:if="{{expresstype==''}}">配送方式</view>
+          <view class=" h6 txt-primary margin-left-10 " wx:if="{{expresstype=='A'}}">自提</view>
+          <view class=" h6 txt-primary margin-left-10 " wx:if="{{expresstype=='B'}}">配送到家</view>
+        </view>
+      </view>
+    </view>
+      <view class="margin-top-10 border-bottom"></view>
+    <scroll-view class="margin-top-10 " scroll-y="{{true}}" style="height:620rpx">
+      <view >商品规格</view>
+      <view class="flex-row flex-wrap">
+        <view class="margin-top-10 margin-right-10 border-radius-10 gray-block h5 padding-20 {{item.id==currentattr.id?'primary-block':''}}" wx:for="{{attrlist}}" wx:key='k' data-attrid="{{item.id}}" bindtap="selectattr">{{item.name}}</view>
+      </view>
+      <view class="margin-top-10 border-bottom"></view>
+      <view class="margin-top-10 flex-row">
+        <view>配送日期</view>
+        <picker class="flex-1 text-right" mode="date" value="{{expressdate}}" start="{{startdate}}" end="{{enddate}}" bindchange="selectdate">
+          <view >{{expressdate}}
+            <view class="txt-gray text-right" wx:if="{{expressdate==''}}">选择日期</view>
+          </view>
+        </picker>
+      </view>
+      <view class="margin-top-10 border-bottom"></view>
+      <view class="margin-top-10 ">配送时间</view>
+      <view class="flex-row flex-wrap">
+        <view class="margin-top-10 margin-right-10 border-radius-10 gray-block h5 padding-20 {{item.id==currentexpresstime.id?'primary-block':''}}" wx:for="{{expresstimelist}}" wx:key='k' data-attrid="{{item.id}}" bindtap="selectexpresstime">{{item.name}}</view>
+      </view>
+      <view class="margin-top-10 border-bottom"></view>
+      <view class="margin-top-10 ">配送方式</view>
+      <view class="flex-row flex-wrap">
+        <view class="margin-top-10 margin-right-10 border-radius-10 gray-block h5 padding-20 {{expresstype=='A'?'primary-block':''}}"  bindtap="selectexpresstype" data-type="A">自提</view>
+        <view class="margin-top-10 margin-right-10 border-radius-10 gray-block h5 padding-20 {{expresstype=='B'?'primary-block':''}}"  bindtap="selectexpresstype" data-type="B">配送到家</view>
+      </view>
+      <view class="margin-top-10 border-bottom"></view>
+      <view class="margin-top-10 flex-row flex-center">
+        <view>购买数量</view>
+        <view class="flex-1"></view>
+        <view class="margin-right-10 border-radius-10 gray-block h5 padding-20" bindtap="jian">-</view>
+        <view class="margin-right-10 border-radius-10 gray-block h5 padding-20">{{buycount}}</view>
+        <view class="margin-right-10 border-radius-10 gray-block h5 padding-20" bindtap="jia">+</view>
+      </view>
+      <view style="height:100rpx"></view>
+    </scroll-view>
   </view>
   <view class="padding-20 white-block">
-    <view class="btn primary-block h4 text-center padding-10" bindtap="togglePopup">确定</view>
+    <view class="btn primary-block h4 text-center padding-10" bindtap="confirm">确定</view>
   </view>
 </view>

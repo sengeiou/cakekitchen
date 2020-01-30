@@ -78,11 +78,6 @@ view, navigator, input, text, textarea {
   background: white;
 }
 
-.primary-block {
-  background: #c4a769;
-  color: white;
-}
-
 .gray-block {
   background: #f8f8f8;
 }
@@ -91,12 +86,23 @@ view, navigator, input, text, textarea {
   background: #c4a769;
 }
 
+.primary-block {
+  background: #c4a769;
+  color: white;
+}
+.red-block {
+  background: red;
+  color: white;
+}
+
 .txt-primary {
   color: #c4a769;
 }
-.border-primary{
+
+.border-primary {
   border-color: #c4a769;
 }
+
 .txt-white {
   color: white;
 }
@@ -124,8 +130,8 @@ view, navigator, input, text, textarea {
   overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
 }
 
-.hr1{
-  height:2rpx;
+.hr1 {
+  height: 2rpx;
 }
 
 .h1 {
@@ -212,15 +218,25 @@ button[disabled][type=primary] {
 .margin-bottom-5 {
   margin-bottom: 10rpx;
 }
+
 .margin-top-10 {
   margin-top: 20rpx;
 }
+
 .margin-top-20 {
   margin-top: 40rpx;
 }
 
 .margin-top-5 {
   margin-top: 10rpx;
+}
+
+.margin-right {
+  margin-right: 30rpx;
+}
+
+.margin-left {
+  margin-left: 30rpx;
 }
 
 .margin-left-10 {
@@ -242,13 +258,16 @@ button[disabled][type=primary] {
 .border-radius-50 {
   border-radius: 50%;
 }
-.h10{
-  height:20rpx;
+
+.h10 {
+  height: 20rpx;
 }
+
 .icon-5 {
   width: 10rpx;
   height: 10rpx;
 }
+
 .icon-10 {
   width: 20rpx;
   height: 20rpx;
@@ -283,6 +302,7 @@ button[disabled][type=primary] {
   width: 100rpx;
   height: 100rpx;
 }
+
 .icon-75 {
   width: 150rpx;
   height: 150rpx;
@@ -641,6 +661,7 @@ button[disabled][type=primary] {
   width: 250rpx;
   height: 100rpx;
 }
-.w100{
-  width:100vw;
+
+.w100 {
+  width: 100vw;
 }

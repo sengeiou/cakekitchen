@@ -6,6 +6,9 @@ import {
   ApiConfig
 } from "../../apis/apiconfig";
 import {
+  ApiUtil
+} from "../../apis/apiutil";
+import {
   InstApi
 } from "../../apis/inst.api.js";
 import {
@@ -22,11 +25,21 @@ class Content extends AppBase {
   }
   onLoad(options) {
     this.Base.Page = this;
-    options.id = 5;
+    //options.id = 5;
     super.onLoad(options);
+
+    var now = new Date();
+    var startdate = ApiUtil.FormatDate(ApiUtil.FormatDateTime(now));
+    now = new Date(now.getTime() + 7 * 24 * 3600 * 1000);
+    var enddate = ApiUtil.FormatDate(ApiUtil.FormatDateTime(now));
+
     this.Base.setMyData({
       photolist: [],
       attrlist: [],
+      expresstimelist: [],
+      currentattr: null,
+      currentexpresstime: null,
+      expresstype: "",
       commentlist: [],
       purchaselist: [],
       recommlist: [],
@@ -38,7 +51,11 @@ class Content extends AppBase {
       pricerange: "",
       showModalStatus: false,
       showpopup: false,
-      intab: 0
+      intab: 0,
+      buycount: 1,
+      startdate,
+      enddate,
+      expressdate: ""
     });
   }
   onMyShow() {
@@ -113,6 +130,13 @@ class Content extends AppBase {
         recommlist
       });
     });
+
+    var instapi = new InstApi();
+    instapi.expresstimelist({}, (expresstimelist) => {
+      this.Base.setMyData({
+        expresstimelist
+      });
+    });
   }
 
   photochange(e) {
@@ -141,6 +165,100 @@ class Content extends AppBase {
       intab: tab
     });
   }
+  selectattr(e) {
+    var attrid = e.currentTarget.dataset.attrid;
+    var attrlist = this.Base.getMyData().attrlist;
+    for (var i = 0; i < attrlist.length; i++) {
+      if (attrlist[i].id == attrid) {
+        this.Base.setMyData({
+          currentattr: attrlist[i]
+        });
+        break;
+      }
+    }
+  }
+  selectexpresstime(e) {
+    var attrid = e.currentTarget.dataset.attrid;
+    var expresstimelist = this.Base.getMyData().expresstimelist;
+    for (var i = 0; i < expresstimelist.length; i++) {
+      if (expresstimelist[i].id == attrid) {
+        this.Base.setMyData({
+          currentexpresstime: expresstimelist[i]
+        });
+        break;
+      }
+    }
+  }
+  jia() {
+    var buycount = this.Base.getMyData().buycount;
+    if (buycount >= 99) {
+      return;
+    }
+    buycount++;
+    this.Base.setMyData({
+      buycount
+    });
+  }
+  jian() {
+
+    var buycount = this.Base.getMyData().buycount;
+    if (buycount <= 1) {
+      return;
+    }
+    buycount--;
+    this.Base.setMyData({
+      buycount
+    });
+  }
+  selectdate(e) {
+    console.log(e);
+
+    this.Base.setMyData({
+      expressdate: e.detail.value
+    });
+  }
+  confirm() {
+    var info = this.Base.getMyData().info;
+    var currentattr = this.Base.getMyData().currentattr;
+    var currentexpresstime = this.Base.getMyData().currentexpresstime;
+    var buycount = this.Base.getMyData().buycount;
+    var expresstype = this.Base.getMyData().expresstype;
+    var expressdate = this.Base.getMyData().expressdate;
+
+    if (currentattr == null) {
+      this.Base.info("请选择规格");
+      return;
+    }
+    if (expressdate == "") {
+      this.Base.info("请选择配送日期");
+      return;
+    }
+    if (currentexpresstime == null) {
+      this.Base.info("请选择配送时间");
+      return;
+    }
+    if (expresstype == "") {
+      this.Base.info("请选择配送方式");
+      return;
+    }
+
+    wx.navigateTo({
+      url: '/pages/orderconfirm/orderconfirm?goods_id=' + info.id +
+        "&attr_id=" + currentattr.id +
+        "&expresstime_id=" + currentexpresstime.id +
+        "&buycount=" + buycount +
+        "&expresstype=" + expresstype +
+        "&expressdate=" + expressdate,
+    })
+
+  }
+
+  selectexpresstype(e) {
+    var type = e.currentTarget.dataset.type;
+    this.Base.setMyData({
+      expresstype: type
+    })
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -149,4 +267,11 @@ body.onMyShow = content.onMyShow;
 body.photochange = content.photochange;
 body.togglePopup = content.togglePopup;
 body.changetab = content.changetab;
+body.selectattr = content.selectattr;
+body.selectexpresstime = content.selectexpresstime;
+body.jia = content.jia;
+body.jian = content.jian;
+body.selectdate = content.selectdate;
+body.confirm = content.confirm;
+body.selectexpresstype = content.selectexpresstype;
 Page(body)

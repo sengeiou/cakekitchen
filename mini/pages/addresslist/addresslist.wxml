@@ -1,0 +1,49 @@
+<!--pages/addresslist/addresslist.wxml-->
+<view class="statusheader white-block" style="height:{{StatusBar+CustomBar}}px">
+
+  <view class="statusblock" style="height:{{StatusBar}}px"></view>
+  <view class="white-block flex-row  flex-center">
+    <view class=" padding-20 margin-top-5" bindtap="backPage" style="padding-top:{{Custom.top-StatusBar}}px">
+      <image class="icon" src="{{uploadpath}}resource/{{res.backblack}}"></image>
+    </view>
+    <view class="margin-left">地址列表</view>
+    <view style="width:{{Custom.width+20}}px;height:{{Custom.height}}px;"></view>
+  </view>
+</view>
+<view style="height:{{StatusBar+CustomBar}}px"></view>
+
+
+
+
+<view class="white-block">
+  <view class="padding-20 border-bottom" wx:for="{{addresslist}}" wx:key='k'>
+    <view class="flex-row flex-center">
+      <view class=" flex-1">
+        <view class="flex-row">
+          <view class="margin-right">{{item.name}}</view>
+          <view class="margin-right">{{item.mobile}}</view>
+          <view class="flex-1"></view>
+          <view class="border-radius-10 padding-10 h6 primary-block" wx:if="{{item.isdefault_value=='Y'}}">默认</view>
+        </view>
+        <view class="h5">{{item.address}}</view>
+      </view>
+      <view class="margin-left" bindtap="edit" id="{{item.id}}">
+        <image class="icon" src="{{uploadpath}}resource/{{res.edit}}"></image>
+      </view>
+      <view class="txt-primary margin-left" wx:if="{{type=='s'}}" bindtap="select">
+        选择
+      </view>
+
+    </view>
+  </view>
+  <view class="padding-20" bindtap="addaddress">
+    <view class="flex-row flex-center">
+      <view class="flex-1"></view>
+      <view>
+        <image src="{{uploadpath}}resource/{{res.add}}" class="icon"></image>
+      </view>
+      <view class="txt-gray margin-left">新增地址</view>
+      <view class="flex-1"></view>
+    </view>
+  </view>
+</view>

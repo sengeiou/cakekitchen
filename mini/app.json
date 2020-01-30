@@ -1,7 +1,11 @@
 {
   "pages": [
-    "pages/home/home",
+    "pages/orderconfirm/orderconfirm",
+    "pages/addresslist/addresslist",
+    "pages/address/address",
+    "pages/shoplist/shoplist",
     "pages/goods/goods",
+    "pages/home/home",
     "pages/content/content",
     "pages/cart/cart",
     "pages/mine/mine",

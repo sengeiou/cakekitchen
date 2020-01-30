@@ -1,0 +1,60 @@
+<!--pages/address/address.wxml-->
+<view class="statusheader white-block" style="height:{{StatusBar+CustomBar}}px">
+
+  <view class="statusblock" style="height:{{StatusBar}}px"></view>
+  <view class="white-block flex-row  flex-center">
+    <view class=" padding-20 margin-top-5" bindtap="backPage" style="padding-top:{{Custom.top-StatusBar}}px">
+      <image class="icon" src="{{uploadpath}}resource/{{res.backblack}}"></image>
+    </view>
+    <view class="margin-left">地址</view>
+    <view style="width:{{Custom.width+20}}px;height:{{Custom.height}}px;"></view>
+  </view>
+</view>
+<view style="height:{{StatusBar+CustomBar}}px"></view>
+
+
+
+<form bindsubmit="save" >
+<view class="white-block">
+  <view class="padding-20 ">
+    <view class="flex-row flex-center">
+      <view class="txt-gray">收货人</view>
+      <view class="flex-1 margin-left">
+        <input class="text-right" name='name' value="{{address.name}}" placeholder="请输入收件人姓名" maxlength="20"></input>
+      </view>
+    </view>
+  </view>
+  <view class="padding-20 ">
+    <view class="flex-row flex-center">
+      <view class="txt-gray">收货电话</view>
+      <view class="flex-1 margin-left">
+        <input class="text-right" name='mobile' value="{{address.mobile}}" placeholder="请输入收件人电话" maxlength="20"></input>
+      </view>
+    </view>
+  </view>
+  <view class="padding-20 ">
+    <view class="flex-row ">
+      <view class="txt-gray">收货地址</view>
+      <view class="flex-1 margin-left">
+        <textarea class="text-right" maxlength="200" name="address" placeholder="请输入收件人详细地址" value="{{address.address}}"></textarea>
+      </view>
+    </view>
+  </view>
+  <view class="padding-20 ">
+    <view class="flex-row ">
+      <view class="txt-gray flex-1 ">设为默认地址</view>
+      <view class="margin-left">
+        <switch checked="{{address.isdefault_value=='Y'}}" name='isdefault' />
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="padding-20 margin-top">
+  <button wx:if="{{options.id==undefined}}" class="padding-20 btnborder text-center h4 primary-block" form-type="submit"  >新增</button>
+  <button wx:if="{{options.id!=undefined}}" class="padding-20 btnborder text-center h4 primary-block" form-type="submit">保存</button>
+  <button wx:if="{{options.id!=undefined}}" class="padding-20 margin-top btnborder text-center h4 red-block" bindtap="deleteaddress">删除</button>
+</view>
+
+</form>

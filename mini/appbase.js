@@ -120,6 +120,12 @@ export class AppBase {
       });
     });
 
+    this.Base.setMyData({
+      StatusBar: getApp().globalData.StatusBar,
+      CustomBar: getApp().globalData.CustomBar,
+      Custom: getApp().globalData.Custom,
+    });
+
     ApiConfig.SetUnicode(this.Base.unicode);
   }
   gotoOpenUserInfoSetting() {
@@ -274,7 +280,7 @@ export class AppBase {
     return this.Page.data;
   }
   viewPhoto(e) {
-    console.log("viewPhoto",e);
+    console.log("viewPhoto", e);
     var img = e.currentTarget.dataset.url;
     console.log(img);
     wx.previewImage({
@@ -298,7 +304,7 @@ export class AppBase {
       phoneNumber: tel
     })
   }
-  getAddress(lat, lng) {
+  getAddress(callback, lat, lng) {
     var that = this;
     if (AppBase.QQMAP == null) {
       var QQMapWX = require('libs/qqmap/qqmap-wx-jssdk.js');
@@ -317,13 +323,21 @@ export class AppBase {
               longitude: lng
             },
             success: function(res) {
-              that.setMyData({
-                address: res.result.address
+              // that.setMyData({
+              //   address: res.result.address
+              // });
+              callback({
+                code: 0,
+                address: res.result
               });
             },
             fail: function(res) {
               console.log("fail");
               console.log(res);
+              callback({
+                code: 1,
+                address: res.result.address
+              });
             },
             complete: function(res) {
               console.log("complete");
@@ -627,11 +641,11 @@ export class AppBase {
   backPage() {
     var pages = getCurrentPages();
     console.log(pages);
-    if (pages.length<=1){
+    if (pages.length <= 1) {
       wx.switchTab({
         url: '/pages/home/home',
       })
-    }else{
+    } else {
       wx.navigateBack({});
     }
   }
@@ -686,7 +700,7 @@ export class AppBase {
 
   }
   openContent(e) {
-    console.log("openContent",e);
+    console.log("openContent", e);
     var title = e.currentTarget.dataset.title;
     var keycode = e.currentTarget.dataset.keycode;
     wx.navigateTo({

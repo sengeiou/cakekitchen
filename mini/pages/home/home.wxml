@@ -1,19 +1,19 @@
 <!--pages/home/home.wxml-->
-<view class="statusheader white-block">
-  <view class="statusblock"></view>
+<view class="statusheader white-block" style="height:{{StatusBar+CustomBar}}px">
+  <view class="statusblock" style="height:{{StatusBar}}px"></view>
   <view class="white-block flex-row  flex-center">
-    <view class=" padding-20 flex-1  h100 ">
-      <view class="searchbox gray-block padding-10 flex-row flex-center">
+    <view class=" padding-20 flex-1   " style="padding-top:{{Custom.top-StatusBar}}px" >
+      <view class="searchbox gray-block  flex-row flex-center" style="padding-top:0px;height:{{Custom.height}}px">
         <view class="h100 margin-left-10 margin-right-10">
           <image class="icon-15" src="{{uploadpath}}resource/{{res.search}}"></image>
         </view>
         <view class="flex-1 txt-gray h6">{{instinfo.searchtxt}}</view>
       </view>
     </view>
-    <view class="minubar "></view>
+    <view style="width:{{Custom.width+20}}px;height:{{Custom.height}}px;"></view>
   </view>
 </view>
-<view class="headerblock"></view>
+<view style="height:{{StatusBar+CustomBar}}px"></view>
 <view>
   <swiper class="indexbanner" autoplay="true">
     <swiper-item class="indexbanner" wx:for="{{indexbanner}}" wx:key="k">

@@ -1,0 +1,42 @@
+<!--pages/orderconfirm/orderconfirm.wxml-->
+<view class="statusheader white-block" style="height:{{StatusBar+CustomBar}}px">
+
+  <view class="statusblock" style="height:{{StatusBar}}px"></view>
+  <view class="white-block flex-row  flex-center">
+    <view class=" padding-20 margin-top-5" bindtap="backPage" style="padding-top:{{Custom.top-StatusBar}}px">
+      <image class="icon" src="{{uploadpath}}resource/{{res.backblack}}"></image>
+    </view>
+    <view class="margin-left">提交订单</view>
+    <view style="width:{{Custom.width+20}}px;height:{{Custom.height}}px;"></view>
+  </view>
+</view>
+<view style="height:{{StatusBar+CustomBar}}px"></view>
+
+
+<view class="padding-20 white-block">
+
+  <view class="flex-row">
+    <view class="flex-1"></view>
+    <view class="flex-row options">
+      <view data-type='A' bindtap="changeexpresstype" class="option {{expresstype=='A'?'active':''}}">自提</view>
+      <view data-type='B' bindtap="changeexpresstype" class="option {{expresstype=='B'?'active':''}}">配送</view>
+    </view>
+  </view>
+
+  <view class="flex-1 flex-row margin-top" wx:if="{{expresstype=='A'}}">
+    <view>
+      <image src="{{uploadpath}}resource/{{res.map}}" class="icon"></image>
+    </view>
+    <view class="flex-1 margin-left-10 margin-right-10 txt-gray" bindtap="selectshop" wx:if="{{shop==null}}">选择门店</view>
+    <view class="margin-left-10 margin-right-10 flex-1" wx:if="{{shop!=null}}">
+      <view class="flex-row" wx:if="{{shop!=null}}">
+        <view class="flex-1">自提门店：{{shop.name}}</view>
+        <view>{{shop.tel}}</view>
+      </view>
+      <view class="h5 txt-gray">自提地址：{{shop.address}}</view>
+    </view>
+    <view bindtap="selectshop">
+      <image src="{{uploadpath}}resource/{{res.right}}" class="icon"></image>
+    </view>
+  </view>
+</view>
