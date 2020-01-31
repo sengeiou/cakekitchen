@@ -12,3 +12,6 @@
   border-radius: 40rpx;
   color:white;
 }
+.btnradius50{
+  border-radius: 40rpx;
+}

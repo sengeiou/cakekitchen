@@ -169,6 +169,7 @@ export class AppBase {
         })
         return;
       }
+      instinfo.expressfee = Number(instinfo.expressfee);
       this.Base.setMyData({
         instinfo: instinfo
       });
@@ -181,6 +182,7 @@ export class AppBase {
       }
     }, false);
 
+    var memberapi = new MemberApi();
     if (AppBase.UserInfo.openid == undefined) {
       // 登录
       console.log("onShow");
@@ -193,7 +195,6 @@ export class AppBase {
               AppBase.UserInfo = userres.userInfo;
               console.log(userres);
 
-              var memberapi = new MemberApi();
               memberapi.getuserinfo({
                 code: res.code,
                 grant_type: "authorization_code"
@@ -205,14 +206,20 @@ export class AppBase {
                 console.log(AppBase.UserInfo);
                 ApiConfig.SetToken(data.openid);
                 console.log("goto update info");
-                memberapi.update(AppBase.UserInfo);
+                memberapi.update(AppBase.UserInfo, () => {
+                  memberapi.info({}, (memberinfo) => {
+                    this.Base.setMyData({
+                      memberinfo
+                    });
+                    that.onMyShow();
+                  });
+                });
 
 
                 console.log(AppBase.UserInfo);
                 that.Base.setMyData({
                   UserInfo: AppBase.UserInfo
                 });
-                that.onMyShow();
                 //that.Base.getAddress();
               });
             },
@@ -243,7 +250,13 @@ export class AppBase {
           UserInfo: AppBase.UserInfo
         });
       }
-      that.onMyShow();
+      ApiConfig.SetToken(AppBase.UserInfo.openid);
+      memberapi.info({}, (memberinfo) => {
+        this.Base.setMyData({
+          memberinfo
+        });
+        that.onMyShow();
+      });
       //that.Base.getAddress();
     }
 

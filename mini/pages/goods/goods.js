@@ -29,6 +29,7 @@ class Content extends AppBase {
     super.onLoad(options);
 
     var now = new Date();
+    now = new Date(now.getTime() + 1 * 24 * 3600 * 1000);
     var startdate = ApiUtil.FormatDate(ApiUtil.FormatDateTime(now));
     now = new Date(now.getTime() + 7 * 24 * 3600 * 1000);
     var enddate = ApiUtil.FormatDate(ApiUtil.FormatDateTime(now));
@@ -244,9 +245,8 @@ class Content extends AppBase {
 
     wx.navigateTo({
       url: '/pages/orderconfirm/orderconfirm?goods_id=' + info.id +
-        "&attr_id=" + currentattr.id +
+        "&attrs=" + currentattr.id+"*"+buycount +
         "&expresstime_id=" + currentexpresstime.id +
-        "&buycount=" + buycount +
         "&expresstype=" + expresstype +
         "&expressdate=" + expressdate,
     })

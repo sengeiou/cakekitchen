@@ -39,4 +39,116 @@
       <image src="{{uploadpath}}resource/{{res.right}}" class="icon"></image>
     </view>
   </view>
+
+
+  <view class="flex-1 flex-row margin-top" wx:if="{{expresstype=='B'}}">
+    <view>
+      <image src="{{uploadpath}}resource/{{res.map}}" class="icon"></image>
+    </view>
+    <view class="flex-1 margin-left-10 margin-right-10 txt-gray" bindtap="selectaddress" wx:if="{{address==null}}">选择地址</view>
+    <view class="margin-left-10 margin-right-10 flex-1" wx:if="{{address!=null}}">
+      <view class="flex-row" wx:if="{{address!=null}}">
+        <view class="flex-1">收件人：{{address.name}}</view>
+        <view>{{address.mobile}}</view>
+      </view>
+      <view class="h5 txt-gray">配送地址：{{address.address}}</view>
+    </view>
+    <view bindtap="selectaddress">
+      <image src="{{uploadpath}}resource/{{res.right}}" class="icon"></image>
+    </view>
+  </view>
 </view>
+
+<view class="padding-20 white-block margin-top" wx:for="{{attrlist}}" wx:key='k' wx:for-item='attrinfo'>
+  <view>
+    {{instinfo.name}}
+  </view>
+  <view class="flex-row  margin-top">
+    <view>
+      <image class="icon-100 border-radius-10" src="{{uploadpath}}goods/{{attrinfo.photo}}"></image>
+    </view>
+    <view class="flex-1 margin-left">
+      <view class="h4">{{attrinfo.goods_name}}</view>
+      <view class="h5 txt-gray margin-top-10">{{attrinfo.name}}</view>
+      <view class="flex-1 margin-top-20">
+        <view class="flex-row flex-bottom">
+          <view class="margin-right-5 txt-primary h4">¥</view>
+          <view class="flex-1 txt-primary h3 ">{{attrinfo.price}}</view>
+          <view class="h5 txt-gray">x{{attrinfo.buycount}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<picker  mode="date" value="{{expressdate}}" start="{{startdate}}" end="{{enddate}}" bindchange="selectdate">
+  <view class="white-block margin-top">
+    <view class="padding-20 ">
+      <view class="flex-row flex-center">
+        <view class="flex-1" wx:if="{{expresstype=='A'}}">自提日期</view>
+        <view class="flex-1" wx:if="{{expresstype=='B'}}">配送日期</view>
+        <view>{{expressdate}}</view>
+      </view>
+    </view>
+  </view>
+</picker>
+<picker   range='{{expresstimelist}}' range-key='name' bindchange="selecttime">
+<view class="white-block">
+  <view class="padding-20 ">
+    <view class="flex-row flex-center">
+      <view class="flex-1" wx:if="{{expresstype=='A'}}">自提时间</view>
+      <view class="flex-1" wx:if="{{expresstype=='B'}}">配送时间</view>
+      <view class="txt-gray" wx:if="{{expresstime==null}}">选择时间</view>
+      <view wx:if="{{expresstime!=null}}">{{expresstime.name}}</view>
+    </view>
+  </view>
+</view>
+</picker>
+
+<block wx:if="{{attrlist!=null}}">
+  <view class="white-block margin-top">
+    <view class="padding-20 ">
+      <view class="flex-row flex-center">
+        <view class="flex-1">商品金额</view>
+        <view>¥{{amount}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="white-block">
+    <view class="padding-20 border-bottom">
+      <view class="flex-row flex-center">
+        <view class="flex-1">运费</view>
+        <view wx:if="{{expresstype=='A'}}">¥0</view>
+        <view wx:if="{{expresstype=='B'}}">¥{{instinfo.expressfee}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="white-block">
+    <view class="padding-20 ">
+      <view class="flex-row flex-center ">
+        <view class="flex-1"></view>
+        <view class="txt-primary" wx:if="{{expresstype=='A'}}">合计：¥{{amount}}</view>
+        <view class="txt-primary" wx:if="{{expresstype=='B'}}">合计：¥{{amount+instinfo.expressfee}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view style='height:200rpx'></view>
+
+  <view class="fixedbottom">
+    <view class="padding-20 white-block ">
+      <view class="flex-row flex-center">
+        <view class="flex-1"></view>
+        <view class="h4">合计：</view>
+        <view class="h4 txt-primary" wx:if="{{expresstype=='A'}}">¥{{amount}}</view>
+        <view class="h4 txt-primary" wx:if="{{expresstype=='B'}}">¥{{amount+instinfo.expressfee}}</view>
+        <view class=" margin-left">
+          <button class="primary-block btnradius50" size="mini" bindtap="submit">提交支付</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+</block>
