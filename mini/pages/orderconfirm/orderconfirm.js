@@ -75,11 +75,11 @@ class Content extends AppBase {
     });
   }
   onMyShow() {
-    var attrs=this.Base.options.attrs;
-    if(attrs==""){
-      this.Base.backPage();
-      return;
-    }
+     var attrs=this.Base.options.attrs;
+    // if(attrs==""){
+    //   this.Base.backPage();
+    //   return;
+    // }
     var that = this;
     var instapi = new InstApi();
     var shop_id = this.Base.getMyData().shop_id;

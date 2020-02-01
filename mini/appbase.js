@@ -108,6 +108,7 @@ export class AppBase {
       phonenoCallback: base.phonenoCallback,
       setcart: base.setcart,
       removecart: base.removecart,
+      setTab: base.setTab,
       goGoods: base.goGoods
     }
   }
@@ -219,6 +220,11 @@ export class AppBase {
                     this.Base.setMyData({
                       memberinfo
                     });
+
+
+                    this.setTab();
+
+
                     that.onMyShow();
                   });
                 });
@@ -263,6 +269,8 @@ export class AppBase {
         this.Base.setMyData({
           memberinfo
         });
+
+        this.setTab();
         that.onMyShow();
       });
       //that.Base.getAddress();
@@ -846,5 +854,20 @@ export class AppBase {
 
     AppBase.ATTRS=vk.join(",");
     console.log("AppBase.ATTRS", AppBase.ATTRS, attrlist);
+  }
+  setTab(){
+    if (AppBase.ATTRS != "") {
+
+      var catcount = AppBase.ATTRS.split(",").length;
+      wx.setTabBarBadge({
+        index: 2,
+        text: catcount.toString()
+      })
+    } else {
+
+      wx.removeTabBarBadge({
+        index: 2,
+      })
+    }
   }
 }

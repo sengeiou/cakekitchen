@@ -1,2 +1,80 @@
 <!--pages/goodslist/goodslist.wxml-->
-<text>pages/goodslist/goodslist.wxml</text>
+<view class="statusheader white-block" style="height:{{StatusBar+CustomBar}}px">
+
+  <view class="statusblock" style="height:{{StatusBar}}px"></view>
+  <view class="white-block flex-row  flex-center">
+    <view class=" padding-20 margin-top-5" bindtap="backPage" style="padding-top:{{Custom.top-StatusBar}}px">
+
+    </view>
+    <view class="margin-left margin-top">全部商品</view>
+    <view style="width:{{Custom.width+20}}px;height:{{Custom.height}}px;"></view>
+  </view>
+</view>
+<view style="height:{{StatusBar+CustomBar}}px"></view>
+<view class="fixedtop" style="top:{{StatusBar+CustomBar}}px">
+  <view class="white-block padding-20">
+    <view class="flex-row flex-center">
+      <view class="flex-1 h5 text-center">
+        <picker range='{{catlist}}' range-key='name' bindchange="selectcat">{{cat.name}}</picker>
+      </view>
+      <view data-orderby='' class="flex-1 h5 text-center {{orderby==''?'txt-primary':''}}" bindtap="ordertypechange">优选</view>
+      <view data-orderby='sales' class="flex-1 h5 text-center {{orderby=='sales'?'txt-primary':''}}" bindtap="ordertypechange">购买数量</view>
+      <view data-orderby='price' class="flex-1 h5 text-center {{orderby=='price'?'txt-primary':''}}" hidden="{{true}}" bindtap="ordertypechange">价格</view>
+      <view class="h5 text-center">
+        <image class="icon" src="{{uploadpath}}resource/{{res.square}}" wx:if="{{displaytype=='square'}}" data-displaytype="list" bindtap="displaytypechange"></image>
+        <image class="icon" src="{{uploadpath}}resource/{{res.list}}" wx:if="{{displaytype=='list'}}" data-displaytype="square" bindtap="displaytypechange"></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view style='height:92rpx'></view>
+
+<view class="white-block flex-row flex-wrap" wx:if="{{displaytype=='square'}}">
+  <view class="w50 " wx:for="{{list}}" wx:key="k1" wx:for-item='goods'>
+    <view class="catgoods white-block" bindtap="goGoods" data-goods_id="{{goods.id}}">
+      <view>
+        <image src="{{uploadpath}}goods/{{goods.photo}}"></image>
+      </view>
+      <view class="name padding-20">
+        {{goods.name}}
+      </view>
+      <view class="padding-20">
+
+        <view class="flex-row flex-bottom">
+          <view class="h6 txt-primary margin-right-5">¥</view>
+          <view class="flex-1 txt-primary">{{goods.price}}</view>
+          <view class="buy border-primary txt-primary h6 ">
+            购买
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<view class="white-block padding-20" wx:if="{{displaytype=='list'}}">
+  <view class="flex-row margin-bottom" wx:for="{{list}}" wx:key="k1" wx:for-item='goods' bindtap="goGoods" data-goods_id="{{goods.id}}">
+    <view class="margin-right">
+      <image class="icon-100" src="{{uploadpath}}goods/{{goods.photo}}"></image>
+    </view>
+    <view class="flex-1">
+      <view class="name padding-20">
+        {{goods.name}}
+      </view>
+      <view class="padding-20">
+
+        <view class="flex-row flex-bottom">
+          <view class="h6 txt-primary margin-right-5">¥</view>
+          <view class="flex-1 txt-primary">{{goods.price}}</view>
+          <view class="buy border-primary txt-primary h6 ">
+            购买
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+</view>

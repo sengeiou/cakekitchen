@@ -62,7 +62,8 @@ class Content extends AppBase {
     this.setMyData({
       attrlist: newattrlist,
       amount
-    })
+    });
+    this.setTab();
   }
 
   jia(e){

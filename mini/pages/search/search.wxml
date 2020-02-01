@@ -1,0 +1,26 @@
+<!--pages/search/search.wxml-->
+<view class="statusheader white-block" style="height:{{StatusBar+CustomBar}}px">
+
+  <view class="statusblock" style="height:{{StatusBar}}px"></view>
+  <view class="white-block flex-row  flex-center">
+    <view class=" padding-20 margin-top-5" bindtap="backPage" style="padding-top:{{Custom.top-StatusBar}}px">
+
+    </view>
+    <view class="margin-left margin-top">搜索</view>
+    <view style="width:{{Custom.width+20}}px;height:{{Custom.height}}px;"></view>
+  </view>
+</view>
+<view style="height:{{StatusBar+CustomBar}}px"></view>
+<view class="fixedtop" style="top:{{StatusBar+CustomBar}}px">
+  <view class="white-block padding-20">
+    <view class="flex-row flex-center">
+      <view class="flex-1 h5">
+        <input placeholder="请输入关键字"></input>
+      </view>
+      <view class="txt-gray h6">
+        搜索
+      </view>
+    </view>
+  </view>
+</view>
+<view style='height:92rpx'></view>

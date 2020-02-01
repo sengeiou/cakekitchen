@@ -218,6 +218,9 @@ button[disabled][type=primary] {
   margin-top: 40rpx;
 }
 
+.margin-bottom {
+  margin-bottom: 40rpx;
+}
 .height-40 {
   height: 40rpx;
 }
@@ -357,6 +360,12 @@ button[disabled][type=primary] {
   border-radius: 10%;
 }
 
+.fixedtop {
+  position: fixed;
+  top: 0rpx;
+  width: 750rpx;
+  z-index: 100;
+}
 .fixedbottom {
   position: fixed;
   bottom: 0rpx;

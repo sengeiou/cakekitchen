@@ -1,2 +1,13 @@
 <!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<view class="statusheader white-block" style="height:{{StatusBar+CustomBar}}px">
+
+  <view class="statusblock" style="height:{{StatusBar}}px"></view>
+  <view class="white-block flex-row  flex-center">
+    <view class=" padding-20 margin-top-5" bindtap="backPage" style="padding-top:{{Custom.top-StatusBar}}px">
+
+    </view>
+    <view class="margin-left margin-top">全部商品</view>
+    <view style="width:{{Custom.width+20}}px;height:{{Custom.height}}px;"></view>
+  </view>
+</view>
+<view style="height:{{StatusBar+CustomBar}}px"></view>

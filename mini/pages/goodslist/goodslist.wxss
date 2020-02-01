@@ -1,1 +1,21 @@
 /* pages/goodslist/goodslist.wxss */
+
+.catgoods {
+  box-shadow: 0 2px 8px rgba(93, 113, 127, 0.08);
+  margin: 13rpx;
+  margin-left: 26rpx;
+  width: 336rpx;
+}
+.name {
+  height: 80rpx;
+}
+
+.catgoods image {
+  width: 336rpx;
+  height: 336rpx;
+}
+
+.buy {
+  border: 1rpx solid #c4a769;
+  padding: 5rpx 10rpx 5rpx 10rpx;
+}

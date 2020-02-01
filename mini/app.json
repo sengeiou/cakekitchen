@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/home/home",
+    "pages/search/search",
     "pages/goodslist/goodslist",
     "pages/cart/cart",
     "pages/goods/goods",
-    "pages/home/home",
     "pages/orderconfirm/orderconfirm",
     "pages/success/success",
     "pages/addresslist/addresslist",
