@@ -20,6 +20,9 @@ import {
 import {
   GoodsApi
 } from "../../apis/goods.api.js";
+import {
+  WechatApi
+} from "../../apis/wechat.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -27,8 +30,7 @@ class Content extends AppBase {
   }
   onLoad(options) {
     this.Base.Page = this;
-    options.goods_id = 5;
-    options.attrs = "1*5";
+    //options.attrs = "1*5,2*1";
 
     var now = new Date();
     now = new Date(now.getTime() + 1 * 24 * 3600 * 1000);
@@ -52,7 +54,9 @@ class Content extends AppBase {
       address: null,
       startdate,
       enddate,
-      amount:0
+      amount: 0,
+      contactmobile: "",
+      remarks: ""
     });
 
     var instapi = new InstApi();
@@ -71,6 +75,11 @@ class Content extends AppBase {
     });
   }
   onMyShow() {
+    var attrs=this.Base.options.attrs;
+    if(attrs==""){
+      this.Base.backPage();
+      return;
+    }
     var that = this;
     var instapi = new InstApi();
     var shop_id = this.Base.getMyData().shop_id;
@@ -104,17 +113,17 @@ class Content extends AppBase {
     }
 
     var goodsapi = new GoodsApi();
-    
+
     goodsapi.attrinfo({
       attrs: this.Base.options.attrs
     }, (attrlist) => {
-      var amount=0;
-      for(var i=0;i<attrlist.length;i++){
+      var amount = 0;
+      for (var i = 0; i < attrlist.length; i++) {
         amount += attrlist[i]["price"] * attrlist[i]["buycount"];
       }
       this.Base.setMyData({
-        attrlist: attrlist
-        , amount
+        attrlist: attrlist,
+        amount
       })
     });
 
@@ -153,9 +162,14 @@ class Content extends AppBase {
         return;
       }
     }
-    var expresstime=data.expresstime;
-    if(expresstime==null){
+    var expresstime = data.expresstime;
+    if (expresstime == null) {
       this.Base.info("请选择时间");
+      return;
+    }
+    var contactmobile = data.contactmobile;
+    if (contactmobile == "") {
+      this.Base.info("请设置联系人手机");
       return;
     }
     wx.showModal({
@@ -164,24 +178,49 @@ class Content extends AppBase {
       success: (con) => {
         console.log(con);
         if (con.confirm) {
-          var orderapi=new OrderApi();
-          var json={};
-          json.attrs=this.Base.options.attrs;
-          json.expresstype=data.expresstype;
-          var address=data.address;
-          if(expresstype=='A'){
-            json.shop_id=shop_id;
-          }else{
+          var orderapi = new OrderApi();
+          var json = {};
+          json.attrs = this.Base.options.attrs;
+          json.expresstype = data.expresstype;
+          var address = data.address;
+          if (expresstype == 'A') {
+            json.shop_id = shop_id;
+          } else {
             json.address_name = address.name;
             json.address_mobile = address.mobile;
             json.address = address.address;
           }
-          json.expressdate=data.expressdate;
-          json.expresstime_id=data.expresstime.id;
-          orderapi.create(json,(ret)=>{
-            if(ret.code==0){
-              this.Base.info("成功");
-            }else{
+          json.expressdate = data.expressdate;
+          json.expresstime_id = data.expresstime.id; 
+          json.contactmobile = contactmobile;
+          json.remarks = data.remarks;
+          orderapi.create(json, (ret) => {
+            if (ret.code == 0) {
+              //this.Base.info("成功");
+              if(this.Base.options.from=="cart"){
+                AppBase.ATTRS="";
+              }
+
+              var wechatapi = new WechatApi();
+              wechatapi.prepay({ id: ret.return},(payparams)=>{
+
+                payparams.success = (res) => {
+                  console.log("payment success", res);
+                  this.Base.options.attrs="";
+                  wx.navigateTo({
+                    url: '/pages/success/success?id=' + ret.return,
+                  })
+                };
+                payparams.fail = (res) => {
+                  console.log("payment fail", res);
+                  wx.navigateTo({
+                    url: '/pages/order/order?id=' + ret.return,
+                  })
+                };
+                wx.requestPayment(payparams);
+              });
+
+            } else {
 
               this.Base.info(ret.return);
             }
@@ -205,6 +244,29 @@ class Content extends AppBase {
       expresstime: expresstimelist[seq]
     });
   }
+  changecontactmobile(e) {
+    console.log(e);
+    this.Base.setMyData({
+      contactmobile: e.detail.value
+    });
+  }
+  getmobile(e){
+    this.Base.getPhoneNo(e);
+  }
+  phonenoCallback(mobile,e){
+    console.log(e);
+
+    this.setMyData({
+      contactmobile: mobile
+    });
+  }
+  changeremarks(e){
+
+    console.log(e);
+    this.Base.setMyData({
+      remarks: e.detail.value
+    });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -215,5 +277,8 @@ body.selectshop = content.selectshop;
 body.selectaddress = content.selectaddress;
 body.submit = content.submit;
 body.selectdate = content.selectdate;
-body.selecttime = content.selecttime;
+body.selecttime = content.selecttime; 
+body.changecontactmobile = content.changecontactmobile;
+body.changeremarks = content.changeremarks;
+body.getmobile = content.getmobile;
 Page(body)

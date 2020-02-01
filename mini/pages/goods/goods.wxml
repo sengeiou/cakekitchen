@@ -30,7 +30,7 @@
         <view class="margin-right-5 txt-primary h4">¥</view>
         <view class="flex-1 txt-primary h3 ">{{pricerange}}</view>
       </view>
-      <view class=" h3 ">{{info.name}}</view>
+      <view class=" h3 margin-top-10">{{info.name}}</view>
     </view>
 
     <view>
@@ -184,7 +184,18 @@
     </view>
   </view>
 </view>
-<block ></block>
+<view style="height:100px"></view>
+<view class="fixedbottom " >
+  <view class="padding-20">
+    <view bindtap="togglePopup" class="primary-block h3 btnborderadius text-center padding-20">立即购买</view>
+  </view>
+</view>
+
+
+
+
+
+
 <view class="popup" wx:if="{{showpopup==true}}">
   <view class="blankclick" bindtap="togglePopup"></view>
   <view class="popupbody  padding-20">
@@ -199,8 +210,8 @@
           <view class="flex-1 txt-primary h4 " wx:if="{{currentattr==null}}">{{pricerange}}</view>
           <view class="flex-1 txt-primary h4 " wx:if="{{currentattr!=null}}">{{currentattr.price}}</view>
         </view>
-        <view class=" h5 ">{{info.name}}</view>
-        <view class="flex-row ">
+        <view class=" h5 margin-top-10 ">{{info.name}}</view>
+        <view class="flex-row margin-top-10">
           <view class=" h6 txt-gray ">选择</view>
           <view class=" h6 txt-gray margin-left-10" wx:if="{{currentattr==null}}">商品规格</view>
           <view class=" h6 txt-primary margin-left-10" wx:if="{{currentattr!=null}}">{{currentattr.name}}</view>
@@ -250,6 +261,9 @@
     </scroll-view>
   </view>
   <view class="padding-20 white-block">
-    <view class="btn primary-block h4 text-center padding-10" bindtap="confirm">确定</view>
+    <view class="flex-row">
+      <view class="btn-left red-block h4 text-center padding-20 flex-1" bindtap="tocart">加入购物车</view>
+      <view class="btn-right blue-block h4 text-center padding-20 flex-1" bindtap="confirm">立即购买</view>
+    </view>
   </view>
 </view>

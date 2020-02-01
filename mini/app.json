@@ -1,13 +1,15 @@
 {
   "pages": [
+    "pages/goodslist/goodslist",
+    "pages/cart/cart",
+    "pages/goods/goods",
+    "pages/home/home",
     "pages/orderconfirm/orderconfirm",
+    "pages/success/success",
     "pages/addresslist/addresslist",
     "pages/address/address",
     "pages/shoplist/shoplist",
-    "pages/goods/goods",
-    "pages/home/home",
     "pages/content/content",
-    "pages/cart/cart",
     "pages/mine/mine",
     "pages/index/index",
     "pages/logs/logs"
@@ -35,7 +37,7 @@
       },
       {
         "text": "选购",
-        "pagePath": "pages/cart/cart",
+        "pagePath": "pages/goodslist/goodslist",
         "iconPath": "images/icons/cart-o.png",
         "selectedIconPath": "images/icons/cart.png"
       },

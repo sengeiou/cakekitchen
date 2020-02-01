@@ -1,0 +1,16 @@
+<!--pages/success/success.wxml-->
+<view style="margin-top:100px">
+  <view class="text-center">
+    <image class="icon-100" src="{{uploadpath}}resource/{{res.success}}"></image>
+  </view>
+  <view class="margin-top h2 txt-bold text-center">支付成功</view>
+  <view class=" text-center" style="margin-top:100rpx;">您已成功支付，实付金额为：</view>
+  <view class="margin-top h3 txt-primary text-center">¥{{order.totalamount}}</view>
+  <view class="flex-row" style="margin-top:100rpx;">
+    <view class="flex-1"></view>
+    <view class="txt-gray h5" bindtap="backHome">回到首页</view>
+    <view class="txt-gray h5 margin-left margin-right ">｜</view>
+    <view class="txt-gray h5" bindtap="goorder">查看订单</view>
+    <view class="flex-1"></view>
+  </view>
+</view>

@@ -59,11 +59,11 @@
   </view>
 </view>
 
-<view class="padding-20 white-block margin-top" wx:for="{{attrlist}}" wx:key='k' wx:for-item='attrinfo'>
+<view class="padding-20 white-block margin-top" >
   <view>
     {{instinfo.name}}
   </view>
-  <view class="flex-row  margin-top">
+  <view class="flex-row  margin-top" wx:for="{{attrlist}}" wx:key='k' wx:for-item='attrinfo'>
     <view>
       <image class="icon-100 border-radius-10" src="{{uploadpath}}goods/{{attrinfo.photo}}"></image>
     </view>
@@ -106,6 +106,29 @@
 </view>
 </picker>
 
+<view class="white-block">
+  <view class="padding-20 ">
+    <view class="flex-row flex-center">
+      <view class="flex-1" >联系人手机</view>
+      <view><input maxlength="11" placeholder="请输入手机号码" class="text-right" bindinput="changecontactmobile" value="{{contactmobile}}" /></view>
+      <view class="margin-left">
+        <button size="mini" open-type="getPhoneNumber" bindgetphonenumber="getmobile">获取</button>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="white-block">
+  <view class="padding-20 ">
+      <view class="flex-1" >留言</view>
+      <view class="margin-top">
+        <view class="padding-20 border-radius  h6  gray-block ">
+        
+        <textarea style="" class="txt-gray" maxlength="120"></textarea>
+        </view>
+      </view>
+  </view>
+</view>
+
 <block wx:if="{{attrlist!=null}}">
   <view class="white-block margin-top">
     <view class="padding-20 ">
@@ -144,7 +167,7 @@
         <view class="h4 txt-primary" wx:if="{{expresstype=='A'}}">¥{{amount}}</view>
         <view class="h4 txt-primary" wx:if="{{expresstype=='B'}}">¥{{amount+instinfo.expressfee}}</view>
         <view class=" margin-left">
-          <button class="primary-block btnradius50" size="mini" bindtap="submit">提交支付</button>
+          <button class="primary-block btnradius50" size="mini" bindtap="submit">提交订单</button>
         </view>
       </view>
     </view>

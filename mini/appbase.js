@@ -14,6 +14,9 @@ import {
 import {
   MemberApi
 } from "apis/member.api";
+import {
+  WechatApi
+} from "apis/wechat.api";
 
 export class AppBase {
 
@@ -30,6 +33,7 @@ export class AppBase {
       website: "mecloud.com"
     }
   };
+  static ATTRS="";
   Page = null;
   util = ApiUtil;
   constructor() {
@@ -98,8 +102,12 @@ export class AppBase {
       switchTab: base.switchTab,
       closePage: base.closePage,
       gotoPage: base.gotoPage,
-      navtoPage: base.navtoPage,
-      openContent: base.openContent,
+      navtoPage: base.navtoPage, 
+      openContent: base.openContent, 
+      getPhoneNo: base.getPhoneNo, 
+      phonenoCallback: base.phonenoCallback,
+      setcart: base.setcart,
+      removecart: base.removecart,
       goGoods: base.goGoods
     }
   }
@@ -379,6 +387,29 @@ export class AppBase {
         }
       });
     }
+  }
+
+
+  getPhoneNo(e) {
+    var that = this;
+    console.log(e);
+    var api = new WechatApi();
+    var data = this.getMyData();
+    console.log("aaa?");
+
+    e.detail.session_key = AppBase.UserInfo.session_key;
+    e.detail.openid = AppBase.UserInfo.openid;
+    console.log(e.detail);
+    api.decrypteddata(e.detail, (ret) => {
+      console.log(ret);
+      that.phonenoCallback(ret.return.phoneNumber, e);
+    });
+  }
+
+  phonenoCallback(phoneno, e) {
+    console.log("phone no callback");
+    console.log(phoneno);
+    console.log(e);
   }
   openMap(e) {
     if (AppBase.QQMAP == null) {
@@ -745,5 +776,75 @@ export class AppBase {
     wx.navigateTo({
       url: '/pages/goods/goods?id=' + e.currentTarget.dataset.goods_id,
     })
+  }
+  setcart(vattr_id, vbuycount){
+    console.log("kATTR", vattr_id, vbuycount);
+    var attrlist = AppBase.ATTRS.split(",");
+    var vk = [];
+    var havedata = false;
+
+    for (var i = 0; i < attrlist.length; i++) {
+      var attr = attrlist[i].split("*");
+      var attr_id = Number(attr[0]);
+      var buycount = Number(attr[1]);
+      console.log("vATTR", attr_id, buycount);
+      if (attr_id == vattr_id) {
+        vk.push(attr_id.toString() + "*" + vbuycount.toString());
+        havedata = true;
+      }
+    }
+    if (havedata == false) {
+      vk.push(vattr_id.toString() + "*" + vbuycount.toString());
+    }
+
+    AppBase.ATTRS = vk.join(",");
+    console.log("AppBase.ATTRS", AppBase.ATTRS, attrlist);
+  }
+  removecart(vattr_id) {
+    console.log("kATTR", vattr_id);
+    var attrlist = AppBase.ATTRS.split(",");
+    var vk = [];
+    var havedata = false;
+
+    for (var i = 0; i < attrlist.length; i++) {
+      var attr = attrlist[i].split("*");
+      var attr_id = Number(attr[0]);
+      var buycount = Number(attr[1]);
+      console.log("vATTR", attr_id, buycount);
+      if (attr_id == vattr_id) {
+        //vk.push(attr_id.toString() + "*" + vbuycount.toString());
+      }else{
+        vk.push(attr_id.toString() + "*" + buycount.toString());
+      }
+    }
+
+    AppBase.ATTRS = vk.join(",");
+    console.log("AppBase.ATTRS", AppBase.ATTRS, attrlist);
+  }
+  addtocart(vattr_id, vbuycount) {
+    console.log("kATTR", vattr_id, vbuycount);
+    var attrlist=AppBase.ATTRS.split(",");
+    var vk=[];
+    var havedata=false;
+
+    for (var i = 0; i<attrlist.length;i++){
+      var attr=attrlist[i].split("*");
+      var attr_id = Number(attr[0]);
+      var buycount = Number(attr[1]);
+      console.log("vATTR", attr_id, buycount);
+      if (attr_id == vattr_id){
+        buycount = buycount + vbuycount;
+        havedata = true;
+      }
+      if(buycount>0){
+        vk.push(attr_id.toString()+"*"+buycount.toString());
+      }
+    }
+    if(havedata==false){
+      vk.push(vattr_id.toString() + "*" + vbuycount.toString());
+    }
+
+    AppBase.ATTRS=vk.join(",");
+    console.log("AppBase.ATTRS", AppBase.ATTRS, attrlist);
   }
 }

@@ -1,1 +1,4 @@
 /* pages/cart/cart.wxss */
+.btnradius50{
+  border-radius: 40rpx;
+}

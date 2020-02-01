@@ -50,19 +50,19 @@
     <view class="margin-top h6 text-center">{{item.name}}</view>
   </view>
   <view class="white-block flex-row flex-wrap" >
-    <view class="w50 " wx:for="{{item.goodslist}}" wx:key="k1">
-      <view class="catgoods white-block" bindtap="goGoods" data-goods_id="{{item.id}}">
+    <view class="w50 " wx:for="{{item.goodslist}}" wx:key="k1" wx:for-item='goods'>
+      <view class="catgoods white-block" bindtap="goGoods" data-goods_id="{{goods.goods_id}}">
         <view>
-          <image src="{{uploadpath}}goods/{{item.goods_photo}}"></image>
+          <image src="{{uploadpath}}goods/{{goods.goods_photo}}"></image>
         </view>
         <view class="name padding-20">
-          {{item.goods_name}}
+          {{goods.goods_name}}
         </view>
         <view class="padding-20">
 
           <view class="flex-row flex-bottom">
             <view class="h6 txt-primary margin-right-5">¥</view>
-            <view class="flex-1 txt-primary">{{item.goods_price}}</view>
+            <view class="flex-1 txt-primary">{{goods.goods_price}}</view>
             <view class="buy border-primary txt-primary h6 ">
               购买
             </view>

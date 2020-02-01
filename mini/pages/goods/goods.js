@@ -243,6 +243,7 @@ class Content extends AppBase {
       return;
     }
 
+    this.Base.togglePopup();
     wx.navigateTo({
       url: '/pages/orderconfirm/orderconfirm?goods_id=' + info.id +
         "&attrs=" + currentattr.id+"*"+buycount +
@@ -259,6 +260,18 @@ class Content extends AppBase {
       expresstype: type
     })
   }
+  tocart(){
+
+    var currentattr = this.Base.getMyData().currentattr;
+    var buycount = this.Base.getMyData().buycount;
+    if (currentattr == null) {
+      this.Base.info("请选择规格");
+      return;
+    }
+    this.Base.addtocart(currentattr.id,buycount);
+    this.togglePopup();
+  }
+
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -274,4 +287,5 @@ body.jian = content.jian;
 body.selectdate = content.selectdate;
 body.confirm = content.confirm;
 body.selectexpresstype = content.selectexpresstype;
+body.tocart = content.tocart;
 Page(body)

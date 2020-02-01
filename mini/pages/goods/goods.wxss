@@ -36,8 +36,13 @@
   border-top-right-radius: 40rpx;
 }
 
-.popup  .btn {
-  border-radius: 40rpx;
+.popup  .btn-left {
+  border-top-left-radius: 40rpx;
+  border-bottom-left-radius: 40rpx;
+}
+.popup  .btn-right {
+  border-top-right-radius: 40rpx;
+  border-bottom-right-radius: 40rpx;
 }
 
 .commentlabel {
@@ -77,4 +82,7 @@
 .recommgoods .photo image {
   width: 340rpx;
   height: 340rpx;
+}
+.btnborderadius{
+  border-radius: 40rpx;
 }

@@ -1,2 +1,76 @@
-<!--pages/cart/cart.wxml-->
-<text>pages/cart/cart.wxml</text>
+<!--pages/orderconfirm/orderconfirm.wxml-->
+<view class="statusheader white-block" style="height:{{StatusBar+CustomBar}}px">
+
+  <view class="statusblock" style="height:{{StatusBar}}px"></view>
+  <view class="white-block flex-row  flex-center">
+    <view class=" padding-20 margin-top-5" bindtap="backPage" style="padding-top:{{Custom.top-StatusBar}}px">
+    </view>
+    <view class="margin-left">购物车</view>
+    <view style="width:{{Custom.width+20}}px;height:{{Custom.height}}px;"></view>
+  </view>
+</view>
+<view style="height:{{StatusBar+CustomBar}}px"></view>
+
+
+<block wx:if="{{attrlist.length==0}}">
+  <view class="flex-row flex-center" style="height:calc( 100vh - {{StatusBar+CustomBar}}px )">
+    <view class="flex-1" style="height:calc( 100vh - {{StatusBar+CustomBar}}px )"></view>
+    <view>
+      <view>
+        <image src="{{uploadpath}}resource/{{res.nodata}}" class="icon-100"></image>
+      </view>
+      <view class="margin-top txt-gray h6">暂无商品加入到购物车</view>
+    </view>
+    <view class="flex-1" style="height:calc( 100vh - {{StatusBar+CustomBar}}px )"></view>
+  </view>
+</block>
+
+<block wx:if="{{attrlist.length>0}}">
+  <view class="padding-20 white-block">
+    <view>
+      {{instinfo.name}}
+    </view>
+    <view class="flex-row  margin-top" wx:for="{{attrlist}}" wx:key='k' wx:for-item='attrinfo'>
+      <view>
+        <image class="icon-100 border-radius-10" src="{{uploadpath}}goods/{{attrinfo.photo}}"></image>
+      </view>
+      <view class="flex-1 margin-left">
+        <view class="h4">{{attrinfo.goods_name}}</view>
+        <view class="h5 txt-gray margin-top-10">{{attrinfo.name}}</view>
+        <view class="flex-1 margin-top-20">
+          <view class="flex-row flex-bottom">
+            <view class="margin-right-5 txt-primary h4">¥</view>
+            <view class="txt-primary h3 ">{{attrinfo.price}}</view>
+            <view class="h5 txt-gray flex-1">
+              <view class="flex-row flex-center">
+                <view class="flex-1"></view>
+                <view class="margin-right-10 border-radius-10 gray-block h5 padding-20" id="{{attrinfo.id}}" bindtap="jian">-</view>
+                <view class="margin-right-10 border-radius-10 gray-block h5 padding-20">{{attrinfo.buycount}}</view>
+                <view class="margin-right-10 border-radius-10 gray-block h5 padding-20" id="{{attrinfo.id}}" bindtap="jia">+</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+
+  <view style='height:200rpx'></view>
+
+  <view class="fixedbottom">
+    <view class="padding-20 white-block ">
+      <view class="flex-row flex-center">
+        <view class="flex-1"></view>
+        <view class="h4">合计：</view>
+        <view class="h4 txt-primary">¥{{amount}}</view>
+        <view class=" margin-left">
+          <button class="primary-block btnradius50" size="mini" bindtap="confirm">立即购买</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+</block>
