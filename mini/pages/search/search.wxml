@@ -1,26 +1,38 @@
-<!--pages/search/search.wxml-->
-<view class="statusheader white-block" style="height:{{StatusBar+CustomBar}}px">
-
-  <view class="statusblock" style="height:{{StatusBar}}px"></view>
-  <view class="white-block flex-row  flex-center">
-    <view class=" padding-20 margin-top-5" bindtap="backPage" style="padding-top:{{Custom.top-StatusBar}}px">
-
-    </view>
-    <view class="margin-left margin-top">搜索</view>
-    <view style="width:{{Custom.width+20}}px;height:{{Custom.height}}px;"></view>
-  </view>
+<!--pages/searchword/searchword.wxml-->
+<back-component></back-component>
+<view class=' to_top'>
+  <image src='{{uploadpath}}resource/{{res.totop}}' class='icon-50' bindtap='backtotop'></image>
 </view>
-<view style="height:{{StatusBar+CustomBar}}px"></view>
-<view class="fixedtop" style="top:{{StatusBar+CustomBar}}px">
-  <view class="white-block padding-20">
-    <view class="flex-row flex-center">
-      <view class="flex-1 h5">
-        <input placeholder="请输入关键字"></input>
-      </view>
-      <view class="txt-gray h6">
-        搜索
-      </view>
+<view class='Top padding-20 flex-row flex-center '>
+  <view class='search flex-row flex-center padding-5 '>
+    <view style='width:20rpx;'></view>
+    <image class='search_icon' src='{{uploadpath}}resource/{{res.search_icon}}'></image>
+    <input class='h6 flex-1 txt-black padding-left-5' bindconfirm='bindconfirm' confirm-type='search' focus='true' placeholder='搜索您要找的商品' bindinput='search'></input>
+
+    <view class='padding-left-20 padding-right-10' bindtap=''>
+      <image class='prohibit_icon ' src='{{uploadpath}}resource/{{res.prohibit}}'></image>
     </view>
   </view>
+
+  <view class='text-right flex-1 h5 txt-gray' style='' bindtap='quxiao' id='{{item.name}}'>取消</view>
 </view>
-<view style='height:92rpx'></view>
+<view bindtap='todetails' class='h5 padding-20 margin-left-40 flex-row flex-center' id='{{item.name}}' wx:for="{{result}}" wx:key="k" wx:for-index='idx'>
+  <view>{{item.name}}</view>
+  <view class='h6 txt-red margin-left-20'></view>
+</view>
+
+
+
+<view class="white-block padding-20" wx:if="{{list.length>0}}">
+  <view class="flex-row margin-bottom-10" wx:for="{{list}}" wx:key="k1" wx:for-item='goods' bindtap="goGoods" data-goods_id="{{goods.id}}">
+    <view class="margin-right">
+      <image class="icon-75" src="{{uploadpath}}goods/{{goods.photo}}"></image>
+    </view>
+    <view class="flex-1">
+      <view class=" padding-20">
+        {{goods.name}}
+      </view>
+    </view>
+  </view>
+
+</view>

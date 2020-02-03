@@ -54,11 +54,20 @@ class Content extends AppBase {
   }
   bannerclick(e) {
     console.log(e);
+    wx.navigateTo({
+      url: e.currentTarget.dataset.path,
+    })
+  }
+  gosearch(){
+    wx.navigateTo({
+      url: '/pages/search/search',
+    })
   }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
-body.onMyShow = content.onMyShow;
+body.onMyShow = content.onMyShow; 
 body.bannerclick = content.bannerclick;
+body.gosearch = content.gosearch;
 Page(body)

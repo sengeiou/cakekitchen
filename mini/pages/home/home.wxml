@@ -3,7 +3,7 @@
   <view class="statusblock" style="height:{{StatusBar}}px"></view>
   <view class="white-block flex-row  flex-center">
     <view class=" padding-20 flex-1   " style="padding-top:{{Custom.top-StatusBar}}px" >
-      <view class="searchbox gray-block  flex-row flex-center" style="padding-top:0px;height:{{Custom.height}}px">
+      <view class="searchbox gray-block  flex-row flex-center" style="padding-top:0px;height:{{Custom.height}}px" bindtap="gosearch">
         <view class="h100 margin-left-10 margin-right-10">
           <image class="icon-15" src="{{uploadpath}}resource/{{res.search}}"></image>
         </view>
@@ -17,7 +17,7 @@
 <view>
   <swiper class="indexbanner" autoplay="true">
     <swiper-item class="indexbanner" wx:for="{{indexbanner}}" wx:key="k">
-      <image class="indexbanner" src="{{uploadpath}}indexbanner/{{item.img}}" bindtap="bannerclick" id='{{item.path}}'></image>
+      <image class="indexbanner" src="{{uploadpath}}indexbanner/{{item.img}}" bindtap="bannerclick" data-path='{{item.path}}'></image>
     </swiper-item>
   </swiper>
 </view>

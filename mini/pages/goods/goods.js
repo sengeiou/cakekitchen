@@ -243,7 +243,7 @@ class Content extends AppBase {
       return;
     }
 
-    this.Base.togglePopup();
+    this.togglePopup();
     wx.navigateTo({
       url: '/pages/orderconfirm/orderconfirm?goods_id=' + info.id +
         "&attrs=" + currentattr.id+"*"+buycount +
