@@ -47,12 +47,12 @@
     <view class=" txt-gray h6">已售 {{info.salescount}}</view>
   </view>
 </view>
-<view class="margin-top-10 white-block padding-20" bindtap="openContent" data-title='配送服务' data-keycode='service'>
+<view class="margin-top-10 white-block padding-20"  data-title='配送服务' data-keycode='service'>
   <view class="flex-row flex-center">
     <view class="margin-right-10 h6 txt-gray">服务</view>
     <view class="margin-right-20 h6 flex-1">{{instinfo.service}}</view>
     <view>
-      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <!-- <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image> -->
     </view>
   </view>
 </view>

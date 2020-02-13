@@ -20,9 +20,14 @@
         <image src="{{uploadpath}}resource/{{res.nodata}}" class="icon-100"></image>
       </view>
       <view class="margin-top txt-gray h6">暂无商品加入到购物车</view>
+
+
+      <view bindtap="gohome" class="xuangou">去选购</view>
     </view>
     <view class="flex-1" style="height:calc( 100vh - {{StatusBar+CustomBar}}px )"></view>
   </view>
+
+
 </block>
 
 <block wx:if="{{attrlist.length>0}}">
@@ -30,12 +35,16 @@
     <view>
       {{instinfo.name}}
     </view>
-    <view class="flex-row  margin-top" wx:for="{{attrlist}}" wx:key='k' wx:for-item='attrinfo'>
+    <view class="flex-row  margin-top" wx:for="{{attrlist}}" wx:key='k' wx:for-item='attrinfo' wx:for-index='index'>
       <view>
         <image class="icon-100 border-radius-10" src="{{uploadpath}}goods/{{attrinfo.photo}}"></image>
       </view>
       <view class="flex-1 margin-left">
+      <view class="flex-row flex-center">
         <view class="h4">{{attrinfo.goods_name}}</view>
+        <view class="flex-1"></view>
+          <image bindtap="shanchu" style="margin-right:20rpx" data-index="{{index}}" data-id="{{attrinfo.id}}" class="icon-15" src="{{uploadpath}}resource/{{res.shanchu}}"></image>
+        </view>
         <view class="h5 txt-gray margin-top-10">{{attrinfo.name}}</view>
         <view class="flex-1 margin-top-20">
           <view class="flex-row flex-bottom">

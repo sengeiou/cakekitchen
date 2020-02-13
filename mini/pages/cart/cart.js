@@ -90,13 +90,16 @@ class Content extends AppBase {
     for (var i = 0; i < attrlist.length; i++) {
       if (attr_id == attrlist[i].id) {
         attrlist[i].buycount--;
-        if (attrlist[i].buycount < 1) {
+        if (attrlist[i].buycount < 2) {
+          return
           wx.showModal({
             title: '提示',
             content: '确认删除商品？',
             success: (con) => {
               console.log(con);
               if(con.confirm){
+                console.log(attrlist[i].id);
+                return
                 this.Base.removecart(attrlist[i].id);
                 this.Base.setattrlist(attrlist);
               }
@@ -106,6 +109,26 @@ class Content extends AppBase {
         break;
       }
     }
+  }
+  shanchu(e)
+  {
+    console.log(e);
+    var attrlist = this.Base.getMyData().attrlist;
+
+  
+    wx.showModal({
+      title: '提示',
+      content: '确认删除商品？',
+      success: (con) => {
+        console.log(con);
+        if (con.confirm) {
+          attrlist[e.currentTarget.dataset.index].buycount--;
+     
+          this.Base.removecart(e.currentTarget.dataset.id);
+          this.Base.setattrlist(attrlist);
+        }
+      }
+    });
   }
   confirm(){
     wx.showModal({
@@ -121,6 +144,13 @@ class Content extends AppBase {
       }
     });
   }
+  gohome(){
+
+wx.switchTab({
+  url: '/pages/home/home',
+})
+
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -130,4 +160,6 @@ body.jia = content.jia;
 body.jian = content.jian;
 body.setattrlist = content.setattrlist;
 body.confirm = content.confirm;
+body.gohome = content.gohome;
+body.shanchu=content.shanchu;
 Page(body)

@@ -9,6 +9,38 @@ import { ApiConfig } from 'apiconfig';
 export class GoodsApi{
 
 
+    attrinfo(json, callback, showLoading = true) {
+
+        if (showLoading)
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'goods/attrinfo',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
+
     attrlist(json, callback, showLoading = true) {
 
         if (showLoading)
@@ -201,6 +233,38 @@ export class GoodsApi{
         })
     }
 
+    list(json, callback, showLoading = true) {
+
+        if (showLoading)
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'goods/list',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
+
     photolist(json, callback, showLoading = true) {
 
         if (showLoading)
@@ -295,69 +359,5 @@ export class GoodsApi{
                     ApiConfig.CloseLoading();
             }
         })
-  }
-
-  attrinfo(json, callback, showLoading = true) {
-
-    if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
-    console.log(header);
-    console.log(json);
-    wx.request({
-      url: ApiConfig.GetApiUrl() + 'goods/attrinfo',
-      data: json,
-      method: 'POST',
-      dataType: 'json',
-      header: header,
-      success: function (res) {
-        if (callback != null) {
-          callback(res.data);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        callback(false);
-      },
-      complete: function (res) {
-        console.log(res);
-
-        if (showLoading)
-          ApiConfig.CloseLoading();
-      }
-    })
-  }
-
-  list(json, callback, showLoading = true) {
-
-    if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
-    console.log(header);
-    console.log(json);
-    wx.request({
-      url: ApiConfig.GetApiUrl() + 'goods/list',
-      data: json,
-      method: 'POST',
-      dataType: 'json',
-      header: header,
-      success: function (res) {
-        if (callback != null) {
-          callback(res.data);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        callback(false);
-      },
-      complete: function (res) {
-        console.log(res);
-
-        if (showLoading)
-          ApiConfig.CloseLoading();
-      }
-    })
-  }
+    }
 }

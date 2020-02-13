@@ -2,3 +2,14 @@
 .btnradius50{
   border-radius: 40rpx;
 }
+.xuangou {
+  width: 200rpx;
+  height: 76rpxrpx;
+  background: #07264A;
+  line-height: 76rpx;
+  text-align: center;
+  border-radius: 50rpx;
+  color: #ffffff;
+  margin: 12rpx auto 0;
+  margin-top:20rpx;
+}

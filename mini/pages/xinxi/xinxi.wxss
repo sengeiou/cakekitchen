@@ -1,0 +1,15 @@
+/* pages/xinxi/xinxi.wxss */
+.icon-56 {
+  width: 100rpx;
+  height: 100rpx;
+}
+.tijiao {
+  width: 693rpx;
+  height: 76rpx;
+  background: rgba(7, 38, 74, 1);
+  border-radius: 38rpx;
+  text-align: center;
+  color: #ffffff;
+  line-height: 76rpx;
+ 
+}

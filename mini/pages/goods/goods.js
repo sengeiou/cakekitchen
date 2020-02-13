@@ -108,11 +108,11 @@ class Content extends AppBase {
       }
       if (max == min) {
         this.Base.setMyData({
-          pricerange: max
+          pricerange: max.toFixed(2)
         })
       } else {
         this.Base.setMyData({
-          pricerange: min + "-" + max
+          pricerange: min.toFixed(2) + "-" + max.toFixed(2)
         })
       }
       this.Base.setMyData({

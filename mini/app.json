@@ -7,12 +7,18 @@
     "pages/cart/cart",
     "pages/goods/goods",
     "pages/orderconfirm/orderconfirm",
+    "pages/orderinfo/orderinfo",
     "pages/success/success",
     "pages/addresslist/addresslist",
     "pages/address/address",
     "pages/shoplist/shoplist",
     "pages/content/content",
     "pages/index/index",
+    "pages/myorder/myorder",
+    "pages/xinxi/xinxi",
+    
+      "pages/yijianfankui/yijianfankui",
+    "pages/guanyuwomen/guanyuwomen",
     "pages/logs/logs"
   ],
   "window": {
@@ -22,7 +28,13 @@
     "navigationBarTextStyle": "black",
     "navigationStyle":"custom"
   },
-  "style": "v2",
+  
+ 
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "color": "#cdcdcd",

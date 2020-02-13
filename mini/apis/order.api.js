@@ -1,139 +1,171 @@
 /*******使用方法，下面两句复制到page的js文件的头部
 
 import { ApiConfig } from '../../apis/apiconfig';
-import { InstApi } from '../../apis/model.api';
+import { InstApi } from '../../apis/order.api';
 
 var orderApi=new OrderApi();
 *******/
 import { ApiConfig } from 'apiconfig';
-export class OrderApi {
+export class OrderApi{
 
 
-  create(json, callback, showLoading = true) {
-
-    if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
-    console.log(header);
-    console.log(json);
-    wx.request({
-      url: ApiConfig.GetApiUrl() + 'order/create',
-      data: json,
-      method: 'POST',
-      dataType: 'json',
-      header: header,
-      success: function (res) {
-        if (callback != null) {
-          callback(res.data);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        callback(false);
-      },
-      complete: function (res) {
-        console.log(res);
+    create(json, callback, showLoading = true) {
 
         if (showLoading)
-          ApiConfig.CloseLoading();
-      }
-    })
-  }
+            ApiConfig.ShowLoading();
 
-  info(json, callback, showLoading = true) {
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'order/create',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
 
-    if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
-    console.log(header);
-    console.log(json);
-    wx.request({
-      url: ApiConfig.GetApiUrl() + 'order/info',
-      data: json,
-      method: 'POST',
-      dataType: 'json',
-      header: header,
-      success: function (res) {
-        if (callback != null) {
-          callback(res.data);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        callback(false);
-      },
-      complete: function (res) {
-        console.log(res);
-
-        if (showLoading)
-          ApiConfig.CloseLoading();
-      }
-    })
-  }
-
-  list(json, callback, showLoading = true) {
-
-    if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
-    console.log(header);
-    console.log(json);
-    wx.request({
-      url: ApiConfig.GetApiUrl() + 'order/list',
-      data: json,
-      method: 'POST',
-      dataType: 'json',
-      header: header,
-      success: function (res) {
-        if (callback != null) {
-          callback(res.data);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        callback(false);
-      },
-      complete: function (res) {
-        console.log(res);
+    info(json, callback, showLoading = true) {
 
         if (showLoading)
-          ApiConfig.CloseLoading();
-      }
-    })
-  }
+            ApiConfig.ShowLoading();
 
-  itemlist(json, callback, showLoading = true) {
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'order/info',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
 
-    if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
-    console.log(header);
-    console.log(json);
-    wx.request({
-      url: ApiConfig.GetApiUrl() + 'order/itemlist',
-      data: json,
-      method: 'POST',
-      dataType: 'json',
-      header: header,
-      success: function (res) {
-        if (callback != null) {
-          callback(res.data);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        callback(false);
-      },
-      complete: function (res) {
-        console.log(res);
+    itemlist(json, callback, showLoading = true) {
 
         if (showLoading)
-          ApiConfig.CloseLoading();
-      }
-    })
-  }
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'order/itemlist',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
+
+    list(json, callback, showLoading = true) {
+
+        if (showLoading)
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'order/list',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
+
+    myorder(json, callback, showLoading = true) {
+
+        if (showLoading)
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'order/myorder',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
 }

@@ -1,0 +1,17 @@
+/* pages/orderconfirm/orderconfirm.wxss */
+.options{
+  border:#c4a769 solid 2rpx;
+  padding:5rpx;
+  border-radius: 40rpx;
+}
+.options .option{
+  padding: 10rpx 20rpx 10rpx 20rpx;
+}
+.options .option.active{
+  background: #c4a769;
+  border-radius: 40rpx;
+  color:white;
+}
+.btnradius50{
+  border-radius: 40rpx;
+}

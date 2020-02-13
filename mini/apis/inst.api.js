@@ -73,6 +73,134 @@ export class InstApi{
         })
     }
 
+    expressarea(json, callback, showLoading = true) {
+
+        if (showLoading)
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'inst/expressarea',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
+
+    expressarealist(json, callback, showLoading = true) {
+
+        if (showLoading)
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'inst/expressarealist',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
+
+    expresstime(json, callback, showLoading = true) {
+
+        if (showLoading)
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'inst/expresstime',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
+
+    expresstimelist(json, callback, showLoading = true) {
+
+        if (showLoading)
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'inst/expresstimelist',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
+
     indexbanner(json, callback, showLoading = true) {
 
         if (showLoading)
@@ -167,193 +295,69 @@ export class InstApi{
                     ApiConfig.CloseLoading();
             }
         })
-  }
+    }
 
-  expresstimelist(json, callback, showLoading = true) {
-
-    if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
-    console.log(header);
-    console.log(json);
-    wx.request({
-      url: ApiConfig.GetApiUrl() + 'inst/expresstimelist',
-      data: json,
-      method: 'POST',
-      dataType: 'json',
-      header: header,
-      success: function (res) {
-        if (callback != null) {
-          callback(res.data);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        callback(false);
-      },
-      complete: function (res) {
-        console.log(res);
+    shopinfo(json, callback, showLoading = true) {
 
         if (showLoading)
-          ApiConfig.CloseLoading();
-      }
-    })
-  }
+            ApiConfig.ShowLoading();
 
-  expressarealist(json, callback, showLoading = true) {
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'inst/shopinfo',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
 
-    if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
-    console.log(header);
-    console.log(json);
-    wx.request({
-      url: ApiConfig.GetApiUrl() + 'inst/expressarealist',
-      data: json,
-      method: 'POST',
-      dataType: 'json',
-      header: header,
-      success: function (res) {
-        if (callback != null) {
-          callback(res.data);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        callback(false);
-      },
-      complete: function (res) {
-        console.log(res);
-
-        if (showLoading)
-          ApiConfig.CloseLoading();
-      }
-    })
-  }
-  expressarea(json, callback, showLoading = true) {
-
-    if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
-    console.log(header);
-    console.log(json);
-    wx.request({
-      url: ApiConfig.GetApiUrl() + 'inst/expressarea',
-      data: json,
-      method: 'POST',
-      dataType: 'json',
-      header: header,
-      success: function (res) {
-        if (callback != null) {
-          callback(res.data);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        callback(false);
-      },
-      complete: function (res) {
-        console.log(res);
+    shoplist(json, callback, showLoading = true) {
 
         if (showLoading)
-          ApiConfig.CloseLoading();
-      }
-    })
-  }
-  expresstime(json, callback, showLoading = true) {
+            ApiConfig.ShowLoading();
 
-    if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
-    console.log(header);
-    console.log(json);
-    wx.request({
-      url: ApiConfig.GetApiUrl() + 'inst/expresstime',
-      data: json,
-      method: 'POST',
-      dataType: 'json',
-      header: header,
-      success: function (res) {
-        if (callback != null) {
-          callback(res.data);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        callback(false);
-      },
-      complete: function (res) {
-        console.log(res);
-
-        if (showLoading)
-          ApiConfig.CloseLoading();
-      }
-    })
-  }
-  shoplist(json, callback, showLoading = true) {
-
-    if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
-    console.log(header);
-    console.log(json);
-    wx.request({
-      url: ApiConfig.GetApiUrl() + 'inst/shoplist',
-      data: json,
-      method: 'POST',
-      dataType: 'json',
-      header: header,
-      success: function (res) {
-        if (callback != null) {
-          callback(res.data);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        callback(false);
-      },
-      complete: function (res) {
-        console.log(res);
-
-        if (showLoading)
-          ApiConfig.CloseLoading();
-      }
-    })
-  }
-  shopinfo(json, callback, showLoading = true) {
-
-    if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
-    console.log(header);
-    console.log(json);
-    wx.request({
-      url: ApiConfig.GetApiUrl() + 'inst/shopinfo',
-      data: json,
-      method: 'POST',
-      dataType: 'json',
-      header: header,
-      success: function (res) {
-        if (callback != null) {
-          callback(res.data);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        callback(false);
-      },
-      complete: function (res) {
-        console.log(res);
-
-        if (showLoading)
-          ApiConfig.CloseLoading();
-      }
-    })
-  }
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'inst/shoplist',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
 }

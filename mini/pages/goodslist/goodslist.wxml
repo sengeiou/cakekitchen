@@ -35,7 +35,7 @@
       <view>
         <image src="{{uploadpath}}goods/{{goods.photo}}"></image>
       </view>
-      <view class="name padding-20">
+      <view class="name chaochu2 padding-20">
         {{goods.name}}
       </view>
       <view class="padding-20">
@@ -60,7 +60,7 @@
       <image class="icon-100" src="{{uploadpath}}goods/{{goods.photo}}"></image>
     </view>
     <view class="flex-1">
-      <view class="name padding-20">
+      <view class=" chaochu2 name padding-20">
         {{goods.name}}
       </view>
       <view class="padding-20">

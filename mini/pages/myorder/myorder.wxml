@@ -1,0 +1,123 @@
+<view class="statusheader white-block" style="height:{{StatusBar+CustomBar}}px">
+
+  <view class="statusblock" style="height:{{StatusBar}}px"></view>
+  <view class="white-block flex-row  flex-center">
+    <view class=" padding-20 margin-top-5" bindtap="backPage" style="padding-top:{{Custom.top-StatusBar}}px">
+      <image class="icon" src="{{uploadpath}}resource/{{res.backblack}}"></image>
+    </view>
+    <view class="margin-left">我的订单</view>
+    <view style="width:{{Custom.width+20}}px;height:{{Custom.height}}px;"></view>
+  </view>
+</view>
+<view style="height:{{StatusBar+CustomBar}}px"></view>
+
+
+<view class="padding-30 flex-row flex-center bg-white" style="padding-bottom:0rpx">
+  <view bindtap="switchtab" id='0' class="flex-row flex-column flex-1">
+
+    <view class="{{tab==0?'black':''}} h5 text-center">全部</view>
+    <view wx:if="{{tab==0}}" class="xian"></view>
+    <view wx:if="{{tab!=0}}" class="k"></view>
+  </view>
+  <view bindtap="switchtab" id='1' class="flex-row flex-column flex-1">
+
+    <view class="{{tab==1?'black':''}} h5 text-center">待付款</view>
+    <view wx:if="{{tab==1}}" class="xian"></view>
+    <view wx:if="{{tab!=1}}" class="k"></view>
+  </view>
+  <view bindtap="switchtab" id='2' class="flex-row flex-column flex-1">
+
+    <view class="{{tab==2?'black':''}} h5 text-center">待收货</view>
+    <view wx:if="{{tab==2}}" class="xian"></view>
+    <view wx:if="{{tab!=2}}" class="k"></view>
+  </view>
+  <view bindtap="switchtab" id='3' class="flex-row flex-column flex-1">
+
+    <view class="{{tab==3?'black':''}} h5 text-center">已完成</view>
+    <view wx:if="{{tab==3}}" class="xian"></view>
+    <view wx:if="{{tab!=3}}" class="k"></view>
+  </view>
+</view>
+
+<view bindtap="orderinfo" id="{{item.id}}" wx:for="{{myorder}}" class="bg-white margin-top-20 ">
+
+
+  <view class="padding-20">
+    <view class="flex-row flex-center  ">
+      <view class="">订单编号：{{item.orderno}}</view>
+      <view class="flex-1"></view>
+      <view>
+        {{item.status_name}}
+      </view>
+    </view>
+
+   
+  </view>
+  <view class="" style="background:#EEEEEE">
+
+    <view wx:for="{{item.dindan}}" wx:for-item="dindan" class="padding-20 flex-row flex-center">
+
+      <image src="{{uploadpath}}goods/{{dindan.photo}}" class="icon-100"></image>
+      <view class="flex-1 margin-left-10">
+        <view>{{dindan.name}}</view>
+
+        
+
+        <view class="flex-row flex-center margin-top" style="width:100%">
+          <view>￥{{dindan.price}}</view>
+          <view class="flex-1"></view>
+          <view>x{{dindan.buycount}}</view>
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+  <view class="padding-20 text-right">合计:￥{{item.amount}}</view>
+  <view class="xian1"></view>
+
+  <view class="flex-row flex-center padding-20">
+
+    <view class="flex-1"></view>
+    <view>再来一单</view>
+  </view>
+
+</view>
+
+
+<view class="text-center margin-top" wx:if="{{myorder.length==0}}">
+
+暂无订单
+
+</view>
+
+
+
+<view class="text-center h5 margin-top-20">更多精选商品</view>
+
+
+<block wx:for="{{indexcat}}" wx:key="k">
+  <view class=" padding-20">
+
+  </view>
+  <view class="white-block flex-row flex-wrap">
+    <view class="w50 " wx:for="{{item.goodslist}}" wx:key="k1" wx:for-item='goods'>
+      <view class="catgoods white-block" bindtap="goGoods" data-goods_id="{{goods.goods_id}}">
+        <view>
+          <image src="{{uploadpath}}goods/{{goods.goods_photo}}"></image>
+        </view>
+        <view class="name padding-20">
+          {{goods.goods_name}}
+        </view>
+        <view class="padding-20">
+
+          <view class="flex-row flex-bottom">
+            <view class="h6 txt-primary margin-right-5">¥</view>
+            <view class="flex-1 txt-primary">{{goods.goods_price}}</view>
+
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>

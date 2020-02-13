@@ -41,6 +41,102 @@ export class MemberApi{
         })
     }
 
+    addressinfo(json, callback, showLoading = true) {
+
+        if (showLoading)
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'member/addressinfo',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
+
+    addresslist(json, callback, showLoading = true) {
+
+        if (showLoading)
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'member/addresslist',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
+
+    deleteaddress(json, callback, showLoading = true) {
+
+        if (showLoading)
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'member/deleteaddress',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
+
     getuserinfo(json, callback, showLoading = true) {
 
         if (showLoading)
@@ -233,6 +329,38 @@ export class MemberApi{
         })
     }
 
+    updateaddress(json, callback, showLoading = true) {
+
+        if (showLoading)
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'member/updateaddress',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
+
     updatelocation(json, callback, showLoading = true) {
 
         if (showLoading)
@@ -263,135 +391,133 @@ export class MemberApi{
                     ApiConfig.CloseLoading();
             }
         })
-  }
-  addresslist(json, callback, showLoading = true) {
+    }
 
-    if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
-    console.log(header);
-    console.log(json);
-    wx.request({
-      url: ApiConfig.GetApiUrl() + 'member/addresslist',
-      data: json,
-      method: 'POST',
-      dataType: 'json',
-      header: header,
-      success: function (res) {
-        if (callback != null) {
-          callback(res.data);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        callback(false);
-      },
-      complete: function (res) {
-        console.log(res);
+    updateshouji(json, callback, showLoading = true) {
 
         if (showLoading)
-          ApiConfig.CloseLoading();
-      }
-    })
-  }
+            ApiConfig.ShowLoading();
 
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'member/updateshouji',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
 
-  addressinfo(json, callback, showLoading = true) {
-
-    if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
-    console.log(header);
-    console.log(json);
-    wx.request({
-      url: ApiConfig.GetApiUrl() + 'member/addressinfo',
-      data: json,
-      method: 'POST',
-      dataType: 'json',
-      header: header,
-      success: function (res) {
-        if (callback != null) {
-          callback(res.data);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        callback(false);
-      },
-      complete: function (res) {
-        console.log(res);
-
-        if (showLoading)
-          ApiConfig.CloseLoading();
-      }
-    })
-  }
-
-
-  deleteaddress(json, callback, showLoading = true) {
-
-    if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
-    console.log(header);
-    console.log(json);
-    wx.request({
-      url: ApiConfig.GetApiUrl() + 'member/deleteaddress',
-      data: json,
-      method: 'POST',
-      dataType: 'json',
-      header: header,
-      success: function (res) {
-        if (callback != null) {
-          callback(res.data);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        callback(false);
-      },
-      complete: function (res) {
-        console.log(res);
+    updatetouxiang(json, callback, showLoading = true) {
 
         if (showLoading)
-          ApiConfig.CloseLoading();
-      }
-    })
-  }
+            ApiConfig.ShowLoading();
 
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'member/updatetouxiang',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
 
-  updateaddress(json, callback, showLoading = true) {
-
-    if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
-    console.log(header);
-    console.log(json);
-    wx.request({
-      url: ApiConfig.GetApiUrl() + 'member/updateaddress',
-      data: json,
-      method: 'POST',
-      dataType: 'json',
-      header: header,
-      success: function (res) {
-        if (callback != null) {
-          callback(res.data);
-        }
-      },
-      fail: function (res) {
-        console.log(res);
-        callback(false);
-      },
-      complete: function (res) {
-        console.log(res);
+    xiugai(json, callback, showLoading = true) {
 
         if (showLoading)
-          ApiConfig.CloseLoading();
-      }
-    })
-  }
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'member/xiugai',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
+
+    addfeedback(json, callback, showLoading = true) {
+
+        if (showLoading)
+            ApiConfig.ShowLoading();
+
+        var header = ApiConfig.GetHeader();
+        console.log(header);
+        console.log(json);
+        wx.request({
+            url: ApiConfig.GetApiUrl() + 'member/addfeedback',
+            data: json,
+            method: 'POST',
+            dataType: 'json',
+            header: header,
+            success: function (res) {
+                if (callback != null) {
+                    callback(res.data);
+                }
+            },
+            fail: function (res) {
+                console.log(res);
+                callback(false);
+            },
+            complete: function (res) {
+                console.log(res);
+            
+                if (showLoading)
+                    ApiConfig.CloseLoading();
+            }
+        })
+    }
 }

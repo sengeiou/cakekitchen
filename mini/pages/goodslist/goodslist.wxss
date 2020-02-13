@@ -7,7 +7,7 @@
   width: 336rpx;
 }
 .name {
-  height: 80rpx;
+  height: 70rpx;
 }
 
 .catgoods image {
