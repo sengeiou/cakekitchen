@@ -20,24 +20,7 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
-    this.Base.setMyData({
-      cat_id: 0,
-      orderby:"",
-      displaytype:"square"
-    });
-
-    var goodsapi = new GoodsApi();
-    goodsapi.catlist({}, (catlist) => {
-      var ncatlist=[];
-      ncatlist.push({id:0,name:"全部分类"});
-      ncatlist=ncatlist.concat(catlist)
-      this.Base.setMyData({
-        catlist: ncatlist,
-        cat:ncatlist[0],
-        cat_id: 0
-      });
-    });
-    this.loadgoods();
+  
   }
 
 
@@ -68,6 +51,58 @@ class Content extends AppBase {
 
   onMyShow() {
     var that = this;
+    this.Base.setMyData({
+      cat_id: 0,
+      orderby: "",
+      displaytype: "square"
+    });
+
+
+    var canshu = wx.getStorageSync('c')
+    console.log(canshu);
+    console.log("牛逼plua");
+    if (canshu != '') {
+
+
+      this.Base.setMyData({
+        cat_id: canshu.id
+      });
+
+      var goodsapi = new GoodsApi();
+      goodsapi.catlist({}, (catlist) => {
+        var ncatlist = [];
+        ncatlist.push({ id: 0, name: "全部分类" });
+        ncatlist = ncatlist.concat(catlist)
+        this.Base.setMyData({
+          catlist: ncatlist,
+          cat: ({ id: canshu.id, name: canshu.name }),
+          cat_id: 0
+        });
+      });
+
+
+
+
+      wx.removeStorageSync('c')
+    }
+   
+   else{
+    var goodsapi = new GoodsApi();
+    goodsapi.catlist({}, (catlist) => {
+      var ncatlist = [];
+      ncatlist.push({ id: 0, name: "全部分类" });
+      ncatlist = ncatlist.concat(catlist)
+      this.Base.setMyData({
+        catlist: ncatlist,
+        cat: ncatlist[0],
+        cat_id: 0
+      });
+    });
+
+    }
+
+
+    this.loadgoods();
   }
 
   selectcat(e) {

@@ -17,13 +17,13 @@
 <view>
   <swiper class="indexbanner" autoplay="true">
     <swiper-item class="indexbanner" wx:for="{{indexbanner}}" wx:key="k">
-      <image class="indexbanner" src="{{uploadpath}}indexbanner/{{item.img}}" bindtap="bannerclick" data-path='{{item.path}}'></image>
+      <image  class="indexbanner" src="{{uploadpath}}indexbanner/{{item.img}}" bindtap="bannerclick" data-path='{{item.path}}'></image>
     </swiper-item>
   </swiper>
 </view>
 <view class="white-block">
   <view class="flex-row flex-wrap flex-center">
-    <view class="w25 " wx:for="{{catlist}}" wx:key="k">
+    <view data-id="{{item.id}}" data-name="{{item.name}}"  bindtap="tocat" class="w25 " wx:for="{{catlist}}" wx:key="k">
       <view class="text-center margin-top-10">
         <image class="icon-30" src="{{uploadpath}}goodscategory/{{item.icon}}"></image>
       </view>

@@ -26,6 +26,8 @@ class Content extends AppBase {
       hotgoods:[],
       indexcat:[]
     });
+
+
   }
   onMyShow() {
     var that = this;
@@ -63,6 +65,18 @@ class Content extends AppBase {
       url: '/pages/search/search',
     })
   }
+  tocat(e){
+    var id = e.currentTarget.dataset.id;
+    var name = e.currentTarget.dataset.name;
+    var json = { id: id ,name:name};
+    wx.setStorageSync('c', json)
+    wx.switchTab({
+     
+      url: '/pages/goodslist/goodslist'
+    })
+
+
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -70,4 +84,5 @@ body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow; 
 body.bannerclick = content.bannerclick;
 body.gosearch = content.gosearch;
+body.tocat = content.tocat;
 Page(body)
