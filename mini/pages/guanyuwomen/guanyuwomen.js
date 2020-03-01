@@ -36,12 +36,26 @@ class Content extends AppBase {
       })
     })
   }
+  boda(){
+    var instinfo = this.Base.getMyData().instinfo;
+    wx.makePhoneCall({
+      phoneNumber: instinfo.customerservicemobile
+    })
+  }
+  fuzhi(){
+    var instinfo = this.Base.getMyData().instinfo;
+    wx.setClipboardData({
+      data: instinfo.weixin,
+    })
+
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
-
+body.fuzhi = content.fuzhi;
+body.boda=content.boda;
 body.getinfo = content.getinfo;
 
 Page(body)

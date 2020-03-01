@@ -127,6 +127,14 @@ class Content extends AppBase {
       });
     });
     goodsapi.recommlist({}, (recommlist) => {
+
+      recommlist=  recommlist.filter((item)=>{
+       
+        return item.id!=this.Base.options.id
+
+      })
+
+
       this.Base.setMyData({
         recommlist
       });
@@ -271,7 +279,16 @@ class Content extends AppBase {
     this.Base.addtocart(currentattr.id,buycount);
     this.togglePopup();
   }
-
+gotop(){
+  wx.pageScrollTo({
+    scrollTop: 0
+  })
+}
+  gotop1(){
+    wx.switchTab({
+      url: '/pages/cart/cart',
+    })
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -288,4 +305,6 @@ body.selectdate = content.selectdate;
 body.confirm = content.confirm;
 body.selectexpresstype = content.selectexpresstype;
 body.tocart = content.tocart;
+body.gotop = content.gotop;
+body.gotop1 = content.gotop1;
 Page(body)

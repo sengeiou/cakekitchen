@@ -1,0 +1,35 @@
+/* pages/coupon/coupon.wxss */
+
+/* page {
+  background-color: #e7e7e7;
+} */
+
+.hezi {
+  position: relative;
+  margin: 20rpx;
+  /* background-color:white;  */
+  border-radius: 20rpx;
+}
+
+.yuan {
+  border-radius: 10rpx;
+}
+
+.yellow {
+  color: #ffe91f;
+}
+
+.bold {
+  font-size: 100rpx;
+}
+
+.icon-70 {
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.guoqi {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}

@@ -1,0 +1,45 @@
+<!--pages/coupon/coupon.wxml-->
+
+
+<view class="statusheader white-block" style="height:{{StatusBar+CustomBar}}px">
+
+  <view class="statusblock" style="height:{{StatusBar}}px"></view>
+  <view class="white-block flex-row  flex-center">
+    <view class=" padding-20 margin-top-5" bindtap="backPage" style="padding-top:{{Custom.top-StatusBar}}px">
+      <image class="icon" src="{{uploadpath}}resource/{{res.backblack}}"></image>
+    </view>
+    <view class="margin-left">佣金管理</view>
+    <view style="width:{{Custom.width+20}}px;height:{{Custom.height}}px;"></view>
+  </view>
+</view>
+<view style="height:{{StatusBar+CustomBar}}px"></view>
+
+
+
+<view class="padding-20">
+  <view bindtap="yinhanka" class="white-block  padding-20 ">
+    <view class="flex-row flex-center">
+      <image class="icon-15" src="{{uploadpath}}resource/{{res.yhk}}"></image>
+      <view class="  h5 margin-left-10">银行卡管理
+      </view>
+      <view class="flex-1"></view>
+
+      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+    </view>
+  </view>
+  <view class="white-block">
+    <view class="margin-left-20" style="height:2rpx;width:670rpx;background:#F8F8F8"></view>
+
+  </view>
+  <view bindtap="myyonjin" class="white-block  padding-20 ">
+    <view class="flex-row flex-center">
+      <image class="icon-15" src="{{uploadpath}}resource/{{res.wdyj}}"></image>
+      <view class="  h5 margin-left-10">我的佣金</view>
+      <view class="flex-1"></view>
+
+      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+    </view>
+  </view>
+
+
+</view>

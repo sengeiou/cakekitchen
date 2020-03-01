@@ -1,0 +1,16 @@
+.btns {
+  width: 480rpx;
+  height: 96rpx;
+  background: rgba(91, 148, 212, 1);
+  box-shadow: 0rpx 8rpx 24rpx rgba(20, 51, 84, 0.25);
+  opacity: 1;
+  border-radius: 48rpx;
+  font-size: 34rpx;
+  font-family: PingFang SC;
+  font-weight: 600;
+  line-height: 96rpx;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  margin: auto;
+  margin-top:200rpx;
+}

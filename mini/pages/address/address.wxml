@@ -28,7 +28,7 @@
     <view class="flex-row flex-center">
       <view class="txt-gray">收货电话</view>
       <view class="flex-1 margin-left">
-        <input class="text-right" name='mobile' value="{{address.mobile}}" placeholder="请输入收件人电话" maxlength="20"></input>
+        <input class="text-right" type='number' name='mobile' value="{{address.mobile}}" placeholder="请输入收件人电话" maxlength="20"></input>
       </view>
     </view>
   </view>

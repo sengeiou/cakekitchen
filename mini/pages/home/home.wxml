@@ -15,7 +15,7 @@
 </view>
 <view style="height:{{StatusBar+CustomBar}}px"></view>
 <view>
-  <swiper class="indexbanner" autoplay="true">
+  <swiper circular="true" class="indexbanner" autoplay="true">
     <swiper-item class="indexbanner" wx:for="{{indexbanner}}" wx:key="k">
       <image  class="indexbanner" src="{{uploadpath}}indexbanner/{{item.img}}" bindtap="bannerclick" data-path='{{item.path}}'></image>
     </swiper-item>
@@ -55,12 +55,12 @@
         <view>
           <image src="{{uploadpath}}goods/{{goods.goods_photo}}"></image>
         </view>
-        <view class="name padding-20">
+        <view class="name padding-20 chaochu2">
           {{goods.goods_name}}
         </view>
         <view class="padding-20">
 
-          <view class="flex-row flex-bottom">
+          <view class="flex-row flex-center">
             <view class="h6 txt-primary margin-right-5">¥</view>
             <view class="flex-1 txt-primary">{{goods.goods_price}}</view>
             <view class="buy border-primary txt-primary h6 ">

@@ -82,8 +82,22 @@
 </view>
 
 
-<picker  mode="date" value="{{expressdate}}" start="{{startdate}}" end="{{enddate}}" bindchange="selectdate">
+<picker  value="{{index}}" range-key="coupons_name"  range="{{youhuijuan}}"  bindchange="binyouhuijuan">
   <view class="white-block margin-top">
+    <view class="padding-20 ">
+      <view class="flex-row flex-center">
+      <view class="flex-1">优惠卷</view>
+       <view wx:if="{{index==''}}">请选择</view>
+        <view wx:if="{{index!=''}}">{{youhuijuan[index].coupons_name}}</view>
+      </view>
+    </view>
+  </view>
+</picker>
+
+
+
+<picker  mode="date" value="{{expressdate}}" start="{{startdate}}" end="{{enddate}}" bindchange="selectdate">
+  <view class="white-block ">
     <view class="padding-20 ">
       <view class="flex-row flex-center">
         <view class="flex-1" wx:if="{{expresstype=='A'}}">自提日期</view>
@@ -110,7 +124,7 @@
   <view class="padding-20 ">
     <view class="flex-row flex-center">
       <view class="flex-1" >联系人手机</view>
-      <view><input maxlength="11" placeholder="请输入手机号码" class="text-right" bindinput="changecontactmobile" value="{{contactmobile}}" /></view>
+      <view><input type='number' maxlength="11"  placeholder="请输入手机号码" class="text-right" bindinput="changecontactmobile" value="{{contactmobile}}" /></view>
       <view class="margin-left">
         <button size="mini" open-type="getPhoneNumber" bindgetphonenumber="getmobile">获取</button>
       </view>
@@ -147,12 +161,24 @@
       </view>
     </view>
   </view>
+
+    <view class="white-block">
+    <view class="padding-20 border-bottom">
+      <view class="flex-row flex-center">
+        <view class="flex-1">优惠卷</view>
+        <view wx:if="{{index==''}}">0</view>
+        <view wx:if="{{index!=''}}">-{{youhuijuan[index].coupons_amount}}</view>
+      </view>
+    </view>
+  </view>
   <view class="white-block">
     <view class="padding-20 ">
       <view class="flex-row flex-center ">
         <view class="flex-1"></view>
-        <view class="txt-primary" wx:if="{{expresstype=='A'}}">合计：¥{{amount}}</view>
-        <view class="txt-primary" wx:if="{{expresstype=='B'}}">合计：¥{{amount+instinfo.expressfee}}</view>
+        <view class="txt-primary" wx:if="{{expresstype=='A'&&index==''}}">合计：¥{{amount}}</view>
+        <view class="txt-primary" wx:if="{{expresstype=='A'&&index!=''}}">合计：¥{{amount-youhuijuan[index].coupons_amount}}</view>
+        <view class="txt-primary" wx:if="{{expresstype=='B'&&index==''}}">合计：¥{{amount+instinfo.expressfee}}</view>
+          <view class="txt-primary" wx:if="{{expresstype=='B'&&index!=''}}">合计：¥{{amount+instinfo.expressfee-youhuijuan[index].coupons_amount}}</view>
       </view>
     </view>
   </view>
@@ -164,8 +190,10 @@
       <view class="flex-row flex-center">
         <view class="flex-1"></view>
         <view class="h4">合计：</view>
-        <view class="h4 txt-primary" wx:if="{{expresstype=='A'}}">¥{{amount}}</view>
-        <view class="h4 txt-primary" wx:if="{{expresstype=='B'}}">¥{{amount+instinfo.expressfee}}</view>
+         <view class=" h4 txt-primary" wx:if="{{expresstype=='A'&&index==''}}">合计：¥{{amount}}</view>
+        <view class="h4 txt-primary" wx:if="{{expresstype=='A'&&index!=''}}">合计：¥{{amount-youhuijuan[index].coupons_amount}}</view>
+        <view class="h4 txt-primary" wx:if="{{expresstype=='B'&&index==''}}">合计：¥{{amount+instinfo.expressfee}}</view>
+          <view class="h4 txt-primary" wx:if="{{expresstype=='B'&&index!=''}}">合计：¥{{amount+instinfo.expressfee-youhuijuan[index].coupons_amount}}</view>
         <view class=" margin-left">
           <button class="primary-block btnradius50" size="mini" bindtap="submit">提交订单</button>
         </view>

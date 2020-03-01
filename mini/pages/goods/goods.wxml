@@ -6,7 +6,7 @@
   <view class="statusblock"></view>
   <view class=" flex-row  flex-center">
     <view class=" padding-20 h100" bindtap="backPage">
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.backwhite}}"></image>
+      <image class="icon-25" src="{{uploadpath}}resource/{{res.backblack}}"></image>
     </view>
     <view class="flex-1"></view>
     <view class="minubar "></view>
@@ -15,7 +15,7 @@
 
 
 <view>
-  <swiper bindchange="photochange" class="photolist" autoplay="true">
+  <swiper circular="true" bindchange="photochange" class="photolist" autoplay="true">
     <swiper-item class="photolist" wx:for="{{photolist}}" wx:key="k">
       <image class="photolist" src="{{uploadpath}}goodsphoto/{{item.photo}}"></image>
     </swiper-item>
@@ -171,7 +171,7 @@
       <view class="photo">
         <image src="{{uploadpath}}goods/{{item.photo}}"></image>
       </view>
-      <view class="name  padding-20">{{item.name}}</view>
+      <view class="name  padding-20 chaochu2">{{item.name}}</view>
       <view class="padding-20">
         <view class="flex-row flex-bottom">
           <view class="h6 txt-primary margin-right-5">¥</view>
@@ -267,3 +267,6 @@
     </view>
   </view>
 </view>
+
+  <image wx:if="{{!showpopup}}" class="gotop1" src="{{uploadpath}}resource/{{res.gotop1}}" bindtap="gotop1" ></image>
+  <image wx:if="{{!showpopup}}" class="gotop" src="{{uploadpath}}resource/{{res.gotop}}" bindtap="gotop" ></image>

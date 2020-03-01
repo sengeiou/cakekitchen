@@ -5,8 +5,9 @@
   <view class="statusblock" style="height:{{StatusBar}}px"></view>
   <view class="white-block flex-row  flex-center">
     <view class=" padding-20 margin-top-5" bindtap="backPage" style="padding-top:{{Custom.top-StatusBar}}px">
+      <image class="icon" src="{{uploadpath}}resource/{{res.backblack}}"></image>
     </view>
-    <view class="margin-left margin-top">购物车</view>
+    <view class="margin-left">意见反馈</view>
     <view style="width:{{Custom.width+20}}px;height:{{Custom.height}}px;"></view>
   </view>
 </view>

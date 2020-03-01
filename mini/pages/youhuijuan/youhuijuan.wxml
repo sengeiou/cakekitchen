@@ -1,0 +1,58 @@
+<!--pages/coupon/coupon.wxml-->
+
+
+<view class="statusheader white-block" style="height:{{StatusBar+CustomBar}}px">
+
+  <view class="statusblock" style="height:{{StatusBar}}px"></view>
+  <view class="white-block flex-row  flex-center">
+    <view class=" padding-20 margin-top-5" bindtap="backPage" style="padding-top:{{Custom.top-StatusBar}}px">
+      <image class="icon" src="{{uploadpath}}resource/{{res.backblack}}"></image>
+    </view>
+    <view class="margin-left">优惠卷</view>
+    <view style="width:{{Custom.width+20}}px;height:{{Custom.height}}px;"></view>
+  </view>
+</view>
+<view style="height:{{StatusBar+CustomBar}}px"></view>
+
+<!-- 无优惠券时 -->
+<!-- <view>
+  <view class='_center'>
+      <image class='icon-150 margin-top-150' src='{{uploadpath}}resource/{{res.yhnull}}'></image>
+  </view>
+  <view class='_center txt-gray'>暂无优惠券</view>
+</view> -->
+
+
+<view wx:for="{{youhuijuan}}">
+  <view class='hezi'>
+    <view class='yuan' class='flex-row flex-center' style='height:230rpx;background-image:url({{uploadpath}}resource/{{res.yhbg}});background-size:100% 100%;'>
+      <view style='width:4.2vw'></view>
+      <view class='f-36 txt-white' style='width:5.3vw'>优惠券</view>
+      <view style='width:4.2vw'></view>
+      <!-- <view style='height:140rpx;border-left:4rpx dashed white'></view> -->
+      <view style='width:3vw'></view>
+      <view class='yellow h4-5'>
+        <text class='yellow bold'>{{item.coupons_amount}}</text>元
+      </view>
+      <view class='flex-1'></view>
+
+      <view>
+        <view class='yellow f-36'>{{item.coupons_name}}</view>
+     
+      </view>
+      <view class='flex-1'></view>
+
+      <view>
+        <image class='icon-40' src='{{uploadpath}}resource/{{res.yhfp}}'></image>
+      </view>
+      <view style='width:4.2vw'></view>
+
+    </view>
+  </view>
+
+
+  <!--过期优惠券 -->
+
+
+</view>
+

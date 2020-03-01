@@ -3,7 +3,16 @@
 page {
   background: #f8f8f8;
 }
+.ipt{
 
+  text-align: right
+}
+.pc {
+  color: #CCCCCC;
+   text-align: right;
+   font-size: 28rpx;
+ 
+}
 .clear-contact {
   position: absolute;
   opacity: 0;
@@ -699,6 +708,29 @@ button[disabled][type=primary] {
   margin-bottom: 50rpx;
 }
 
+.padding-top-5 {
+  padding-top: 5rpx;
+}
+
+.padding-top-10 {
+  padding-top: 10rpx;
+}
+
+.padding-top-20 {
+  padding-top: 20rpx;
+}
+
+
+.padding-top-40 {
+  padding-top: 40rpx;
+}
+.padding-top-50 {
+  padding-top: 50rpx;
+}
+
+.padding-top-70 {
+  padding-top: 70rpx;
+}
 .statusheader {
   position: fixed;
   width: 100vw;

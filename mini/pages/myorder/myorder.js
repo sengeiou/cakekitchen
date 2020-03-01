@@ -87,6 +87,18 @@ else{
     if (e.currentTarget.id == 2) {
 
       var api = new OrderApi();
+      api.myorder({ status: 'Q' }, (myorder) => {
+
+
+        this.Base.setMyData({ myorder })
+
+
+      })
+
+    }
+    if (e.currentTarget.id == 4) {
+
+      var api = new OrderApi();
       api.myorder({ status: 'W' }, (myorder) => {
 
 
@@ -142,11 +154,22 @@ else{
       })
 
     }
-
-    if (id == 2) {
+    if (id == 4) {
 
       var api = new OrderApi();
       api.myorder({ status: 'W' }, (myorder) => {
+
+
+        this.Base.setMyData({ myorder })
+
+
+      })
+
+    }
+    if (id == 2) {
+
+      var api = new OrderApi();
+      api.myorder({ status: 'Q' }, (myorder) => {
 
 
         this.Base.setMyData({ myorder })

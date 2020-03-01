@@ -1,0 +1,22 @@
+<!--pages/tuiguanma/tuiguanma.wxml-->
+
+
+<view class="statusheader white-block" style="height:{{StatusBar+CustomBar}}px">
+
+  <view class="statusblock" style="height:{{StatusBar}}px"></view>
+  <view class="white-block flex-row  flex-center">
+    <view class=" padding-20 margin-top-5" bindtap="backPage" style="padding-top:{{Custom.top-StatusBar}}px">
+      <image class="icon" src="{{uploadpath}}resource/{{res.backblack}}"></image>
+    </view>
+    <view class="margin-left">我的推广码</view>
+    <view style="width:{{Custom.width+20}}px;height:{{Custom.height}}px;"></view>
+  </view>
+</view>
+
+<view  style="height:{{StatusBar+CustomBar}}px"></view>
+
+<image style="width:100vw" mode="widthFix" src="{{uploadpath}}inst/{{instinfo.tuiguantupian}}"></image>
+
+  <button open-type="share" class="clear-button">
+    <view class="btns">立即推广</view>
+  </button>

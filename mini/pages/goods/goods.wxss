@@ -86,3 +86,26 @@
 .btnborderadius{
   border-radius: 40rpx;
 }
+.gotop{
+
+position:  fixed;
+
+bottom: 200rpx;
+right: 30rpx;
+width: 50rpx;
+height: 50rpx;
+border-radius: 50%;
+z-index: 9999;
+}
+
+.gotop1{
+
+position:  fixed;
+
+bottom: 290rpx;
+right: 30rpx;
+width: 50rpx;
+height: 50rpx;
+border-radius: 50%;
+z-index: 9999;
+}

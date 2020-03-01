@@ -4,19 +4,27 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false,
 		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.0",
-	"appid": "wx4460e5ec60178eeb",
+	"appid": "wxbe4ddcac3774e672",
 	"projectname": "mini",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -42,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -62,6 +70,20 @@
 					"id": -1,
 					"name": "pages/myorder/myorder",
 					"pathName": "pages/myorder/myorder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/guanyuwomen/guanyuwomen",
+					"pathName": "pages/guanyuwomen/guanyuwomen",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/youhuijuan/youhuijuan",
+					"pathName": "pages/youhuijuan/youhuijuan",
 					"scene": null
 				}
 			]

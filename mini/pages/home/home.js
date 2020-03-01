@@ -30,6 +30,14 @@ class Content extends AppBase {
 
   }
   onMyShow() {
+
+    if (this.Base.options.id != undefined && this.Base.getMyData().memberinfo.id != this.Base.options.id)
+    {
+      wx.setStorageSync('id', this.Base.options.id);
+    }
+
+    // wx.setStorageSync('id', 17);
+
     var that = this;
     var instapi = new InstApi();
     instapi.indexbanner({}, (indexbanner) => {

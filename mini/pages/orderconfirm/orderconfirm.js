@@ -56,7 +56,8 @@ class Content extends AppBase {
       enddate,
       amount: 0,
       contactmobile: "",
-      remarks: ""
+      remarks: "",
+      index:''
     });
 
     var instapi = new InstApi();
@@ -111,6 +112,12 @@ class Content extends AppBase {
         });
       });
     }
+var memberapi=new MemberApi();
+memberapi.getyouhuijuan({},(youhuijuan)=>{
+  this.Base.setMyData({ youhuijuan})
+
+})
+
 
     var goodsapi = new GoodsApi();
 
@@ -172,6 +179,30 @@ class Content extends AppBase {
       this.Base.info("请设置联系人手机");
       return;
     }
+
+   var canshu = wx.getStorageSync('id')
+    
+    if (canshu != '' && this.Base.getMyData().memberinfo.t_member_id=='')
+    {
+     
+     var api=new MemberApi();
+      api.addshanji({ id: canshu},()=>{
+
+        wx.removeStorageSync('id')
+      })
+
+
+
+    }
+var youhuijuan=this.Base.getMyData().youhuijuan;
+  var index=this.Base.getMyData().index;
+    if (index!='')
+    {
+    youhuijuan = youhuijuan[index].id;
+    }
+    else{
+      youhuijuan=-1;
+    }
     wx.showModal({
       title: '提示',
       content: '确认提交订单？',
@@ -180,6 +211,7 @@ class Content extends AppBase {
         if (con.confirm) {
           var orderapi = new OrderApi();
           var json = {};
+          json.youhuijuan_id = youhuijuan > 0 ? youhuijuan:-1;
           json.attrs = this.Base.options.attrs;
           json.expresstype = data.expresstype;
           var address = data.address;
@@ -267,6 +299,12 @@ class Content extends AppBase {
       remarks: e.detail.value
     });
   }
+  binyouhuijuan(e)
+  {
+    this.Base.setMyData({
+      index: e.detail.value
+    });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -281,4 +319,5 @@ body.selecttime = content.selecttime;
 body.changecontactmobile = content.changecontactmobile;
 body.changeremarks = content.changeremarks;
 body.getmobile = content.getmobile;
+body.binyouhuijuan = content.binyouhuijuan;
 Page(body)

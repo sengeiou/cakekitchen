@@ -6,6 +6,13 @@
     "pages/goodslist/goodslist",
     "pages/cart/cart",
     "pages/goods/goods",
+"pages/myyonjin/myyonjin",
+
+"pages/yonjinguanli/yonjinguanli",
+"pages/tixian/tixian",
+"pages/youhuijuan/youhuijuan",
+  "pages/tixianjilu/tixianjilu",
+      "pages/tuiguanma/tuiguanma",
     "pages/orderconfirm/orderconfirm",
     "pages/orderinfo/orderinfo",
     "pages/success/success",
@@ -14,9 +21,10 @@
     "pages/shoplist/shoplist",
     "pages/content/content",
     "pages/index/index",
+    "pages/addbank/addbank",
     "pages/myorder/myorder",
     "pages/xinxi/xinxi",
-    
+    "pages/mybank/mybank",
       "pages/yijianfankui/yijianfankui",
     "pages/guanyuwomen/guanyuwomen",
     "pages/logs/logs"

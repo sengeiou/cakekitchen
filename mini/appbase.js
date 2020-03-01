@@ -178,6 +178,12 @@ export class AppBase {
         })
         return;
       }
+      if (instinfo.kaiguan_value=='Y') {
+
+        wx.navigateTo({
+          url: '/pages/content/content?keycode=' + "kaiguan" + "&title=" + "机构权限已过期",
+        })
+      }
       instinfo.expressfee = Number(instinfo.expressfee);
       this.Base.setMyData({
         instinfo: instinfo

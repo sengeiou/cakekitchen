@@ -20,7 +20,9 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
-  
+    this.Base.setMyData({
+      displaytype: "square"
+    });
   }
 
 
@@ -54,7 +56,7 @@ class Content extends AppBase {
     this.Base.setMyData({
       cat_id: 0,
       orderby: "",
-      displaytype: "square"
+     
     });
 
 

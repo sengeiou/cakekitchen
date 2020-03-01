@@ -56,7 +56,7 @@ class Content extends AppBase {
       if (prevPage) {
 
         //上一页存在则给上一个data赋值。则把title传过去
-
+   console.log(address_id);
         prevPage.setData({
 
           address_id
@@ -74,4 +74,5 @@ body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow; 
 body.addaddress = content.addaddress;
 body.edit = content.edit;
+body.select = content.select;
 Page(body)

@@ -30,7 +30,7 @@
       <view class="margin-left" bindtap="edit" id="{{item.id}}">
         <image class="icon" src="{{uploadpath}}resource/{{res.edit}}"></image>
       </view>
-      <view class="txt-primary margin-left" wx:if="{{type=='s'}}" bindtap="select">
+      <view class="txt-primary margin-left" id="{{item.id}}"  bindtap="select">
         选择
       </view>
 

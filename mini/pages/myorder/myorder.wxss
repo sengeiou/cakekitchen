@@ -56,7 +56,7 @@ margin-top:20rpx;
 }
 
 .catgoods .name {
-  height: 80rpx;
+  height: 70rpx;
 }
 
 .catgoods image {

@@ -87,7 +87,7 @@
       <view class="  h5 margin-left-10">生日</view>
       <view class="flex-1"></view>
       <picker mode="date" value="{{date}}" end="2020-2-11" bindchange="DateChange">
-        <view wx:if="{{date==''}}">请填写</view>
+        <view wx:if="{{date==''}}">请选择</view>
         <view wx:if="{{date!=''}}" class="picker">
           {{date}}
         </view>
@@ -126,7 +126,7 @@
 
       <view class="  h5 margin-left-10">微信号</view>
       <view class="flex-1"></view>
-      <input class="text-right h5" bindinput="weixinhao" value="{{memberinfo.weixinhao}}" placeholder="请填写"></input>
+      <input class="text-right h5" bindinput="weixinhao" value="{{memberinfo.weixinhao}}" placeholder-style="color:#2c2c2c;" placeholder="请填写"></input>
       <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
