@@ -1,0 +1,137 @@
+<TabBar [ngStyle]="tabbarStyle" [activeTab]='selectedIndex' [tabBarPosition]="'bottom'"
+  (onPress)="tabBarTabOnPress($event)" [tintColor]='"#d81e06"'>
+  <TabBarItem [title]="'首页'" [key]="1" [icon]="icon1" [selectedIcon]="icon11">
+    <ng-template #icon1>
+      <div
+        style="width:22px;height: 22px;background: url('http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/jdmarket/resource/89ab4aa63242dbfc3c8d4a71b48ed9c7_200504185116_1466292659.png') center center / 21px 21px no-repeat;">
+      </div>
+    </ng-template>
+    <ng-template #icon11>
+      <div
+        style="width:22px;height: 22px;background: url('http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/jdmarket/resource/ffd6b7a25818c5f7a0a0deaa128623c4_200504185127_640920559.png') center center / 21px 21px no-repeat;">
+      </div>
+    </ng-template>
+    <div style="background-color: white; height: 100%;">
+      <div>
+        <div style="width: 100vw;height:74.5vw;">
+          <Carousel [infinite]="true" [vertical]="false" [autoplay]='true' [dragging]='true'>
+            <CarouselSlide *ngFor="let item of indexbanner">
+              <img src="{{uploadpath}}indexbanner/{{item.img}}" style="width: 100vw;height:74.5vw;" />
+            </CarouselSlide>
+          </Carousel>
+        </div>
+        <div style="position: absolute;top:0px;left: 0px;  width: 100vw;">
+          <div class="padding">
+            <div class="flex-row flex-center">
+              <div>
+                <div class="icon"></div>
+              </div>
+              <div class="flex-1 text-center h4 text-white">{{InstInfo.name}}</div>
+              <div>
+                <img class="icon" src="{{uploadpath}}resource/{{res.notice_w}}" />
+              </div>
+            </div>
+            <div class="margin-top">
+              <div class="bg-white padding-1x search-border">
+                <div class="flex-row flex-center">
+                  <div class="margin-left-1x"><img class="icon" src="{{uploadpath}}resource/{{res.search}}" /></div>
+                  <div class="margin-left-1x text-gray">{{InstInfo.searchtxt}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="padding">
+          <div class="flex-row flex-center">
+            <div class="flex-1">
+              <div class="flex-row flex-center">
+                <div class="flex-1"></div>
+                <div class="margin-right-1x">
+                  <img class="icon-1hx" src="{{uploadpath}}resource/{{res.p1}}" />
+                </div>
+                <div class="h6 text-gray">品质好货</div>
+                <div class="flex-1"></div>
+              </div>
+            </div>
+            <div class="flex-1">
+              <div class="flex-row flex-center">
+                <div class="flex-1"></div>
+                <div class="margin-right-1x">
+                  <img class="icon-1hx" src="{{uploadpath}}resource/{{res.p2}}" />
+                </div>
+                <div class="h6 text-gray">买贵就赔</div>
+                <div class="flex-1"></div>
+              </div>
+            </div>
+            <div class="flex-1">
+              <div class="flex-row flex-center">
+                <div class="flex-1"></div>
+                <div class="margin-right-1x">
+                  <img class="icon-1hx" src="{{uploadpath}}resource/{{res.p3}}" />
+                </div>
+                <div class="h6 text-gray">极速送达</div>
+                <div class="flex-1"></div>
+              </div>
+            </div>
+            <div class="flex-1">
+              <div class="flex-row flex-center">
+                <div class="flex-1"></div>
+                <div class="margin-right-1x">
+                  <img class="icon-1hx" src="{{uploadpath}}resource/{{res.p4}}" />
+                </div>
+                <div class="h6 text-gray">无忧售后</div>
+                <div class="flex-1"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <img class="w100" src="{{uploadpath}}resource/{{res.guanggao}}" />
+        </div>
+        <Grid [columnNum]="5" [hasLine]="false" [data]="catlist" (onClick)="gotocat($event)"></Grid>
+        <div class="padding">
+          <h2>为你推荐</h2>
+        </div>
+        <Tabs [tabBarActiveTextColor]='"#d81e06"' [page]="4" [useOnPan]="true" [swipeable]="true"
+          [tabBarUnderlineStyle]='{border:"#d81e06 2px solid"}'>
+          <TabPane *ngFor="let item of indexcat;let i=index;" [title]="item.name">
+            <div class="flex-row flex-wrap bg-white">
+              <div *ngFor="let goods of item.goodslist;" class="goodsitem padding-1x margin-top-2x">
+                <div class="text-center">
+                  <img class="goodsphoto" src="{{uploadpath}}goods/{{goods.goods_photo}}" />
+                </div>
+                <div class="two-row ">{{goods.goods_name}}</div>
+                <div class="padding-1x margin-top">
+
+                  <div class="flex-row flex-bottom">
+                    <div class="h6 margin-right-1x text-bold">¥</div>
+                    <div class="h3 flex-1 text-bold">{{goods.goods_price}}</div>
+                    
+                    <img class="icon" src="{{uploadpath}}resource/{{res.cart}}" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </TabPane>
+        </Tabs>
+      </div>
+    </div>
+  </TabBarItem>
+  <TabBarItem [title]="'我的'" [tintColor]='"#d81e06"' [key]="2" [icon]="icon2" [selectedIcon]="icon22">
+    <ng-template #icon2>
+      <div
+        style="width:22px;height: 22px;background: url('https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg') center center / 21px 21px no-repeat;">
+      </div>
+    </ng-template>
+    <ng-template #icon22>
+      <div
+        style="width:22px;height: 22px;background: url('https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg') center center / 21px 21px no-repeat;">
+      </div>
+    </ng-template>
+    <div style="background-color: white; height: 100%;">
+      <div>
+        a
+      </div>
+    </div>
+  </TabBarItem>
+</TabBar>

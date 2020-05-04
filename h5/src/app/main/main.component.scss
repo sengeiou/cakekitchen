@@ -1,0 +1,13 @@
+@function rpx($px) {
+  @return ($px * 100vw) / 350;
+}
+.search-border{
+    border-radius: rpx(20);
+}
+.goodsitem{
+  width:33.3vw
+}
+.goodsitem .goodsphoto{
+  width: 30vw;
+  height: 30vw;
+}
