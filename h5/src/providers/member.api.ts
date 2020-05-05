@@ -273,6 +273,28 @@ export class MemberApi {
     }
 
 
+    public getyouhuijuan(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/getyouhuijuan';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = { headers: headers };
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                return res;
+            })
+            .catch(err => {
+                console.error(err);
+                return ApiConfig.ErrorHandle('member/getyouhuijuan', data, err);
+            });
+    }
+
+
     public info(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'member/info';
         var headers = ApiConfig.GetHeader(url, data);
@@ -559,8 +581,8 @@ export class MemberApi {
     }
 
 
-    public getyouhuijuan(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'member/getyouhuijuan';
+    public fav(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/fav';
         var headers = ApiConfig.GetHeader(url, data);
         let options = { headers: headers };
         let body = ApiConfig.ParamUrlencoded(data);
@@ -576,7 +598,29 @@ export class MemberApi {
             })
             .catch(err => {
                 console.error(err);
-                return ApiConfig.ErrorHandle('member/getyouhuijuan', data, err);
+                return ApiConfig.ErrorHandle('member/fav', data, err);
+            });
+    }
+
+
+    public isfav(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/isfav';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = { headers: headers };
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                return res;
+            })
+            .catch(err => {
+                console.error(err);
+                return ApiConfig.ErrorHandle('member/isfav', data, err);
             });
     }
 

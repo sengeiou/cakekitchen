@@ -31,26 +31,30 @@ export class MainComponent extends AppBase {
     MainComponent.Instance = this;
   }
 
-  selectedIndex = 0;
+  selectedIndex = 1;
 
   indexbanner = [{ img: "642b89f33dd4e13c9189c5dfa295aa06_200504172239_163260411.webp" }];
 
   catlist = [];
   indexcat = [];
 
+  curcat_id = 0;
+
   onMyLoad() {
     this.instApi.indexbanner({}).then((list: []) => {
       this.indexbanner = list;
     });
-    this.goodsApi.catlist({}).then((list: [{ icon, text, name }]) => {
+    this.goodsApi.catlist({}).then((list: [{ id, icon, text, name }]) => {
       for (var i = 0; i < list.length; i++) {
         list[i].icon = this.uploadpath + "goodscategory/" + list[i].icon;
         list[i].text = list[i].name;
       }
       list.push({
+        id: -1,
         name: "", text: "全部",
         icon: this.uploadpath + "resource/d2bf5efc9dcaac99f941452f475ebac2_200504192555_62218611.webp"
       });
+      this.curcat_id = list[0].id;
       this.catlist = list;
 
     });
@@ -75,6 +79,40 @@ export class MainComponent extends AppBase {
   }
 
   gotocat(e) {
-
+    console.log(e);
+    this.selectedIndex=1;
+    if(e.data.id>0){
+      this.selectcat(e.data.id);
+    }
+    
+  }
+  inscolling=false;
+  selectcat(cat_id) {
+    this.inscolling=true;
+    this.curcat_id = cat_id;
+    var ele = document.querySelector("#cat_" + cat_id);
+    ele.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTimeout(()=>{
+      this.inscolling=false;
+    },1000);
+  }
+  scrollk(e) {
+    if(this.inscolling==true){
+      return;
+    }
+    var scrollTop=e.target.scrollTop;
+    var scrollcat=0;
+    for(var i=0;i<this.catlist.length;i++){
+      var ele=null;
+      ele = document.querySelector("#cat_" + this.catlist[i].id);
+      if(ele!=null){
+        if(scrollTop>ele.offsetTop){
+         scrollcat=this.catlist[i].id;
+        }
+      }
+    }
+    if(scrollcat>0&&scrollcat!=this.curcat_id){
+      this.curcat_id=scrollcat;
+    }
   }
 }

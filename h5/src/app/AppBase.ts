@@ -41,11 +41,13 @@ export class AppBase implements OnInit {
     public res = null;
     public static StaticInstInfo = null;
 
-    public InstInfo = { name: "", tel: '', logo: '' };
+    public InstInfo = null;
 
 
     public options = null;
     public params: Params = null;
+
+    colorgary="#8a8a8a";
 
 
     public memberinfo = null;
@@ -67,6 +69,7 @@ export class AppBase implements OnInit {
         public instApi: InstApi,
         public memberApi: MemberApi,
     ) {
+        this.InstInfo = {};
         this.activeRoute.queryParams.subscribe((params: Params) => {
             console.log(params);
             this.params = params;
@@ -96,7 +99,7 @@ export class AppBase implements OnInit {
 
     }
     CheckPermission() {
-        
+
     }
     checktime() {
         if (this.isLoginPage == true) {
@@ -111,13 +114,13 @@ export class AppBase implements OnInit {
 
 
     }
-    countrylist=[];
-    humantype=[];
-    civilstatuslist=[];
-    genderlist=[];
-    workstatuslist=[];
-    getcountry(){
-        
+    countrylist = [];
+    humantype = [];
+    civilstatuslist = [];
+    genderlist = [];
+    workstatuslist = [];
+    getcountry() {
+
     }
     onMyLoad() {
 
@@ -127,7 +130,7 @@ export class AppBase implements OnInit {
     lang: any = {};
 
     langcode = "ch";
-    
+
 
     getInstInfo() {
 
@@ -143,7 +146,7 @@ export class AppBase implements OnInit {
             this.InstInfo = AppBase.StaticInstInfo;
             this.instLoaded();
         }
-        
+
     }
 
     instLoaded() {
@@ -169,7 +172,7 @@ export class AppBase implements OnInit {
         // if (Instance != null) {
         //     Instance.setModule(this.module, this.module2);
         // }
-        if (this.memberinfo != null&&this.memberinfo.usertype!=undefined) {
+        if (this.memberinfo != null && this.memberinfo.usertype != undefined) {
             //alert(JSON.stringify(this.memberinfo));
             if (this.right.indexOf(this.memberinfo.usertype) < 0) {
                 this.navigate("404");
@@ -223,7 +226,7 @@ export class AppBase implements OnInit {
     changedate(page) {
         console.log(page)
         if (page < 1 || page > this.pages) return;
-        if(page==2){
+        if (page == 2) {
             var newpageList = [];
             for (var i = (page - 2); i < ((page + 3) > this.pages ? this.pages : (page + 3)); i++) {
                 newpageList.push(i + 1);
@@ -262,7 +265,7 @@ export class AppBase implements OnInit {
     pagination(list, length) {
 
         this.pages = Math.ceil(length / this.pageSize);
-        this.newPage = this.pages > 5 ? 5: this.pages;
+        this.newPage = this.pages > 5 ? 5 : this.pages;
         this.selPage = 1;
 
         this.setData = function () {
@@ -290,6 +293,9 @@ export class AppBase implements OnInit {
         }
     }
 
-    
+    gotogoods(goods_id) {
+        this.navigate("/goods", { id: goods_id });
+    }
+
 
 }

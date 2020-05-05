@@ -1,0 +1,95 @@
+@function rpx($px) {
+  @return ($px * 100vw) / 375;
+}
+
+.bannerpage {
+  position: absolute;
+  top: 90vw;
+  right: 0vw;
+  min-width: rpx(50);
+  border-top-left-radius: rpx(20);
+  border-bottom-left-radius: rpx(20);
+  padding: rpx(5) rpx(10) rpx(5) rpx(10);
+  background: rgba(100, 100, 100, 0.5);
+}
+
+.fixblack {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+}
+
+.selectblock {
+  border-top-left-radius: rpx(10);
+  border-top-right-radius: rpx(10);
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100vw;
+  animation: animate 0.5s ease;
+}
+
+.attritem {
+  border: 1px transparent solid;
+  padding: rpx(5) rpx(20) rpx(5) rpx(20);
+  background-color: #f9f9f9;
+  border-radius: rpx(20);
+}
+
+.attritem.active {
+  color: #d81e06;
+  border: 1px #d81e06 solid;
+}
+
+@keyframes animate {
+  from {
+    bottom: -50vh;
+  }
+
+  to {
+    bottom: 0px;
+  }
+}
+
+.commentlabel {
+  background: #f3f1f1;
+  padding: rpx(2) rpx(9) rpx(2) rpx(9);
+  border-radius: rpx(20);
+}
+
+.commentreply {
+  background: #f3f1f1;
+  color: #aaa;
+  border-radius: rpx(4);
+}
+
+
+
+.recommgoods {
+  width: rpx(170);
+}
+
+.recommgoods.v0 {
+  margin-right: rpx(14/2);
+}
+
+.recommgoods.v1 {
+  margin-left: rpx(14/2);
+}
+
+.recommgoods .name {
+  height: rpx(40);
+}
+
+.recommgoods .photo img {
+  width: rpx(170);
+  height: rpx(170);
+}
+
+.tabgo{
+    padding-bottom: rpx(5);
+    border-bottom:2px solid transparent;;
+}
+.tabgo.active{
+    border-bottom:2px solid #d81e06;;
+}

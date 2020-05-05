@@ -96,7 +96,7 @@
           [tabBarUnderlineStyle]='{border:"#d81e06 2px solid"}'>
           <TabPane *ngFor="let item of indexcat;let i=index;" [title]="item.name">
             <div class="flex-row flex-wrap bg-white">
-              <div *ngFor="let goods of item.goodslist;" class="goodsitem padding-1x margin-top-2x">
+              <div *ngFor="let goods of item.goodslist;" class="goodsitem padding-1x margin-top-2x" (click)='gotogoods(goods.id)'>
                 <div class="text-center">
                   <img class="goodsphoto" src="{{uploadpath}}goods/{{goods.goods_photo}}" />
                 </div>
@@ -104,9 +104,9 @@
                 <div class="padding-1x margin-top">
 
                   <div class="flex-row flex-bottom">
-                    <div class="h6 margin-right-1x text-bold">¥</div>
-                    <div class="h3 flex-1 text-bold">{{goods.goods_price}}</div>
-                    
+                    <div class="h6 text-primary margin-right-1x text-bold">¥</div>
+                    <div class="h4 text-primary flex-1 text-bold">{{goods.goods_price}}</div>
+
                     <img class="icon" src="{{uploadpath}}resource/{{res.cart}}" />
                   </div>
                 </div>
@@ -117,20 +117,50 @@
       </div>
     </div>
   </TabBarItem>
-  <TabBarItem [title]="'我的'" [tintColor]='"#d81e06"' [key]="2" [icon]="icon2" [selectedIcon]="icon22">
+  <TabBarItem [title]="'分类'" [key]="2" [icon]="icon2" [selectedIcon]="icon22">
     <ng-template #icon2>
       <div
-        style="width:22px;height: 22px;background: url('https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg') center center / 21px 21px no-repeat;">
+        style="width:22px;height: 22px;background: url('http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/jdmarket/resource/a48de2ae7751b0f419526a05fdd2424a_200505121517_1064237363.png') center center / 21px 21px no-repeat;">
       </div>
     </ng-template>
     <ng-template #icon22>
       <div
-        style="width:22px;height: 22px;background: url('https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg') center center / 21px 21px no-repeat;">
+        style="width:22px;height: 22px;background: url('http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/jdmarket/resource/b35792c10665acb62835380b36f6ceb0_200505121529_761786644.png') center center / 21px 21px no-repeat;">
       </div>
     </ng-template>
-    <div style="background-color: white; height: 100%;">
-      <div>
-        a
+    <div class="flex-row" style="background-color: white; height: 100%;">
+      <div class="bg-gray" style="height: 100%;overflow:scroll;">
+        <div *ngFor="let cat of catlist;let i=index;">
+          <div *ngIf="cat.id>0" class="catitem h5 padding" [class.active]='curcat_id==cat.id'
+            (click)='selectcat(cat.id)'>
+            {{cat.name}}
+          </div>
+        </div>
+        <div>
+        </div>
+      </div>
+      <div class="flex-1 padding" style="height: 100%;overflow:scroll;" (scroll)="scrollk($event)">
+        <div *ngFor="let cat of catlist;let i=index;">
+          <div *ngIf="cat.id>0">
+            <h3 class="h3 margin-top" id="cat_{{cat.id}}">{{cat.name}}</h3>
+            <div class="cattitle margin-top-1x"></div>
+            <div *ngFor="let goods of cat.goodslist;let j=index" class="margin-top flex-row" (click)='gotogoods(goods.id)'>
+              <div class="margin-right">
+                <img src="{{uploadpath}}goods/{{goods.goods_photo}}" class="goodsphoto" />
+              </div>
+              <div class="flex-1">
+                <div class="two-row h5 goodsname">{{goods.goods_name}}</div>
+                <div class="flex-row flex-bottom margin-top">
+                  <div class="h6 margin-right-1x text-primary text-bold">¥</div>
+                  <div class="h4 flex-1 text-bold text-primary">{{goods.goods_price}}</div>
+                  <div>
+                    <img class="icon" src="{{uploadpath}}resource/{{res.cart}}" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </TabBarItem>

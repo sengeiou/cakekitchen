@@ -1,5 +1,5 @@
 @function rpx($px) {
-  @return ($px * 100vw) / 350;
+  @return ($px * 100vw) / 375;
 }
 .search-border{
     border-radius: rpx(20);
@@ -10,4 +10,26 @@
 .goodsitem .goodsphoto{
   width: 30vw;
   height: 30vw;
+}
+.catitem{
+  border-left:2px transparent solid;
+}
+.catitem.active{
+  font-weight: 500;
+  background: white;
+  border-left:2px #d81e06 solid;
+}
+.cattitle{
+  border-radius: 2px;
+  width:rpx(60);
+  height: 4px;
+  background-image: linear-gradient(to right, #d81e06, #f1aba1);
+}
+
+.goodsphoto{
+  width: 20vw;
+  height: 20vw;
+}
+.goodsname{
+  height: rpx(36);
 }

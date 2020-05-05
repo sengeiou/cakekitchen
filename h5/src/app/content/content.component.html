@@ -1,0 +1,9 @@
+<Navbar [icon]="icon"  [mode]="'light'" (onLeftClick)="back()">
+    {{info!=null?info.name:""}}
+</Navbar>
+<ng-template #icon>
+  <Icon [type]="'left'"></Icon>
+</ng-template>
+<div class="bg-white padding" [innerHtml]='info.content' *ngIf="info!=null" >
+    
+</div>

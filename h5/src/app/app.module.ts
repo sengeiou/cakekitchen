@@ -9,10 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
 import { InstApi } from 'src/providers/inst.api';
 import { MemberApi } from 'src/providers/member.api';
+import { GoodsComponent } from './goods/goods.component';
+import { ContentComponent } from './content/content.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GoodsComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,289 @@
+<div *ngIf="info!=null" style="height: 100vh;overflow: scroll;" (scroll)='scrollk($event)'>
+    <div id="t1"></div>
+  <div style="width: 100vw;height:100vw;" *ngIf="photolist.length>0">
+    <Carousel [infinite]="true" [vertical]="false" [autoplay]='true' [dragging]='true' [dots]='false'
+      (afterChange)='bannerChange($event)'>
+      <CarouselSlide *ngFor="let item of photolist">
+        <img src="{{uploadpath}}goodsphoto/{{item.photo}}" style="width: 100vw;height:100vw;" />
+      </CarouselSlide>
+    </Carousel>
+  </div>
+  <div class="bannerpage text-white padding-1x text-center" *ngIf="photolist.length>0">
+    {{banneridx+1}}<span class="h7">/{{photolist.length}}</span>
+  </div>
+  <div class="bg-white padding">
+    <div class="flex-row flex-bottom">
+      <div class="h6 margin-right-1x text-primary text-bold">¥</div>
+      <div class="h4 text-bold text-primary  margin-right">{{pricerange}}</div>
+      <div class="text-gray h6" *ngIf="info.salescount>0">已售 {{info.salescount}}</div>
+      <div class="flex-1"></div>
+      <div (click)='fav()'>
+        <div class="text-center">
+          <img src="{{uploadpath}}resource/{{res.isfav}}" class="icon" *ngIf="isfav==true" />
+          <img src="{{uploadpath}}resource/{{res.isnotfav}}" class="icon" *ngIf="isfav==false" />
+        </div>
+        <div class="text-gray h6 text-center">
+          {{isfav?"取消关注":"关注商品"}}
+        </div>
+      </div>
+    </div>
+    <div class="margin-top">
+      <h4 class="h4">{{info.name}}</h4>
+    </div>
+    <div class="margin-top text-gray">
+      {{info.summary}}
+    </div>
+  </div>
+
+  <div class="margin-top bg-white padding">
+    <div class="flex-row flex-center" (click)='navigate("content",{keycode:"express"})'>
+      <div class="margin-right h6 text-gray">运费</div>
+      <div class="margin-right-2x h6 flex-1">{{InstInfo.expressstr}}</div>
+      <div>
+        <Icon [type]="'right'" [size]='"sm"' [color]='colorgary'></Icon>
+      </div>
+    </div>
+    <div class="margin-top"></div>
+    <div class="flex-row flex-center margin-top" (click)='navigate("content",{keycode:"service"})'>
+      <div class="margin-right h6 text-gray">服务</div>
+      <div class="margin-right-2x h6 flex-1">{{InstInfo.service}}</div>
+      <div>
+        <Icon [type]="'right'" [size]='"sm"' [color]='colorgary'></Icon>
+      </div>
+    </div>
+  </div>
+
+  <div class="margin-top bg-white ">
+    <div class="padding">
+      <div class="flex-row flex-center" (click)='toggleattrblock()'>
+        <div class="margin-right h6 text-gray">已选</div>
+        <div class="margin-right-2x h6  flex-1">{{currentattr==null?"未选择":currentattr.name+" x "+buycount}} </div>
+        <div>
+          <Icon [type]="'ellipsis'" [size]='"sm"' [color]='colorgary'></Icon>
+        </div>
+      </div>
+    </div>
+    <div class="padding">
+      <div class="flex-row flex-center" (click)='toggleaddressblock()'>
+        <div class="margin-right h6 text-gray">送至</div>
+        <div class="margin-right-2x h6 flex-1">{{currentaddress==null?"自提":'广东省深圳市'+currentaddress.address}}</div>
+        <div>
+          <Icon [type]="'ellipsis'" [size]='"sm"' [color]='colorgary'></Icon>
+        </div>
+      </div>
+    </div>
+    <div class="padding">
+      <div class="flex-row flex-center" (click)='toggleaddressblock()'>
+        <div class="margin-right h6 text-gray">运费</div>
+        <div class="margin-right-2x h6 flex-1">{{currentaddress==null?"免运费":InstInfo.expressfee+"元"}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fixtop" [style.background]="'rgba(255,255,255,'+(scrollTop/windowwidth)+')'">
+    <div class="padding">
+        <div class="flex-row flex-center">
+            <div>
+                <Icon [type]="'left'"  [size]='"lg"'  [color]='colorgary'></Icon>
+            </div>
+            <div class="flex-1" >
+                <div class="flex-row" *ngIf="scrollTop+50>windowwidth">
+                    <div class="flex-1"></div>
+                    <div class="tabgo" [class.active]='t==1' (click)='goto(1)'>商品</div>
+                    <div class="tabgo  margin-left margin-right" [class.active]='t==2' (click)='goto(2)'>评价</div>
+                    <div class="tabgo margin-right" [class.active]='t==3' (click)='goto(3)'>详情</div>
+                    <div class="tabgo" [class.active]='t==4' (click)='goto(4)'>推荐</div>
+                    <div class="flex-1"></div>
+                </div>
+            </div>
+            <div >
+                <Icon [type]="'right'"  [size]='"lg"' [color]='"#00000000"'></Icon>
+            </div>
+        </div>
+        
+    </div>
+  </div>
+  <div id="t2"></div>
+  <div class="margin-top bg-white ">
+    <div class="padding">
+      <div class="flex-row flex-center" (click)='toggleattrblock()'>
+        <div class="margin-right h6 text-gray">购买评价</div>
+        <div class="margin-right-2x h6  flex-1"></div>
+        <div *ngIf="commentlist.length>0">
+          <Icon [type]="'ellipsis'" [size]='"sm"' [color]='colorgary'></Icon>
+        </div>
+        <div *ngIf="commentlist.length==0" class="text-gray">
+          暂无评价
+        </div>
+      </div>
+      <div class="margin-top" *ngIf="commentlist.length>0">
+        <div class="flex-row">
+          <div class="margin-right h7 commentlabel" *ngIf="rankA>0">好评{{rankA}}</div>
+          <div class="margin-right h7 commentlabel" *ngIf="rankB>0">中评{{rankB}}</div>
+          <div class="margin-right h7 commentlabel" *ngIf="rankC>0">差评{{rankC}}</div>
+        </div>
+      </div>
+
+      <div *ngFor="let item of commentlist" class="margin-top">
+        <div class="flex-row flex-center margin-top-1x ">
+          <img class="icon-3x border-radius-50 margin-right" src="{{item.member_avatarUrl}}" />
+          <div class="h6 flex-1"> {{item.member_nickName}} </div>
+          <img class="icon-2x " src="{{uploadpath}}resource/{{res.rankA}}" *ngIf="item.rank=='A'" />
+          <img class="icon-2x " src="{{uploadpath}}resource/{{res.rankB}}" *ngIf="item.rank=='B'" />
+          <img class="icon-2x " src="{{uploadpath}}resource/{{res.rankC}}" *ngIf="item.rank=='C'" />
+        </div>
+        <div class="margin-top h6">
+          {{item.comment}}
+        </div>
+        <div class="margin-top-1x h6 flex-row">
+          <div *ngIf="item.photo1!=''">
+            <img class="icon-4x margin-right" src="{{uploadpath}}goodscomment/{{item.photo1}}" />
+          </div>
+          <div *ngIf="item.photo2!=''">
+            <img class="icon-4x  margin-right" src="{{uploadpath}}goodscomment/{{item.photo2}}" />
+          </div>
+          <div *ngIf="item.photo3!=''">
+            <img class="icon-4x  margin-right" src="{{uploadpath}}goodscomment/{{item.photo3}}" />
+          </div>
+        </div>
+        <div class="margin-top commentreply h6 padding" *ngIf="item.status=='B'">
+          商家回复：{{item.reply}}
+        </div>
+      </div>
+      <div class="flex-row" *ngIf="commentlist.length>0">
+        <div class="flex-1"></div>
+        <div class="margin-top-2x " [inline]='true' Button [type]='"ghost"' [size]='"small"'>查看全部评价</div>
+        <div class="flex-1"></div>
+      </div>
+    </div>
+  </div>
+  <div id="t3"></div>
+  <div class="margin-top bg-white padding">
+    <div class="margin-right h5 text-bold">商品详情</div>
+    <div class="margin-top" [innerHtml]='info.content'></div>
+  </div>
+
+  <div id="t4"></div>
+  <div class="margin-top bg-white padding">
+    <div class="margin-right h5 text-bold">推荐商品</div>
+    <div class="flex-row flex-wrap">
+      <div class="recommgoods margin-top-1x v{{idx%2}}" *ngFor="let item of recommlist;let idx=index;"  (click)="goGoods(item)">
+        <div class="photo">
+          <img src="{{uploadpath}}goods/{{item.photo}}" />
+        </div>
+        <div class="name  padding-20 chaochu2">{{item.name}}</div>
+        <div class="padding-20">
+          <div class="flex-row flex-bottom">
+            <div class="h6 text-primary margin-right-1x">¥</div>
+            <div class="flex-1 text-primary">{{item.price}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="h100px"></div>
+  <div class="fixbottom bg-white">
+    <div class="padding-1x">
+      <div class="flex-row flex-center">
+        <div class="flex-row flex-1">
+          <div class="text-center flex-1">
+            <div>
+              <img src="{{uploadpath}}resource/{{res.liaxi}}" class="icon" />
+            </div>
+            <div class="margin-top-1x h7">联系客服</div>
+          </div>
+          <div class="text-center flex-1">
+            <div>
+              <img src="{{uploadpath}}resource/{{res.shop}}" class="icon" />
+            </div>
+            <div class="margin-top-1x h7">店铺</div>
+          </div>
+          <div class="text-center flex-1">
+            <div>
+              <img src="{{uploadpath}}resource/{{res.cart2}}" class="icon" />
+            </div>
+            <div class="margin-top-1x h7">购物车</div>
+          </div>
+        </div>
+        <div class="flex-1 flex-row">
+          <div class="flex-1 margin-right-1x">
+            <div class=" border-radius-4x " Button [type]="'warning'" [size]='"small"'>加购物车
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class=" border-radius-4x" Button [type]="'primary'" [size]='"small"'>立即购买</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="showattrblock==true">
+
+    <div class="fixblack wh100 bg-gary-t" (click)='toggleattrblock()'>
+
+    </div>
+    <div class="selectblock  bg-white">
+      <div class="padding">
+        <div class="flex-row flex-bottom">
+          <div class="margin-right">
+            <img *ngIf="currentattr==null" class='icon-4x border-radius' src="{{uploadpath}}goods/{{info.photo}}" />
+            <img *ngIf="currentattr!=null" class='icon-4x border-radius'
+              src="{{uploadpath}}goods/{{currentattr.photo}}" />
+          </div>
+          <div class="flex-1">
+            <h4>{{info.name}}</h4>
+            <div class="flex-row flex-bottom margin-top">
+
+              <div class="margin-right-5 text-primary h5">¥</div>
+              <div class="flex-1 text-primary h4 " *ngIf="currentattr==null">{{pricerange}}</div>
+              <div class="flex-1 text-primary h4 " *ngIf="currentattr!=null">{{currentattr.price}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="margin-top-2x">
+          <div class="h5 text-bold">规格</div>
+          <div class="flex-row margin-top" *ngFor="let item of attrlist">
+            <div (click)='currentattr=item' class="attritem" [class.active]='currentattr==item'>{{item.name}}</div>
+          </div>
+        </div>
+        <div class="margin-top-2x">
+          <div class=" flex-row flex-center">
+            <div class="h5 text-bold">购买数量</div>
+            <div class="flex-1"></div>
+            <div class="margin-right border-radius-1x  h5 padding-1x" [class.text-gray]='buycount<=1' (click)='jian()'>-
+            </div>
+            <div class="margin-right border-radius-1x bg-gray h5 padding-1x">{{buycount}}</div>
+            <div class="margin-right-1x border-radius-1x  h5 padding-1x" [class.text-gray]='buycount>=99'
+              (click)='jia()'>+</div>
+          </div>
+        </div>
+        <div class="margin-top-2x border-radius-4x" Button [type]="'primary'" [size]='"small"'>确定</div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="showaddressblock==true">
+
+    <div class="fixblack wh100 bg-gary-t" (click)='toggleaddressblock()'>
+
+    </div>
+    <div class="selectblock  bg-white">
+      <div class="padding">
+        <div class="margin-top-2x">
+          <div class="h5 text-bold">配送地址</div>
+          <div class="flex-row margin-top">
+            <div (click)='currentaddress=null' class="attritem" [class.active]='currentaddress==null'>自提</div>
+          </div>
+          <div class="flex-row margin-top" *ngFor="let item of addresslist">
+            <div (click)='currentaddress=item' class="attritem" [class.active]='currentaddress==item'>
+              广东省深圳市{{item.name}}</div>
+          </div>
+        </div>
+        <div class="margin-top-2x border-radius-4x" Button [type]="'primary'" [size]='"small"'>选择其它地址</div>
+      </div>
+    </div>
+  </ng-container>
+</div>
