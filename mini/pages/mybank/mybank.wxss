@@ -27,12 +27,12 @@ margin-top: 32rpx;
 .bang {
   width: 560rpx;
   height: 96rpx;
-  background: rgba(7, 38, 74, 1);
+  /* background: rgba(7, 38, 74, 1); */
+    background:#FFB98B;
   opacity: 1;
   border-radius: 74rpx;
   font-size: 28rpx;
   font-family: PingFang SC;
-  font-weight: 600;
   line-height: 96rpx;
   color: rgba(255, 255, 255, 1);
   text-align: center;

@@ -61,9 +61,9 @@
         <view class="padding-20">
 
           <view class="flex-row flex-center">
-            <view class="h6 txt-primary margin-right-5">¥</view>
-            <view class="flex-1 txt-primary">{{goods.goods_price}}</view>
-            <view class="buy border-primary txt-primary h6 ">
+            <view class="h6 txt-primary margin-right-5 t-color">¥</view>
+            <view class="flex-1 txt-primary t-color">{{goods.goods_price}}</view>
+            <view class="buy border-primary txt-primary h6 t-color">
               购买
             </view>
           </view>

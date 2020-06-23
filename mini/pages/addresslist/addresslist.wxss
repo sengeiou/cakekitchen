@@ -1,1 +1,12 @@
 /* pages/addresslist/addresslist.wxss */
+.bg-color{
+  background-color: #FFB98B;
+}
+.position{
+  position: relative;
+  top:13rpx;
+}
+.positiont{
+  position: relative;
+  bottom:5rpx;
+}

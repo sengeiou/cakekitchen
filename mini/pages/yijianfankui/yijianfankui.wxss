@@ -36,7 +36,8 @@
 .tijiao {
   width: 91%;
   height: 76rpx;
-  background: #07264A;
+  /* background: #07264A; */
+    background:#FFB98B;
   line-height: 76rpx;
   text-align: center;
   border-radius: 50rpx;

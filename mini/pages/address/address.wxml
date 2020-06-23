@@ -52,9 +52,9 @@
 
 
 <view class="padding-20 margin-top">
-  <button wx:if="{{options.id==undefined}}" class="padding-20 btnborder text-center h4 primary-block" form-type="submit"  >新增</button>
-  <button wx:if="{{options.id!=undefined}}" class="padding-20 btnborder text-center h4 primary-block" form-type="submit">保存</button>
-  <button wx:if="{{options.id!=undefined}}" class="padding-20 margin-top btnborder text-center h4 red-block" bindtap="deleteaddress">删除</button>
+  <button wx:if="{{options.id==undefined}}" class="padding-20 btnborder text-center h4 primary-block bg-color" form-type="submit"  >新增</button>
+  <button wx:if="{{options.id!=undefined}}" class="padding-20 btnborder text-center h4 primary-block bg-color" form-type="submit">保存</button>
+  <button wx:if="{{options.id!=undefined}}" class="padding-20 margin-top btnborder text-center h4 red-block bg-color" bindtap="deleteaddress">删除</button>
 </view>
 
 </form>

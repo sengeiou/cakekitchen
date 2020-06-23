@@ -55,9 +55,9 @@
 
 </view>
 
-
+<!-- 
     <import src="../../wxParse/wxParse.wxml" />
 
     <view  class='nostyle margin-top bg-white padding-20 h5' >
         <template style="" is="wxParse" data="{{wxParseData:content.nodes}}" />
-    </view>
+    </view> -->

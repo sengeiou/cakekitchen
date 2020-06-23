@@ -41,8 +41,8 @@
     <view bindtap="myorder" class="flex-row flex-center">
       <view class=" txt-bold h5">我的订单</view>
       <view class="flex-1"></view>
-      <view class="h5">查看全部订单</view>
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <view class="h6 t-color">查看全部订单</view>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
   <view class="white-block">
@@ -52,21 +52,21 @@
   <view class="flex-row flex-center padding-20 white-block ">
 
     <view bindtap="myorder" id="1" class="flex-1 flex-row flex-column">
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.daifukuan}}"></image>
+      <image class="icon-25" src="{{uploadpath}}resource/{{res.dfk}}"></image>
       <view wx:if="{{memberinfo.daifukuan>0}}" class="hondian">{{memberinfo.daifukuan}}</view>
       <view class="h5 margin-top-10 text-center">待付款</view>
 
     </view>
 
     <view bindtap="myorder" id="4" class="flex-1 flex-row flex-column">
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.daifahuo}}"></image>
+      <image class="icon-25" src="{{uploadpath}}resource/{{res.dfh}}"></image>
       <!-- <view wx:if="{{memberinfo.daifukuan>0}}" class="hondian">{{memberinfo.daifukuan}}</view> -->
       <view class="h5 margin-top-10 text-center">待发货</view>
 
     </view>
 
     <view bindtap="myorder" id='2' class="flex-1 flex-row flex-column">
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.daishouhuo}}"></image>
+      <image class="icon-25" src="{{uploadpath}}resource/{{res.dsh}}"></image>
       <view wx:if="{{memberinfo.daishouhuo>0}}" class="hondian">{{memberinfo.daishouhuo}}</view>
       <view class="h5 margin-top-10 text-center">待收货</view>
 
@@ -74,7 +74,7 @@
 
 
     <view bindtap="myorder" id='3' class="flex-1 flex-row flex-column">
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.daipinjia}}"></image>
+      <image class="icon-23" src="{{uploadpath}}resource/{{res.ywc}}"></image>
       <view wx:if="{{memberinfo.yiwanchen>0}}" class="hondian">{{memberinfo.yiwanchen}}</view>
       <view class="h5 margin-top-10 text-center">已完成</view>
 
@@ -104,11 +104,11 @@
 
   <view bindtap="gerenxinxi" class="white-block  padding-20 ">
     <view class="flex-row flex-center">
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.anquan}}"></image>
+      <image class="icon-15" src="{{uploadpath}}resource/{{res.grxx}}"></image>
       <view class="  h5 margin-left-10">个人信息</view>
       <view class="flex-1"></view>
 
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
 
@@ -118,11 +118,11 @@
   </view>
   <view bindtap="shouhuodizhi" class="white-block  padding-20 ">
     <view class="flex-row flex-center">
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.shouhuodizhi}}"></image>
+      <image class="icon-15" src="{{uploadpath}}resource/{{res.dzgl}}"></image>
       <view class="  h5 margin-left-10">地址管理</view>
       <view class="flex-1"></view>
 
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
 
@@ -132,11 +132,11 @@
   </view>
   <view bindtap="youhuijuan" class="white-block  padding-20 ">
     <view class="flex-row flex-center">
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.wdtgm}}"></image>
+      <image class="icon-15" src="{{uploadpath}}resource/{{res.yhj}}"></image>
       <view class="  h5 margin-left-10">优惠卷</view>
       <view class="flex-1"></view>
 
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
 </view>
@@ -163,11 +163,11 @@
   </view> -->
   <view bindtap="myyonjin" class="white-block  padding-20 ">
     <view class="flex-row flex-center">
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.wdyj}}"></image>
+      <image class="icon-15" src="{{uploadpath}}resource/{{res.yjgl}}"></image>
       <view class="  h5 margin-left-10">佣金管理</view>
       <view class="flex-1"></view>
 
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
   <view class="white-block">
@@ -176,11 +176,11 @@
   </view>
   <view bindtap="tuiguanma" class="white-block  padding-20 ">
     <view class="flex-row flex-center">
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.wdtgm}}"></image>
+      <image class="icon-15" src="{{uploadpath}}resource/{{res.wdtgt}}"></image>
       <view class="  h5 margin-left-10">我的推广</view>
       <view class="flex-1"></view>
 
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
 
@@ -189,11 +189,11 @@
 <view class="padding-20">
   <view bindtap="guanyuwomen" class="white-block  padding-20 ">
     <view class="flex-row flex-center">
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.guanyuwomen}}"></image>
+      <image class="icon-15" src="{{uploadpath}}resource/{{res.gywm}}"></image>
       <view class="  h5 margin-left-10">关于我们</view>
       <view class="flex-1"></view>
 
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
   <view class="white-block">
@@ -202,24 +202,31 @@
   </view>
   <view bindtap="yijianfankui" class="white-block  padding-20 ">
     <view class="flex-row flex-center">
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.yijianfankui}}"></image>
+      <image class="icon-15" src="{{uploadpath}}resource/{{res.yjfk}}"></image>
       <view class="  h5 margin-left-10">意见反馈</view>
       <view class="flex-1"></view>
 
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
+
+  
   <view class="white-block">
     <view class="margin-left-20" style="height:2rpx;width:670rpx;background:#F8F8F8"></view>
 
   </view>
   <view bindtap="lianxi" class="white-block  padding-20 ">
     <view class="flex-row flex-center">
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.lianxikefu}}"></image>
+      <image class="icon-15" src="{{uploadpath}}resource/{{res.lxkf}}"></image>
       <view class="  h5 margin-left-10">联系客服</view>
       <view class="flex-1"></view>
 
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
+  </view>
+
+    <view class="white-block">
+    <view class="margin-left-20" style="height:2rpx;width:670rpx;background:#F8F8F8"></view>
+
   </view>
 </view>

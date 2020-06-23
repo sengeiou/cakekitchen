@@ -16,7 +16,9 @@
 .w50 {
   width: 362rpx;
 }
-
+.t-color{
+  color: #FFB98B;
+}
 .w60 {
   width: 60vw;
 }
@@ -46,7 +48,7 @@
 }
 
 .catgoods .buy {
-  border: 1rpx solid #c4a769;
+  border: 1rpx solid #FFB98B;
   padding: 5rpx 10rpx 5rpx 10rpx;
 }
 

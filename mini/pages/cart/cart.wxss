@@ -5,7 +5,8 @@
 .xuangou {
   width: 200rpx;
   height: 76rpxrpx;
-  background: #07264A;
+  /* background: #07264A; */
+  background:#FFB98B;
   line-height: 76rpx;
   text-align: center;
   border-radius: 50rpx;

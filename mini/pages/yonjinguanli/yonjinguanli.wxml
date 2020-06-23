@@ -19,12 +19,12 @@
 <view class="padding-20">
   <view bindtap="yinhanka" class="white-block  padding-20 ">
     <view class="flex-row flex-center">
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.yhk}}"></image>
+      <image class="icon-15" src="{{uploadpath}}resource/{{res.yhkt}}"></image>
       <view class="  h5 margin-left-10">银行卡管理
       </view>
       <view class="flex-1"></view>
 
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
   <view class="white-block">
@@ -33,11 +33,11 @@
   </view>
   <view bindtap="myyonjin" class="white-block  padding-20 ">
     <view class="flex-row flex-center">
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.wdyj}}"></image>
+      <image class="icon-15" src="{{uploadpath}}resource/{{res.wdyjt}}"></image>
       <view class="  h5 margin-left-10">我的佣金</view>
       <view class="flex-1"></view>
 
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
 

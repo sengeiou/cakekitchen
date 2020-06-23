@@ -92,7 +92,7 @@
 </view>
 
 
-<view class="text-center margin-top" wx:if="{{myorder.length==0}}">
+<view class="text-center margin-top h5" wx:if="{{myorder.length==0}}">
 
 暂无订单
 
@@ -100,7 +100,7 @@
 
 
 
-<view class="text-center h5 margin-top-20">更多精选商品</view>
+<view class="text-center h6 margin-top-20">更多精选商品</view>
 
 
 <block wx:for="{{indexcat}}" wx:key="k">

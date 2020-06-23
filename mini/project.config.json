@@ -24,7 +24,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.0",
-	"appid": "wxbe4ddcac3774e672",
+	"appid": "wx5f8627c4ed580ce8",
 	"projectname": "mini",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -47,6 +47,10 @@
 		},
 		"game": {
 			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
@@ -84,6 +88,20 @@
 					"id": -1,
 					"name": "pages/youhuijuan/youhuijuan",
 					"pathName": "pages/youhuijuan/youhuijuan",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/youhuijuan/youhuijuan",
+					"pathName": "pages/youhuijuan/youhuijuan",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/addresslist/addresslist",
+					"pathName": "pages/addresslist/addresslist",
 					"scene": null
 				}
 			]

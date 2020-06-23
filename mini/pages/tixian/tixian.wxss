@@ -26,7 +26,8 @@ page{
 
   width:686rpx;
   height: 76rpx;
-  background: #07264A;
+  /* background: #07264A; */
+    background:#FFB98B;
   border-radius: 50rpx;
   color:#FFFFFF;
   font-size: 28rpx;

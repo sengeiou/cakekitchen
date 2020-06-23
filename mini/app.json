@@ -46,7 +46,7 @@
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "color": "#cdcdcd",
-    "selectedColor": "#BF8436",
+    "selectedColor": "#FFB98B",
     "borderStyle": "white",
     "backgroundColor": "#ffffff",
     "list": [

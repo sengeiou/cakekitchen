@@ -33,3 +33,12 @@
   top: 0px;
   right: 0px;
 }
+.border{
+  border: 1px solid #FFB98B;
+  border-radius: 30rpx;
+  width: 130rpx;
+  height: 50rpx;
+}
+.t-colortwo{
+  color: #FFB98B;
+}

@@ -6,7 +6,8 @@
 .tijiao {
   width: 693rpx;
   height: 76rpx;
-  background: rgba(7, 38, 74, 1);
+  /* background: rgba(7, 38, 74, 1); */
+    background:#FFB98B;
   border-radius: 38rpx;
   text-align: center;
   color: #ffffff;

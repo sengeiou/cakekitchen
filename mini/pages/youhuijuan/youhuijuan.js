@@ -31,9 +31,18 @@ class Content extends AppBase {
     })
   }
 
+  gotohome() {
+
+    wx.switchTab({
+      url: '/pages/home/home',
+    })
+
+  }
+
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
+body.gotohome=content.gotohome;
 Page(body)

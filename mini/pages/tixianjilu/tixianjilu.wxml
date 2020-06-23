@@ -1,27 +1,33 @@
-<view class="statusheader white-block" style="height:{{StatusBar+CustomBar}}px">
+<!-- 有记录时 -->
+<view wx:if="{{tixianjilu!=''}}">
+  <view class="statusheader white-block" style="height:{{StatusBar+CustomBar}}px">
 
-  <view class="statusblock" style="height:{{StatusBar}}px"></view>
-  <view class="white-block flex-row  flex-center">
-    <view class=" padding-20 margin-top-5" bindtap="backPage" style="padding-top:{{Custom.top-StatusBar}}px">
-      <image class="icon" src="{{uploadpath}}resource/{{res.backblack}}"></image>
+    <view class="statusblock" style="height:{{StatusBar}}px"></view>
+    <view class="white-block flex-row  flex-center">
+      <view class=" padding-20 margin-top-5" bindtap="backPage" style="padding-top:{{Custom.top-StatusBar}}px">
+        <image class="icon" src="{{uploadpath}}resource/{{res.backblack}}"></image>
+      </view>
+      <view class="margin-left">提现记录</view>
+      <view style="width:{{Custom.width+20}}px;height:{{Custom.height}}px;"></view>
     </view>
-    <view class="margin-left">提现记录</view>
-    <view style="width:{{Custom.width+20}}px;height:{{Custom.height}}px;"></view>
+  </view>
+  <view style="height:{{StatusBar+CustomBar}}px"></view>
+
+  <view wx:for="{{tixianjilu}}" wx:key='k' class="flex-row margin-top-20 flex-center padding-30 bg-white">
+
+    <view>
+      <view class="h5 txt-bold" style="color:#404858">{{item.tixian_time_formatting}}</view>
+      <view class="h6 margin-top-20" style="color:#404858">银行账号：{{item.yinhanzhanhao}}</view>
+      <view class="h6 margin-top-20 txt-bold" style="color:#404858">开户行：{{item.kaihuhan}}</view>
+
+    </view>
+    <view class="flex-1"></view>
+
+    <view class="h4" style="color:#66CC99">-{{item.amount}}</view>
+
   </view>
 </view>
-<view style="height:{{StatusBar+CustomBar}}px"></view>
-
-<view wx:for="{{tixianjilu}}" wx:key='k' class="flex-row margin-top-20 flex-center padding-30 bg-white">
-
-  <view>
-    <view class="h5 txt-bold" style="color:#404858">{{item.tixian_time_formatting}}</view>
-    <view class="h6 margin-top-20" style="color:#404858">银行账号：{{item.yinhanzhanhao}}</view>
-    <view class="h6 margin-top-20 txt-bold" style="color:#404858">开户行：{{item.kaihuhan}}</view>
-
-  </view>
-  <view class="flex-1"></view>
-
-  <view class="h4" style="color:#66CC99">-{{item.amount}}</view>
-
-
+<!-- 无记录时 -->
+<view wx:if="{{tixianjilu==''}}">
+<view class='_center txt-gray text-center h6' style="margin-top:500rpx;">暂时没有记录哦</view>
 </view>

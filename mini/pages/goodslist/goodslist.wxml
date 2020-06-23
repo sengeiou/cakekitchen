@@ -14,12 +14,12 @@
 <view class="fixedtop" style="top:{{StatusBar+CustomBar}}px">
   <view class="white-block padding-20">
     <view class="flex-row flex-center">
-      <view class="flex-1 h5 text-center">
+      <view class="flex-1 h5 text-center ">
         <picker range='{{catlist}}' range-key='name' bindchange="selectcat">{{cat.name}}</picker>
       </view>
-      <view data-orderby='' class="flex-1 h5 text-center {{orderby==''?'txt-primary':''}}" bindtap="ordertypechange">优选</view>
-      <view data-orderby='sales' class="flex-1 h5 text-center {{orderby=='sales'?'txt-primary':''}}" bindtap="ordertypechange">购买数量</view>
-      <view data-orderby='price' class="flex-1 h5 text-center {{orderby=='price'?'txt-primary':''}}" hidden="{{true}}" bindtap="ordertypechange">价格</view>
+      <view data-orderby='' class="flex-1 h5 text-center {{orderby==''?'t-color':''}}" bindtap="ordertypechange">优选</view>
+      <view data-orderby='sales' class="flex-1 h5 text-center {{orderby=='sales'?'t-color':''}}" bindtap="ordertypechange">购买数量</view>
+      <view data-orderby='price' class="flex-1 h5 text-center {{orderby=='price'?'t-color':''}}" hidden="{{true}}" bindtap="ordertypechange">价格</view>
       <view class="h5 text-center">
         <image class="icon" src="{{uploadpath}}resource/{{res.square}}" wx:if="{{displaytype=='square'}}" data-displaytype="list" bindtap="displaytypechange"></image>
         <image class="icon" src="{{uploadpath}}resource/{{res.list}}" wx:if="{{displaytype=='list'}}" data-displaytype="square" bindtap="displaytypechange"></image>
@@ -41,9 +41,9 @@
       <view class="padding-20">
 
         <view class="flex-row flex-center">
-          <view class="h6 txt-primary margin-right-5">¥</view>
-          <view class="flex-1 txt-primary">{{goods.price}}</view>
-          <view class="buy border-primary txt-primary h6 ">
+          <view class="h6 txt-primary margin-right-5 t-color">¥</view>
+          <view class="flex-1 txt-primary t-color">{{goods.price}}</view>
+          <view class="buy border-primary txt-primary h6 t-color">
             购买
           </view>
         </view>

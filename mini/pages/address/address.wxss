@@ -2,3 +2,6 @@
 .btnborder{
   border-radius: 50rpx;
 }
+.bg-color{
+  background-color: #FFB98B;
+}

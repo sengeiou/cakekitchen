@@ -15,15 +15,24 @@
 <view style="height:{{StatusBar+CustomBar}}px"></view>
 
 <!-- 无优惠券时 -->
-<!-- <view>
-  <view class='_center'>
-      <image class='icon-150 margin-top-150' src='{{uploadpath}}resource/{{res.yhnull}}'></image>
-  </view>
-  <view class='_center txt-gray'>暂无优惠券</view>
-</view> -->
+<view wx:if="{{youhuijuan==''}}">
 
 
-<view wx:for="{{youhuijuan}}">
+ 
+<view class='_center txt-gray text-center h6' style="margin-top:500rpx;">暂时还没有优惠券哦</view>
+<view class="flex-row">
+<view class="flex-1"></view>
+<view bindtap="gotohome" class="border margin-top">
+<view class="h6 t-colortwo text-center" style="line-height:50rpx;">进店逛逛</view>
+</view>
+<view class="flex-1"></view>
+</view>
+
+
+</view>
+
+
+<view wx:if="{{youhuijuan!=''}}" wx:for="{{youhuijuan}}">
   <view class='hezi'>
     <view class='yuan' class='flex-row flex-center' style='height:230rpx;background-image:url({{uploadpath}}resource/{{res.yhbg}});background-size:100% 100%;'>
       <view style='width:4.2vw'></view>
