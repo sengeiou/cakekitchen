@@ -92,8 +92,8 @@ position:  fixed;
 
 bottom: 200rpx;
 right: 30rpx;
-width: 50rpx;
-height: 50rpx;
+width: 66rpx;
+height: 66rpx;
 border-radius: 50%;
 z-index: 9999;
 }
@@ -104,8 +104,8 @@ position:  fixed;
 
 bottom: 290rpx;
 right: 30rpx;
-width: 50rpx;
-height: 50rpx;
+width: 66rpx;
+height: 66rpx;
 border-radius: 50%;
 z-index: 9999;
 }

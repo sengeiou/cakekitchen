@@ -102,6 +102,55 @@
 					"id": -1,
 					"name": "pages/addresslist/addresslist",
 					"pathName": "pages/addresslist/addresslist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/addbank/addbank",
+					"pathName": "pages/addbank/addbank",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/guanyuwomen/guanyuwomen",
+					"pathName": "pages/guanyuwomen/guanyuwomen",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/mine",
+					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/goodslist/goodslist",
+					"pathName": "pages/goodslist/goodslist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/orderconfirm/orderconfirm",
+					"pathName": "pages/orderconfirm/orderconfirm",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "/pages/success/success",
+					"pathName": "/pages/success/success",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/goods/goods",
+					"pathName": "pages/goods/goods",
 					"scene": null
 				}
 			]

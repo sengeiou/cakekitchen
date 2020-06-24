@@ -224,7 +224,7 @@
       </view>
     </view>
       <view class="margin-top-10 border-bottom"></view>
-    <scroll-view class="margin-top-10 " scroll-y="{{true}}" style="height:620rpx">
+    <scroll-view class="margin-top-10 " scroll-y="{{true}}" style="height:800rpx">
       <view >商品规格</view>
       <view class="flex-row flex-wrap">
         <view class="margin-top-10 margin-right-10 border-radius-10 gray-block h5 padding-20 {{item.id==currentattr.id?'primary-block':''}}" wx:for="{{attrlist}}" wx:key='k' data-attrid="{{item.id}}" bindtap="selectattr">{{item.name}}</view>
@@ -257,9 +257,10 @@
         <view class="margin-right-10 border-radius-10 gray-block h5 padding-20">{{buycount}}</view>
         <view class="margin-right-10 border-radius-10 gray-block h5 padding-20" bindtap="jia">+</view>
       </view>
-      <view style="height:100rpx"></view>
+      <!-- <view style="height:100rpx"></view> -->
     </scroll-view>
   </view>
+
   <view class="padding-20 white-block">
     <view class="flex-row">
       <view class="btn-left red-block h4 text-center padding-20 flex-1" bindtap="tocart">加入购物车</view>
@@ -268,5 +269,8 @@
   </view>
 </view>
 
-  <image wx:if="{{!showpopup}}" class="gotop1" src="{{uploadpath}}resource/{{res.gotop1}}" bindtap="gotop1" ></image>
+  <image wx:if="{{!showpopup}}" class="gotop1" src="{{uploadpath}}resource/{{res.gotop1}}" bindtap="gotop1" >
+  <view class=""></view>
+  </image>
+   <image wx:if="{{!showpopup}}" class="gotop1" src="{{uploadpath}}resource/{{res.gotop1}}" bindtap="gotop1" ></image>
   <image wx:if="{{!showpopup}}" class="gotop" src="{{uploadpath}}resource/{{res.gotop}}" bindtap="gotop" ></image>

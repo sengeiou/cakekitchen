@@ -31,7 +31,7 @@
        <view wx:if="{{index==undefined}}"  class="h5" style="color:#CCCCCC">请选择</view>
       <view  wx:if="{{index!=undefined}}" class="h5" style="color:#CCCCCC">{{mybank[index].banknum}}</view>
 
-      <image class="icon-10 margin-left-10 " src="{{uploadpath}}resource/{{res.wodeyou}}"></image>
+      <image class="icon-10 margin-left-15 " src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </picker>
   <view class="padding-30 h5"  style="color:#404858">
@@ -39,7 +39,7 @@
   </view>
 
  <view>
-        <textarea class="txta h6 " bindinput="beizhu"  placeholder="请输入您的宝贵意见（200字以内）"></textarea>
+        <textarea class="txta h6 " bindinput="beizhu"  placeholder="请输入您的宝贵意见（200字以内）" maxlength="200"></textarea>
     </view>
     <view style="height:48rpx;"></view>
 

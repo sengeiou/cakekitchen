@@ -22,7 +22,7 @@
       <view class="flex-1"></view>
       <image src='{{uploadpath}}resource/{{res.morentouxiang}}' wx:if='{{memberinfo.avatarUrl==""}}' mode='aspectFill' class='icon-56 radius-50' style='' bindtap='bindpic'></image>
       <image src='{{uploadpath}}member/{{memberinfo.avatarUrl}}' wx:if='{{memberinfo.avatarUrl!=""}}' mode='aspectFill' class='icon-56 radius-50' style='' bindtap='bindpic'></image>
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
   <view class="white-block">
@@ -34,8 +34,8 @@
 
       <view class="  h5 margin-left-10">姓名</view>
       <view class="flex-1"></view>
-      <input class="text-right h5" bindinput="name" value="{{memberinfo.name}}" placeholder="请填写"></input>
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <input class="text-right h6" bindinput="name" value="{{memberinfo.name}}" placeholder="请填写"></input>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
   <view class="white-block">
@@ -52,7 +52,7 @@
       <button wx:if="{{shouji==''}}" class="clear-button   " open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
       获取
       </button>
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
   <view class="white-block">
@@ -74,7 +74,7 @@
           {{picker[index]}}
         </view>
       </picker>
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
   <view class="white-block">
@@ -92,7 +92,7 @@
           {{date}}
         </view>
       </picker>
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
   <view class="white-block">
@@ -114,7 +114,7 @@
           {{region}}
         </view>
       </picker>
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
   <view class="white-block">
@@ -126,8 +126,8 @@
 
       <view class="  h5 margin-left-10">微信号</view>
       <view class="flex-1"></view>
-      <input class="text-right h5" bindinput="weixinhao" value="{{memberinfo.weixinhao}}" placeholder-style="color:#2c2c2c;" placeholder="请填写"></input>
-      <image class="icon-15" src="{{uploadpath}}resource/{{res.right}}"></image>
+      <input class="text-right h6" bindinput="weixinhao" value="{{memberinfo.weixinhao}}"  placeholder="请填写"></input>
+      <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>
 </view>

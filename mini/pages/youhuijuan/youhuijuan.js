@@ -39,10 +39,31 @@ class Content extends AppBase {
 
   }
 
+  bindshow(e) {
+    var type = e.currentTarget.dataset.type;
+    console.log(type);
+    if (type == "wsy") {
+      this.Base.setMyData({
+        show: "wsy"
+      })
+    }
+    if (type == "ysy") {
+      this.Base.setMyData({
+        show: "ysy"
+      })
+    }
+    if (type == "ysq") {
+      this.Base.setMyData({
+        show: "ysq"
+      })
+    }
+  }
+
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 body.gotohome=content.gotohome;
+body.bindshow = content.bindshow;
 Page(body)

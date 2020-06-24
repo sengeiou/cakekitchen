@@ -26,7 +26,7 @@
     <view wx:if="{{tab!=1}}" class="k"></view>
   </view>
 
-    <view bindtap="switchtab" id='4' class="flex-row flex-column flex-1">
+  <view bindtap="switchtab" id='4' class="flex-row flex-column flex-1">
 
     <view class="{{tab==4?'black':''}} h5 text-center">待发货</view>
     <view wx:if="{{tab==4}}" class="xian"></view>
@@ -53,12 +53,12 @@
     <view class="flex-row flex-center  ">
       <view class="">订单编号：{{item.orderno}}</view>
       <view class="flex-1"></view>
-      <view>
+      <view  class="{{item.status=='C'?'red':''}}">
         {{item.status_name}}
       </view>
     </view>
 
-   
+
   </view>
   <view class="" style="background:#EEEEEE">
 
@@ -68,7 +68,7 @@
       <view class="flex-1 margin-left-10">
         <view>{{dindan.name}}</view>
 
-        
+
 
         <view class="flex-row flex-center margin-top" style="width:100%">
           <view>￥{{dindan.price}}</view>
@@ -92,11 +92,17 @@
 </view>
 
 
-<view class="text-center margin-top h5" wx:if="{{myorder.length==0}}">
-
-暂无订单
-
+<view class="text-center margin-top h5" wx:if="{{myorder.length==0}}">暂无订单
 </view>
+
+<view class="flex-row">
+  <view class="flex-1"></view>
+  <view bindtap="gotohome" class="border margin-top">
+    <view class="h6 t-colortwo text-center" style="line-height:50rpx;">进店逛逛</view>
+  </view>
+  <view class="flex-1"></view>
+</view>
+
 
 
 
@@ -119,8 +125,8 @@
         <view class="padding-20">
 
           <view class="flex-row flex-center">
-            <view class="h6 txt-primary margin-right-5">¥</view>
-            <view class="flex-1 txt-primary">{{goods.goods_price}}</view>
+            <view class="h6 t-color margin-right-5">¥</view>
+            <view class="flex-1 t-color">{{goods.goods_price}}</view>
 
           </view>
         </view>

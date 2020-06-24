@@ -151,6 +151,13 @@ wx.switchTab({
 })
 
   }
+  goto(e) {
+  var id=e.currentTarget.id;
+    wx.navigateTo({
+      url: '/pages/goods/goods?id='+id,
+    })
+
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -162,4 +169,5 @@ body.setattrlist = content.setattrlist;
 body.confirm = content.confirm;
 body.gohome = content.gohome;
 body.shanchu=content.shanchu;
+body.goto=content.goto;
 Page(body)

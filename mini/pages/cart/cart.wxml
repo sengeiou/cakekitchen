@@ -37,11 +37,11 @@
     </view>
     <view class="flex-row  margin-top" wx:for="{{attrlist}}" wx:key='k' wx:for-item='attrinfo' wx:for-index='index'>
       <view>
-        <image class="icon-100 border-radius-10" src="{{uploadpath}}goods/{{attrinfo.photo}}"></image>
+        <image id="{{attrinfo.goods_id}}" bindtap="goto" class="icon-100 border-radius-10" src="{{uploadpath}}goods/{{attrinfo.photo}}"></image>
       </view>
       <view class="flex-1 margin-left">
       <view class="flex-row flex-center">
-        <view class="h4">{{attrinfo.goods_name}}</view>
+        <view class="h4" style="width:250rpx;">{{attrinfo.goods_name}}</view>
         <view class="flex-1"></view>
           <image bindtap="shanchu" style="margin-right:20rpx" data-index="{{index}}" data-id="{{attrinfo.id}}" class="icon-15" src="{{uploadpath}}resource/{{res.shanchu}}"></image>
         </view>

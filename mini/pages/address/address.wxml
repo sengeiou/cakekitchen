@@ -18,33 +18,33 @@
 <view class="white-block">
   <view class="padding-20 ">
     <view class="flex-row flex-center">
-      <view class="txt-gray">收货人</view>
+      <view class="txt-gray h5">收货人</view>
       <view class="flex-1 margin-left">
-        <input class="text-right" name='name' value="{{address.name}}" placeholder="请输入收件人姓名" maxlength="20"></input>
+        <input class="text-right h5" name='name' value="{{address.name}}" placeholder="请输入收件人姓名" maxlength="20"></input>
       </view>
     </view>
   </view>
   <view class="padding-20 ">
     <view class="flex-row flex-center">
-      <view class="txt-gray">收货电话</view>
+      <view class="txt-gray h5">收货电话</view>
       <view class="flex-1 margin-left">
-        <input class="text-right" type='number' name='mobile' value="{{address.mobile}}" placeholder="请输入收件人电话" maxlength="20"></input>
+        <input class="text-right h5" type='number' name='mobile' value="{{address.mobile}}" placeholder="请输入收件人电话" maxlength="11"></input>
       </view>
     </view>
   </view>
   <view class="padding-20 ">
     <view class="flex-row ">
-      <view class="txt-gray">收货地址</view>
+      <view class="txt-gray h5">收货地址</view>
       <view class="flex-1 margin-left">
-        <textarea class="text-right" maxlength="200" name="address" placeholder="请输入收件人详细地址" value="{{address.address}}"></textarea>
+        <textarea class="text-right h5" maxlength="200" name="address" placeholder="请输入收件人详细地址" value="{{address.address}}"></textarea>
       </view>
     </view>
   </view>
   <view class="padding-20 ">
     <view class="flex-row ">
-      <view class="txt-gray flex-1 ">设为默认地址</view>
+      <view class="txt-gray flex-1 h5">设为默认地址</view>
       <view class="margin-left">
-        <switch checked="{{address.isdefault_value=='Y'}}" name='isdefault' />
+        <switch color="#FFB98B" checked="{{address.isdefault_value=='Y'}}" name='isdefault' />
       </view>
     </view>
   </view>
@@ -52,9 +52,9 @@
 
 
 <view class="padding-20 margin-top">
-  <button wx:if="{{options.id==undefined}}" class="padding-20 btnborder text-center h4 primary-block bg-color" form-type="submit"  >新增</button>
-  <button wx:if="{{options.id!=undefined}}" class="padding-20 btnborder text-center h4 primary-block bg-color" form-type="submit">保存</button>
-  <button wx:if="{{options.id!=undefined}}" class="padding-20 margin-top btnborder text-center h4 red-block bg-color" bindtap="deleteaddress">删除</button>
+  <button wx:if="{{options.id==undefined}}" class="padding-20 btnborder text-center h5 primary-block bg-color" form-type="submit"  >新增</button>
+  <button wx:if="{{options.id!=undefined}}" class="padding-20 btnborder text-center h5 primary-block bg-color" form-type="submit">保存</button>
+  <button wx:if="{{options.id!=undefined}}" class="padding-20 margin-top btnborder text-center h5 red-block bg-color" bindtap="deleteaddress">删除</button>
 </view>
 
 </form>

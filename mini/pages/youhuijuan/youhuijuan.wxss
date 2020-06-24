@@ -42,3 +42,21 @@
 .t-colortwo{
   color: #FFB98B;
 }
+.xian{
+width: 48rpx;
+height: 4rpx;
+background: #161616;
+margin-top:20rpx;
+}
+.black{
+  color: #161616;
+
+}
+.k{
+  margin-top:24rpx;
+}
+.xian1{
+  height: 2rpx;
+  width: 100vw;
+  background: #EEEEEE;
+}

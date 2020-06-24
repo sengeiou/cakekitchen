@@ -68,12 +68,19 @@ class Content extends AppBase {
 
   }
   tijiao() {
-
     var amount = Number(this.Base.getMyData().amount);
     var ketixian = Number(this.Base.getMyData().ketixian);
     var index = this.Base.getMyData().index;
     var yinhan = this.Base.getMyData().mybank[index];
     var beizhu = this.Base.getMyData().beizhu;
+
+    if (amount == undefined || ketixian == undefined || index == undefined || yinhan == undefined || beizhu == "") {
+      wx.showToast({
+        title: '信息未填完',
+        icon: 'none'
+      })
+      return
+    }
 
     if (amount == '') {
       this.Base.toast("提现金额不能为空");

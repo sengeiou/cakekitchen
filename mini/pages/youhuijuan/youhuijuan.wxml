@@ -14,24 +14,47 @@
 </view>
 <view style="height:{{StatusBar+CustomBar}}px"></view>
 
+<!-- 分隔栏 -->
+<view class="padding-30 flex-row flex-center bg-white" style="padding-bottom:0rpx">
+
+  <view bindtap="bindshow"  data-type='wsy' class="flex-row flex-column flex-1">
+    <view class="{{show=='wsy'?'black':''}} h5 text-center">未使用</view>
+    <view wx:if='{{show=="wsy"}}' class="xian"></view>
+    <view wx:if='{{show!="wsy"}}' class="k"></view>
+  </view>
+
+  <view bindtap="bindshow"  data-type='ysy' id='1' class="flex-row flex-column flex-1">
+    <view class="{{show=='ysy'?'black':''}} h5 text-center">已使用</view>
+    <view wx:if='{{show=="ysy"}}' class="xian"></view>
+    <view wx:if='{{show!="ysy"}}' class="k"></view>
+  </view>
+
+  <view bindtap="bindshow"  data-type='ysq' id='4' class="flex-row flex-column flex-1">
+    <view class="{{show=='ysq'?'black':''}} h5 text-center">已过期</view>
+    <view wx:if='{{show=="ysq"}}' class="xian"></view>
+    <view wx:if='{{show!="ysq"}}' class="k"></view>
+  </view>
+
+</view>
+
+
 <!-- 无优惠券时 -->
 <view wx:if="{{youhuijuan==''}}">
 
-
- 
-<view class='_center txt-gray text-center h6' style="margin-top:500rpx;">暂时还没有优惠券哦</view>
-<view class="flex-row">
-<view class="flex-1"></view>
-<view bindtap="gotohome" class="border margin-top">
-<view class="h6 t-colortwo text-center" style="line-height:50rpx;">进店逛逛</view>
-</view>
-<view class="flex-1"></view>
-</view>
+  <view class='_center txt-gray text-center h6' style="margin-top:500rpx;">暂时还没有优惠券哦</view>
+  <view class="flex-row">
+    <view class="flex-1"></view>
+    <view bindtap="gotohome" class="border margin-top">
+      <view class="h6 t-colortwo text-center" style="line-height:50rpx;">进店逛逛</view>
+    </view>
+    <view class="flex-1"></view>
+  </view>
 
 
 </view>
 
 
+<!-- 有优惠券时 -->
 <view wx:if="{{youhuijuan!=''}}" wx:for="{{youhuijuan}}">
   <view class='hezi'>
     <view class='yuan' class='flex-row flex-center' style='height:230rpx;background-image:url({{uploadpath}}resource/{{res.yhbg}});background-size:100% 100%;'>
@@ -47,7 +70,7 @@
 
       <view>
         <view class='yellow f-36'>{{item.coupons_name}}</view>
-     
+
       </view>
       <view class='flex-1'></view>
 
@@ -64,4 +87,3 @@
 
 
 </view>
-

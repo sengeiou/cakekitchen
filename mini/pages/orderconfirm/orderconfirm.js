@@ -57,7 +57,10 @@ class Content extends AppBase {
       amount: 0,
       contactmobile: "",
       remarks: "",
-      index:''
+      index:'',
+      min: 15,
+      max: 120,
+      currentWordNumber: 0
     });
 
     var instapi = new InstApi();
@@ -81,6 +84,8 @@ class Content extends AppBase {
     //   this.Base.backPage();
     //   return;
     // }
+
+
     var that = this;
     var instapi = new InstApi();
     var shop_id = this.Base.getMyData().shop_id;
@@ -232,6 +237,9 @@ var youhuijuan=this.Base.getMyData().youhuijuan;
               if(this.Base.options.from=="cart"){
                 AppBase.ATTRS="";
               }
+              wx.navigateTo({
+                url: '/pages/myorder/myorder'
+              })
 
               var wechatapi = new WechatApi();
               wechatapi.prepay({ id: ret.return},(payparams)=>{
@@ -305,6 +313,30 @@ var youhuijuan=this.Base.getMyData().youhuijuan;
       index: e.detail.value
     });
   }
+  inputs(e){
+    var value = e.detail.value;
+    var len = parseInt(value.length);
+    console.log(len)
+    if (len <= this.data.min)
+      this.setData({
+        num: this.data.min - len
+      })
+    else if (len > this.data.min)
+      this.setData({
+        texts: " ",
+        textss: " ",
+        num: ''
+      })
+
+    this.setData({
+      currentWordNumber: len  
+    });
+    if (len > this.data.max) return;
+    console.log(this.data)
+  }
+
+
+  
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -320,4 +352,5 @@ body.changecontactmobile = content.changecontactmobile;
 body.changeremarks = content.changeremarks;
 body.getmobile = content.getmobile;
 body.binyouhuijuan = content.binyouhuijuan;
+body.inputs = content.inputs;
 Page(body)

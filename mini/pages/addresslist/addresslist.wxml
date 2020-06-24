@@ -30,7 +30,7 @@
       <view class="margin-left" bindtap="edit" id="{{item.id}}">
         <image class="icon" src="{{uploadpath}}resource/{{res.edit}}" ></image>
       </view>
-      <view class="txt-primary margin-left positiont" id="{{item.id}}"  bindtap="select"  style="color:#FFB98B;">
+      <view class="txt-primary margin-left positiont h5" id="{{item.id}}"  bindtap="select"  style="color:#FFB98B;">
         选择
       </view>
 
@@ -40,7 +40,7 @@
     <view class="flex-row flex-center">
       <view class="flex-1"></view>
       <view>
-        <image src="{{uploadpath}}resource/{{res.add}}" class="icon"></image>
+        <image src="{{uploadpath}}resource/{{res.add}}" class="icon position-add"></image>
       </view>
       <view class="txt-gray margin-left">新增地址</view>
       <view class="flex-1"></view>

@@ -36,7 +36,7 @@ class Content extends AppBase {
       "SPDB": "上海浦东发展银行",
       "CIB": "兴业银行",
       "HXBANK": "华夏银行",
-      "GDB": "广东发展银行",
+      "GDB": "广东发展银行", 
       "CMBC": "中国民生银行",
       "CITIC": "中信银行",
       "CEB": "中国光大银行",

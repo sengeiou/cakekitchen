@@ -4,13 +4,17 @@
 }
 .xuangou {
   width: 200rpx;
-  height: 76rpxrpx;
+  height: 50rpx;
   /* background: #07264A; */
-  background:#FFB98B;
-  line-height: 76rpx;
+  /* background:#FFB98B; */
+  border:1rpx solid #FFB98B; 
+  line-height: 42rpx;
   text-align: center;
   border-radius: 50rpx;
-  color: #ffffff;
+  color: #FFB98B;
   margin: 12rpx auto 0;
   margin-top:20rpx;
+}
+.t-color{
+  color:#FFB98B;
 }

@@ -17,7 +17,7 @@
 .tijiao {
   width: 693rpx;
   height: 76rpx;
-  background: rgba(7, 38, 74, 1);
+  background: #FFB98B;
   border-radius: 38rpx;
   text-align: center;
   color: #ffffff;
@@ -30,5 +30,5 @@
   text-align: center;
   border-radius: 20rpx;
   color: #ffffff;
-  background: rgba(7, 38, 74, 1);
+  background: #cccccc;
 }

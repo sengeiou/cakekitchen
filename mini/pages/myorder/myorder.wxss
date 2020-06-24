@@ -65,7 +65,7 @@ margin-top:20rpx;
 }
 
 .catgoods .buy {
-  border: 1rpx solid #c4a769;
+  border: 1rpx solid #FFB98B;
   padding: 5rpx 10rpx 5rpx 10rpx;
 }
 
@@ -73,4 +73,18 @@ margin-top:20rpx;
   border-radius: 3rpx;
   padding: 5rpx 50rpx 5rpx 50rpx;
 }
-
+.t-color{
+  color:#FFB98B;
+}
+.border{
+  border: 1px solid #FFB98B;
+  border-radius: 30rpx;
+  width: 130rpx;
+  height: 50rpx;
+}
+.t-colortwo{
+  color: #FFB98B;
+}
+.red{
+  color:red;
+}

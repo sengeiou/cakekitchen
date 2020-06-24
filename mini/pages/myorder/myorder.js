@@ -200,6 +200,13 @@ else{
     })
 
   }
+  gotohome() {
+
+    wx.switchTab({
+      url: '/pages/home/home',
+    })
+
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -212,4 +219,5 @@ body.myorder = content.myorder;
 body.switchtab = content.switchtab;
 body.orderinfo = content.orderinfo;
 body.switchtab1 = content.switchtab1;
+body.gotohome=content.gotohome;
 Page(body)
