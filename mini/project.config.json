@@ -151,6 +151,13 @@
 					"id": -1,
 					"name": "pages/goods/goods",
 					"pathName": "pages/goods/goods",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/addbank/addbank",
+					"pathName": "pages/addbank/addbank",
 					"scene": null
 				}
 			]

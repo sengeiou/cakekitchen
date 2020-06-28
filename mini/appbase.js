@@ -873,7 +873,7 @@ export class AppBase {
       var buycount = Number(attr[1]);
       console.log("vATTR", attr_id, buycount);
       if (attr_id == vattr_id) {
-        //vk.push(attr_id.toString() + "*" + vbuycount.toString());
+        // vk.push(attr_id.toString() + "*" + vbuycount.toString());
       }else{
         vk.push(attr_id.toString() + "*" + buycount.toString());
       }

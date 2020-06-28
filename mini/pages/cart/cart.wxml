@@ -55,7 +55,7 @@
                 <view class="flex-1"></view>
                 <view class="margin-right-10 border-radius-10 gray-block h5 padding-20" id="{{attrinfo.id}}" bindtap="jian">-</view>
                 <view class="margin-right-10 border-radius-10 gray-block h5 padding-20">{{attrinfo.buycount}}</view>
-                <view class="margin-right-10 border-radius-10 gray-block h5 padding-20" id="{{attrinfo.id}}" bindtap="jia">+</view>
+                <view class="margin-right-10 border-radius-10 gray-block h5 padding-20" id="{{attrinfo.id}}" data-index="{{index}}" bindtap="jia">+</view>
               </view>
             </view>
           </view>

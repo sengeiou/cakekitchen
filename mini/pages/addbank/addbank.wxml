@@ -23,7 +23,7 @@
 <view class="flex-row flex-center">
     <view class="h5">银行卡号</view>
     <!-- <view class="flex-1"></view> -->
-    <input class="text-right h5 flex-1" bindinput="bindbanknum" placeholder="请输入"></input>
+    <input class="text-right h5 flex-1" bindinput="bindbanknum" placeholder="请输入" maxlength="19"></input>
     <view class="h5 sb margin-left-10" bindtap="asdasd">识别</view>
   </view>
   <view class="line"></view>

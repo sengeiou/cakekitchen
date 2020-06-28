@@ -39,37 +39,42 @@ class Content extends AppBase {
     var content = this.Base.getMyData().content;
     var lianxi = this.Base.getMyData().lianxi;
     console.log(content, lianxi);
-    var api = new MemberApi;
-    if (content == undefined || lianxi == undefined) {
-      wx.showToast({
-        title: '信息未填完',
-        icon: 'none'
-      })
-      return
-    }
-    if (content != "") {
-      api.addfeedback({
-        lianxi: lianxi,
-        idea: content,
-
-        member_id: that.Base.getMyData().memberinfo.id
-      }, (ret) => {
-        console.log(ret)
-        if (ret) {
-          wx.showToast({
-            title: '意见提交成功',
-            icon: 'none'
-          })
-          setTimeout(() => {
-            wx: wx.navigateTo({
-              url: '/pages/shezhi/shezhi',
+    wx.showModal({
+        title: '提示',
+        content: '确定提交?',
+        comfirmText: "确定",
+        success: function(res) {
+          var api = new MemberApi;
+          if (content == undefined || lianxi == undefined) {
+            wx.showToast({
+              title: '信息未填完',
+              icon: 'none'
             })
-          }, 2000)
+            return
+          }
+          if (content != "") {
+            api.addfeedback({
+              lianxi: lianxi,
+              idea: content,
+              member_id: that.Base.getMyData().UserInfo.nickName
+            }, (ret) => {
+              console.log(ret)
+              if (ret) {
+                wx.showToast({
+                  title: '意见提交成功',
+                  icon: 'none'
+                })
+                setTimeout(() => {
+                  wx: wx.navigateTo({
+                    url: '/pages/shezhi/shezhi',
+                  })
+                }, 2000)
 
+              }
+            })
+          }
         }
-      })
-    }
-
+    })
   }
 }
 var content = new Content();

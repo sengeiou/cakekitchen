@@ -137,7 +137,7 @@
       <view class="margin-top">
         <view class="padding-20 border-radius  h6  gray-block ">
         
-        <textarea style="height:200rpx;" class="txt-gray " minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" placeholder="请输入您的留言"></textarea>
+        <textarea style="height:200rpx;" minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" placeholder="请输入您的留言"></textarea>
         <view class="currentWordNumber h6">{{currentWordNumber}}/{{max}}</view>
         </view>
       </view>

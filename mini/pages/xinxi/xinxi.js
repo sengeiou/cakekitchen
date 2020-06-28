@@ -93,7 +93,7 @@ class Content extends AppBase {
     var xinbie = this.Base.getMyData().index;
     var shenri = this.Base.getMyData().date;
     var diqu = this.Base.getMyData().region;
-    diqu = diqu[0] + diqu[1] + diqu[2];
+    // diqu = diqu[0] + diqu[1] + diqu[2];
     var weixinhao = this.Base.getMyData().weixinhao;
 
     var json = {

@@ -59,7 +59,7 @@ class Content extends AppBase {
       remarks: ""
     });
 
-    var instapi = new InstApi();
+
     instapi.expresstimelist({}, (expresstimelist) => {
       var expresstime = null;
       for (var i = 0; i < expresstimelist.length; i++) {
@@ -75,6 +75,19 @@ class Content extends AppBase {
     });
   }
   onMyShow() {
+    var attrs = this.Base.options.attrs;
+    var that = this;
+    var instapi = new InstApi();
+    var shop_id = this.Base.getMyData().shop_id;
+    instapi.shopinfo({
+      id: shop_id
+    }, (shop) => {
+      this.Base.setMyData({
+        shop
+      });
+    });
+    // return;
+
  var api=new OrderApi();
  api.info({id:this.options.id},(orderinfo)=>{
    
@@ -102,6 +115,15 @@ class Content extends AppBase {
   }
 
   submit() {
+    var data = this.Base.getMyData();
+    var expresstype = data.expresstype;
+    var shop_id = data.shop_id;
+    if (expresstype == 'A') {
+      if (shop_id == 0) {
+        this.Base.info("请选择门店");
+        return;
+      }
+    } 
     var wechatapi = new WechatApi();
     wechatapi.prepay({ id: this.options.id }, (payparams) => {
 

@@ -18,7 +18,7 @@
     <view class="flex-row " style="padding: 20rpx 0;">
       <view class="h5" style="color:#404858;">联系方式（选填）</view>
       <view class="flex-1"></view>
-      <input maxlength="11" class="text-right h5" bindinput="bindlianxi" style="color:#CCCCCC;" placeholder="请输入"></input>
+      <input maxlength="11" class="text-right h5" bindinput="bindlianxi" placeholder="请输入"></input>
     </view>
     <view class="line"></view>
     <view class="flex-row " style="padding: 20rpx 0;" >
