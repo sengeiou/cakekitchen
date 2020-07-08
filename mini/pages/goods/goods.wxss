@@ -109,3 +109,8 @@ height: 66rpx;
 border-radius: 50%;
 z-index: 9999;
 }
+
+.or {
+  background: orange;
+  color: #ffffff;
+}

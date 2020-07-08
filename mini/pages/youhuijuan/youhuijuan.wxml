@@ -17,22 +17,22 @@
 <!-- 分隔栏 -->
 <view class="padding-30 flex-row flex-center bg-white" style="padding-bottom:0rpx">
 
-  <view bindtap="bindshow"  data-type='wsy' class="flex-row flex-column flex-1">
-    <view class="{{show=='wsy'?'black':''}} h5 text-center">未使用</view>
-    <view wx:if='{{show=="wsy"}}' class="xian"></view>
-    <view wx:if='{{show!="wsy"}}' class="k"></view>
+  <view bindtap="bindshow"  data-type='A' class="flex-row flex-column flex-1">
+    <view class="{{usestatus=='A'?'black':''}} h5 text-center">未使用</view>
+    <view wx:if='{{usestatus=="A"}}' class="xian"></view>
+    <view wx:if='{{usestatus!="A"}}' class="k"></view>
   </view>
 
-  <view bindtap="bindshow"  data-type='ysy' id='1' class="flex-row flex-column flex-1">
-    <view class="{{show=='ysy'?'black':''}} h5 text-center">已使用</view>
-    <view wx:if='{{show=="ysy"}}' class="xian"></view>
-    <view wx:if='{{show!="ysy"}}' class="k"></view>
+  <view bindtap="bindshow"  data-type='B' id='1' class="flex-row flex-column flex-1">
+    <view class="{{usestatus=='B'?'black':''}} h5 text-center">已使用</view>
+    <view wx:if='{{usestatus=="B"}}' class="xian"></view>
+    <view wx:if='{{usestatus!="B"}}' class="k"></view>
   </view>
 
-  <view bindtap="bindshow"  data-type='ysq' id='4' class="flex-row flex-column flex-1">
-    <view class="{{show=='ysq'?'black':''}} h5 text-center">已过期</view>
-    <view wx:if='{{show=="ysq"}}' class="xian"></view>
-    <view wx:if='{{show!="ysq"}}' class="k"></view>
+  <view bindtap="bindshow"  data-type='C' id='4' class="flex-row flex-column flex-1">
+    <view class="{{usestatus=='C'?'black':''}} h5 text-center">已过期</view>
+    <view wx:if='{{usestatus=="C"}}' class="xian"></view>
+    <view wx:if='{{usestatus!="C"}}' class="k"></view>
   </view>
 
 </view>
@@ -55,7 +55,7 @@
 
 
 <!-- 有优惠券时 -->
-<view wx:if="{{youhuijuan!=''}}" wx:for="{{youhuijuan}}">
+<view wx:if="{{youhuijuan!=''}}" wx:for="{{youhuijuan}}" wx:key='k'>
   <view class='hezi'>
     <view class='yuan' class='flex-row flex-center' style='height:230rpx;background-image:url({{uploadpath}}resource/{{res.yhbg}});background-size:100% 100%;'>
       <view style='width:4.2vw'></view>

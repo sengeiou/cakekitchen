@@ -15,7 +15,8 @@
 <view class="top-bg" style='background-image:url({{uploadpath}}resource/{{res.grbj}});background-size:100% 100%;'>
   <view class="flex-row flex-center padding-left-20 " style="padding-top:80rpx">
       <view>
-        <image src='{{UserInfo.avatarUrl}}' wx:if='{{memberinfo!=undefined}}' mode='aspectFill' class='touxian' style=''></image>
+        <image src='{{UserInfo.avatarUrl}}' wx:if='{{memberinfo!=null && memberinfo.avatarUrl=="" }}' mode='aspectFill' class='touxian' style=''></image>
+          <image src='{{uploadpath}}member/{{memberinfo.avatarUrl}}' wx:if='{{memberinfo!=null && memberinfo.avatarUrl!="" }}' mode='aspectFill' class='touxian' style=''></image>
         <image src='{{uploadpath}}resource/{{res.nodenglu}}' wx:if="{{memberinfo==undefined}}" mode='aspectFill' class='touxian' style=''></image>
       </view>
       <view>

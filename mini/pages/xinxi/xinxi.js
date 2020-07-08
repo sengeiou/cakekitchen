@@ -12,7 +12,20 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
-
+    this.Base.setMyData({
+      memberinfo: {
+        nickName: '',
+        sex: '',
+        sex_name:'',
+        date: '',
+        region: '',
+        weixinhao: '',
+        mobile:'',
+        shengri:'',
+        diqu:'',
+        avatarUrl:''
+      }
+      })
   }
   onMyShow() {
 
@@ -21,8 +34,9 @@ class Content extends AppBase {
     console.log(this.Base.getMyData().memberinfo);
     var api = new MemberApi;
     api.info({
-      id: this.Base.getMyData().memberinfo.id
+      id: this.Base.getMyData().memberinfo.ids
     }, (info) => {
+      // info.avatarUrl = AppBase.UserInfo.avatarUrl;
       this.Base.setMyData({
         memberinfo: info
       })
@@ -37,21 +51,23 @@ class Content extends AppBase {
     })
   }
   bindpic(e) {
-
+    var memberinfo = this.Base.getMyData().memberinfo;
     var that = this;
     this.Base.uploadOneImage("member", (ret) => {
+      memberinfo.avatarUrl=ret;
       that.Base.setMyData({
+        memberinfo,
         avatarUrl: ret,
         xiala: false
       });
       var memberapi = new MemberApi();
       memberapi.updatetouxiang({
-        id: this.Base.getMyData().memberinfo.id,
-        avatarUrl: this.Base.getMyData().avatarUrl
+        id: memberinfo.id,
+        avatarUrl: memberinfo.avatarUrl
       }, (updatetouxiang) => {
-        this.Base.setMyData({
-          updatetouxiang
-        });
+        // this.Base.setMyData({
+        //   updatetouxiang
+        // });
         this.onMyShow();
         wx.showToast({
           title: '修改完成',
@@ -64,8 +80,10 @@ class Content extends AppBase {
 
   }
   RegionChange(e) {
+    var memberinfo = this.Base.getMyData().memberinfo;
+    memberinfo.diqu=e.detail.value
     this.setData({
-      region: e.detail.value
+      memberinfo
     })
   }
   PickerChange(e) {
@@ -74,18 +92,24 @@ class Content extends AppBase {
     })
   }
   DateChange(e) {
+    var memberinfo = this.Base.getMyData().memberinfo;
+    memberinfo.shengri = e.detail.value
     this.setData({
-      date: e.detail.value
+      memberinfo
     })
   }
   weixinhao(e) {
+    var memberinfo = this.Base.getMyData().memberinfo;
+    memberinfo.weixinhao = e.detail.value
     this.Base.setMyData({
-      weixinhao: e.detail.value
+      memberinfo
     })
   }
   name(e) {
+    var memberinfo = this.Base.getMyData().memberinfo;
+    memberinfo.nickName = e.detail.value
     this.Base.setMyData({
-      name: e.detail.value
+      memberinfo
     })
   }
   tijiao() {
@@ -95,7 +119,8 @@ class Content extends AppBase {
     var diqu = this.Base.getMyData().region;
     // diqu = diqu[0] + diqu[1] + diqu[2];
     var weixinhao = this.Base.getMyData().weixinhao;
-
+    var memberinfo =this.Base.getMyData().memberinfo;
+    memberinfo.sex = xinbie;
     var json = {
       id: this.Base.getMyData().memberinfo.id,
       name: name,
@@ -106,7 +131,7 @@ class Content extends AppBase {
     }
 
     var api = new MemberApi;
-    api.xiugai(json, (ret) => {
+    api.xiugai(memberinfo, (ret) => {
       console.log(ret)
       if (ret.code = "0") {
         wx.showToast({
@@ -114,8 +139,8 @@ class Content extends AppBase {
           icon: 'none',
         })
         setTimeout(() => {
-          wx.switchTab({
-            url: '/pages/my/my',
+          wx.navigateBack({
+            
           })
         }, 2000)
 
@@ -124,22 +149,24 @@ class Content extends AppBase {
 
   }
   getPhoneNumber(e){
+
     this.Base.getPhoneNo(e);
 
-  
   }
   phonenoCallback(mobile, e) {
     console.log(e);
     var that=this;
    console.log("哈哈哈哈");
     var memberapi = new MemberApi();
-
+  var memberinfo = this.Base.setMyData().memberinfo;
     memberapi.updateshouji({
     
       avatarUrl: mobile
     }, (updatetouxiang) => {
+      memberinfo.mobile = mobile;
+      
       that.setMyData({
-        shouji: mobile
+        memberinfo
       });
       wx.showToast({
         title: '修改完成',

@@ -59,40 +59,44 @@ class Content extends AppBase {
       remarks: ""
     });
 
-
-    instapi.expresstimelist({}, (expresstimelist) => {
-      var expresstime = null;
-      for (var i = 0; i < expresstimelist.length; i++) {
-        if (expresstimelist[i].id == this.Base.options.expresstime_id) {
-          expresstime = expresstimelist[i];
-          break;
-        }
-      }
-      this.Base.setMyData({
-        expresstimelist,
-        expresstime
-      });
-    });
+    var instapi = new InstApi();
+    
   }
   onMyShow() {
     var attrs = this.Base.options.attrs;
     var that = this;
-    var instapi = new InstApi();
-    var shop_id = this.Base.getMyData().shop_id;
-    instapi.shopinfo({
-      id: shop_id
-    }, (shop) => {
-      this.Base.setMyData({
-        shop
-      });
-    });
+   
+   
     // return;
-
+    var instapi = new InstApi();
  var api=new OrderApi();
  api.info({id:this.options.id},(orderinfo)=>{
    
     this.Base.setMyData({orderinfo});
+   var shop_id = orderinfo.shop_id;
+   instapi.shopinfo({
+     id: shop_id
+   }, (shop) => {
+     this.Base.setMyData({
+       shop
+     });
+   });
 
+
+   instapi.expresstimelist({}, (expresstimelist) => {
+     var expresstime = null;
+     for (var i = 0; i < expresstimelist.length; i++) {
+       if (expresstimelist[i].id == orderinfo.expresstime_id) {
+         expresstime = expresstimelist[i];
+         break;
+       }
+     }
+     this.Base.setMyData({
+       expresstimelist,
+       expresstime,
+       expresstype: orderinfo.expresstype
+     });
+   });
  })
 
   }

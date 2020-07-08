@@ -46,21 +46,21 @@
   </view>
 </view>
 
-<view bindtap="orderinfo" id="{{item.id}}" wx:for="{{myorder}}" class="bg-white margin-top-20 ">
+<view wx:for="{{myorder}}" class="bg-white margin-top-20 ">
 
 
-  <view class="padding-20">
+  <view class="padding-20" bindtap="orderinfo"  id="{{item.id}}">
     <view class="flex-row flex-center  ">
       <view class="">订单编号：{{item.orderno}}</view>
       <view class="flex-1"></view>
-      <view  class="{{item.status=='C'?'red':''}}">
+      <view class="{{item.status=='C'?'red':''}}">
         {{item.status_name}}
       </view>
     </view>
 
 
   </view>
-  <view class="" style="background:#EEEEEE">
+  <view class="" style="background:#EEEEEE" bindtap="orderinfo"  id="{{item.id}}">
 
     <view wx:for="{{item.dindan}}" wx:for-item="dindan" class="padding-20 flex-row flex-center">
 
@@ -80,13 +80,13 @@
     </view>
 
   </view>
-  <view class="padding-20 text-right">合计:￥{{item.amount}}</view>
+  <view class="padding-20 text-right">合计:￥{{item.totalamount}}</view>
   <view class="xian1"></view>
 
   <view class="flex-row flex-center padding-20">
 
     <view class="flex-1"></view>
-    <view>再来一单</view>
+    <view bindtap="again" data-type='{{item}}'>再来一单</view>
   </view>
 
 </view>

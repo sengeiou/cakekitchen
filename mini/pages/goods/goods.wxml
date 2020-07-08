@@ -264,7 +264,7 @@
   <view class="padding-20 white-block">
     <view class="flex-row">
       <view class="btn-left red-block h4 text-center padding-20 flex-1" bindtap="tocart">加入购物车</view>
-      <view class="btn-right blue-block h4 text-center padding-20 flex-1" bindtap="confirm">立即购买</view>
+      <view class="btn-right or h4 text-center padding-20 flex-1" bindtap="confirm">立即购买</view>
     </view>
   </view>
 </view>

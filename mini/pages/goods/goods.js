@@ -278,6 +278,9 @@ class Content extends AppBase {
     }
     this.Base.addtocart(currentattr.id,buycount);
     this.togglePopup();
+    wx.showToast({
+      title: '已加入购物车',
+    })
   }
 gotop(){
   wx.pageScrollTo({

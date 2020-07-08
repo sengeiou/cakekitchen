@@ -90,7 +90,7 @@
   <view class="flex-row flex-center">
     <view class="h5">开户支行</view>
     <view class="flex-1"></view>
-    <input class="text-right h5" bindinput="bindkaihu" value='{{bankdetail.kaihu || kaihus}}'></input>
+    <input class="text-right h5" bindinput="bindkaihu" value='{{bankdetail.kaihu || kaihu}}'></input>
   </view>
  <view class="line"></view>
   <view class="flex-row flex-center">

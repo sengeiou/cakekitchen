@@ -25,11 +25,11 @@ class Content extends AppBase {
       console.log(mybank)
       for (var i = 0; i < mybank.length; i++) {
         mybank[i].lastnum = mybank[i].banknum.substring(mybank[i].banknum.length - 4, mybank[i].banknum.length);
-        if (i % 2 === 0) {
+        // if (i % 2 === 0) {
           mybank[i].background = 'linear-gradient(314deg, rgba(46, 142, 254, 1) 0%, rgba(27, 174, 241, 1) 100%)';
-        } else {
-          mybank[i].background = 'linear-gradient(314deg,rgba(255,144,116,1) 0%,rgba(255,106,106,1) 100%)';
-        }
+        // } else {
+        //   mybank[i].background = 'linear-gradient(314deg,rgba(255,144,116,1) 0%,rgba(255,106,106,1) 100%)';
+        // }
       }
       that.Base.setMyData({
         mybank
@@ -54,15 +54,26 @@ class Content extends AppBase {
     var id = e.currentTarget.dataset.current;
     var api = new MemberApi;
     var that = this;
-    api.detelebank({
-      member_id: this.Base.getMyData().memberinfo.id,
-      id: id
-    }, (ret) => {
-      console.log(ret)
-      if (ret.code == '0') {
-        that.onMyShow();
+    wx.showModal({
+      title: '提示',
+      content: '是否要删除银行卡',
+      cancelText:'否',
+      confirmText:'是',
+      success:function(res){
+        if(res.confirm){
+          api.detelebank({
+            member_id: that.Base.getMyData().memberinfo.id,
+            id: id
+          }, (ret) => {
+            console.log(ret)
+            if (ret.code == '0') {
+              that.onMyShow();
+            }
+          })
+        }
       }
     })
+    
   }
 }
 var content = new Content();

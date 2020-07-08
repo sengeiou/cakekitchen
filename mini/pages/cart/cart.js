@@ -94,7 +94,8 @@ class Content extends AppBase {
     for (var i = 0; i < attrlist.length; i++) {
       if (attr_id == attrlist[i].id) {
         attrlist[i].buycount--;
-        if (attrlist[i].buycount < 2) {
+        console.log(attrlist[i].buycount,'ppooll');
+        if (attrlist[i].buycount < 1) {
           wx.showModal({
             title: '提示',
             content: '确认删除商品？',
@@ -102,14 +103,17 @@ class Content extends AppBase {
               console.log(con);
               if (con.confirm) {
                 console.log(attrlist[i].id);
-                this.Base.removecart(attrlist[i].id);
+                this.Base.removecart(attrlist[i].id, attrlist[i].buycount);
                 this.Base.setattrlist(attrlist);
               }
             }
           });
+        }else {
+          this.Base.removecart(attrlist[i].id, attrlist[i].buycount);
+          this.Base.setattrlist(attrlist);
         }
-        this.Base.removecart(attrlist[i].id);
-        this.Base.setattrlist(attrlist);
+        
+       
         break;
       }
     }
@@ -127,7 +131,7 @@ class Content extends AppBase {
         if (con.confirm) {
           attrlist[e.currentTarget.dataset.index].buycount--;
 
-          this.Base.removecart(e.currentTarget.dataset.id);
+          this.Base.removecart(e.currentTarget.dataset.id, ttrlist[e.currentTarget.dataset.index].buycount);
           this.Base.setattrlist(attrlist);
         }
       }

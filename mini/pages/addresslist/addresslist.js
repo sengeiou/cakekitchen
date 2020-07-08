@@ -13,7 +13,8 @@ class Content extends AppBase {
     //options.id=5;
     super.onLoad(options);
     this.Base.setMyData({
-      addresslist: []
+      addresslist: [],
+      type:this.Base.options.type
     })
   }
   onMyShow() {

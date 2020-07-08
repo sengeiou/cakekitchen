@@ -17,7 +17,7 @@
 
 
 
-  <view class="flex-1 flex-row margin-top">
+  <view class="flex-1 flex-row margin-top" wx:if="{{orderinfo.expresstype=='A'}}">
     <view>
       <image src="{{uploadpath}}resource/{{res.map}}" class="icon"></image>
     </view>
@@ -30,6 +30,23 @@
       <view class="h5 txt-gray">自提地址：{{shop.address}}</view>
     </view>
     <view bindtap="selectshop">
+      <image src="{{uploadpath}}resource/{{res.right}}" class="icon"></image>
+    </view>
+  </view>
+
+    <view class="flex-1 flex-row margin-top" wx:if="{{orderinfo.expresstype=='B'}}">
+    <view>
+      <image src="{{uploadpath}}resource/{{res.map}}" class="icon"></image>
+    </view>
+    <!-- <view class="flex-1 margin-left-10 margin-right-10 txt-gray" bindtap="selectshop" wx:if="{{shop==null}}">选择门店</view> -->
+    <view class="margin-left-10 margin-right-10 flex-1" >
+      <view class="flex-row" >
+        <view class="flex-1">收货人：{{orderinfo.address_name}}</view>
+        <view>{{orderinfo.address_mobile}}</view>
+      </view>
+      <view class="h5 txt-gray">收货地址：{{orderinfo.address}}</view>
+    </view>
+    <view >
       <image src="{{uploadpath}}resource/{{res.right}}" class="icon"></image>
     </view>
   </view>
@@ -117,12 +134,22 @@
       </view>
     </view>
   </view>
+
+   <view class="white-block" wx:if="{{orderinfo.youhuijuan_id>0}}">
+    <view class="padding-20 border-bottom">
+      <view class="flex-row flex-center">
+        <view class="flex-1">优惠券</view>
+        <view >¥{{orderinfo.youhuiamount}}</view>
+      </view>
+    </view>
+  </view>
+
   <view class="white-block">
     <view class="padding-20 ">
       <view class="flex-row flex-center ">
         <view class="flex-1"></view>
 
-        <view class="txt-primary" wx:if="{{orderinfo.expresstype=='B'}}">合计：¥{{orderinfo.totalamount}}</view>
+        <view class="txt-primary" >合计：¥{{orderinfo.totalamount}}</view>
       </view>
     </view>
   </view>
@@ -135,7 +162,7 @@
         <view class="flex-1"></view>
         <view class="h4">合计：</view>
 
-        <view class="h4 txt-primary" wx:if="{{orderinfo.expresstype=='B'}}">¥{{orderinfo.totalamount}}</view>
+        <view class="h4 txt-primary" >¥{{orderinfo.totalamount}}</view>
         <view class=" margin-left">
           <button class="primary-block btnradius50" size="mini" bindtap="submit">支付</button>
         </view>

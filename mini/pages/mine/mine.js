@@ -26,7 +26,7 @@ class Content extends AppBase {
   shouhuodizhi() {
 
     wx.navigateTo({
-      url: '/pages/addresslist/addresslist',
+      url: '/pages/addresslist/addresslist?type=a',
     })
 
   }

@@ -861,8 +861,8 @@ export class AppBase {
     AppBase.ATTRS = vk.join(",");
     console.log("AppBase.ATTRS", AppBase.ATTRS, attrlist);
   }
-  removecart(vattr_id) {
-    console.log("kATTR", vattr_id);
+  removecart(vattr_id, vbuycount) {
+    console.log("kATTR", vattr_id, vbuycount);
     var attrlist = AppBase.ATTRS.split(",");
     var vk = [];
     var havedata = false;
@@ -874,8 +874,9 @@ export class AppBase {
       console.log("vATTR", attr_id, buycount);
       if (attr_id == vattr_id) {
         // vk.push(attr_id.toString() + "*" + vbuycount.toString());
-      }else{
-        vk.push(attr_id.toString() + "*" + buycount.toString());
+      }
+      if (vbuycount>0){
+        vk.push(attr_id.toString() + "*" + vbuycount.toString());
       }
     }
 
@@ -909,7 +910,7 @@ export class AppBase {
     console.log("AppBase.ATTRS", AppBase.ATTRS, attrlist);
   }
   setTab(){
-    if (AppBase.ATTRS != "") {
+    if (AppBase.ATTRS != "" ) {
 
       var catcount = AppBase.ATTRS.split(",").length;
       wx.setTabBarBadge({

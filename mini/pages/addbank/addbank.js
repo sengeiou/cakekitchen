@@ -180,7 +180,7 @@ class Content extends AppBase {
         name: bankdetail.banktype,
         zhname: bankdetail.banklei,
         bankdetail,
-        kaihus: bankdetail.kaihu
+        kaihu: bankdetail.kaihu
       });
     })
   }
@@ -229,6 +229,11 @@ class Content extends AppBase {
       console.log(ret);
       if (ret.code == '0') {
         that.backPage();
+      }else {
+        wx.showToast({
+          title: ret.result,
+          icon:'none'
+        })
       }
     })
   }

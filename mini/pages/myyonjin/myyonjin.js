@@ -78,6 +78,15 @@ class Content extends AppBase {
 
   }
   tixian() {
+    var yonjin = this.Base.getMyData().yonjin;
+    if (yonjin.leiji<=0){
+      wx.showToast({
+        title: '您没有可提现的佣金',
+        icon: 'none'
+      })
+      return
+    }
+    
 
     wx.navigateTo({
       url: '/pages/tixian/tixian',

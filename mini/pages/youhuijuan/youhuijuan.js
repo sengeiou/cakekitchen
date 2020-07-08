@@ -20,12 +20,27 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
+    this.Base.setMyData({
+      usestatus:'A'
+    })
   }
   onMyShow() {
     var that = this;
     var api=new MemberApi();
-    api.getyouhuijuan({},(youhuijuan)=>{
- this.Base.setMyData({youhuijuan})
+    var td = new Date().getTime();
+    var usestatus = this.Base.getMyData().usestatus;
+    api.getyouhuijuan({ usestatus: usestatus},(youhuijuan)=>{
+      var arr=[];
+      for(var i=0;i<youhuijuan.length;i++){
+        youhuijuan[i].shijian = new Date(youhuijuan[i].shijian).getTime();
+        if (usestatus=='A' && youhuijuan[i].shijian < td){
+          youhuijuan[i].usestatus='C';
+          api.guoqi({ id: youhuijuan[i].id},()=>{})
+        }else {
+          arr.push(youhuijuan[i]);
+        }
+      }
+      this.Base.setMyData({youhuijuan:arr})
 
 
     })
@@ -42,21 +57,10 @@ class Content extends AppBase {
   bindshow(e) {
     var type = e.currentTarget.dataset.type;
     console.log(type);
-    if (type == "wsy") {
-      this.Base.setMyData({
-        show: "wsy"
-      })
-    }
-    if (type == "ysy") {
-      this.Base.setMyData({
-        show: "ysy"
-      })
-    }
-    if (type == "ysq") {
-      this.Base.setMyData({
-        show: "ysq"
-      })
-    }
+    this.Base.setMyData({
+      usestatus:type
+    });
+    this.onMyShow();
   }
 
 }

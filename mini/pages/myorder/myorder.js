@@ -63,7 +63,9 @@ else{
 
       var api = new OrderApi();
       api.myorder({}, (myorder) => {
-
+        // for(var i=0;i<myorder.length;i++){
+        //   myorder[i].zong = myorder[i].amount + myorder[i].expressfee;
+        // }
 
         this.Base.setMyData({ myorder })
 
@@ -207,6 +209,23 @@ else{
     })
 
   }
+  again(e){
+    var orderinfo = e.currentTarget.dataset.type;
+    var vk = [];
+    for (var i = 0; i < orderinfo.dindan.length;i++){
+      vk.push(orderinfo.dindan[i].attr_id.toString() + "*" + orderinfo.dindan[i].buycount.toString())
+    }
+    var attrs = vk.join(",")
+    console.log(orderinfo);
+    console.log(attrs);
+    // return  
+    wx.navigateTo({
+      url: '/pages/orderconfirm/orderconfirm?attrs=' + attrs +
+        "&expresstime_id=" + orderinfo.expresstime_id +
+        "&expresstype=" + orderinfo.expresstype +
+        "&expressdate=" + orderinfo.expressdate,
+    })
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -219,5 +238,6 @@ body.myorder = content.myorder;
 body.switchtab = content.switchtab;
 body.orderinfo = content.orderinfo;
 body.switchtab1 = content.switchtab1;
-body.gotohome=content.gotohome;
+body.gotohome = content.gotohome;
+body.again = content.again;
 Page(body)

@@ -118,7 +118,7 @@ class Content extends AppBase {
       });
     }
 var memberapi=new MemberApi();
-memberapi.getyouhuijuan({},(youhuijuan)=>{
+    memberapi.getyouhuijuan({ usestatus:'A'},(youhuijuan)=>{
   this.Base.setMyData({ youhuijuan})
 
 })
@@ -329,7 +329,8 @@ var youhuijuan=this.Base.getMyData().youhuijuan;
       })
 
     this.setData({
-      currentWordNumber: len  
+      currentWordNumber: len  ,
+      remarks: value
     });
     if (len > this.data.max) return;
     console.log(this.data)
