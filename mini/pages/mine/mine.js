@@ -42,12 +42,6 @@ class Content extends AppBase {
     appbase.onMyShow();
     this.onMyShow();
 
-
-
-
-
-
-
   }
   myorder(e) {
 

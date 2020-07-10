@@ -20,6 +20,15 @@ class Content extends AppBase {
     this.Base.Page = this;
     // options.id=2 ;
     super.onLoad(options);
+    this.Base.setMyData({
+      bankdetail:{
+        name: '',
+        banknum: '',
+        banktype: '',
+        banklei: '',
+        kaihu: ''
+      }
+    })
   }
   onMyShow() {
 
@@ -166,6 +175,9 @@ class Content extends AppBase {
     })
     if (this.Base.options.id != undefined) {
       this.getinfo();
+      this.Base.setMyData({
+        primary_id: this.Base.options.id
+      })
     }
   }
   getinfo() {
@@ -175,13 +187,8 @@ class Content extends AppBase {
     }, (bankdetail) => {
       console.log(bankdetail)
       this.Base.setMyData({
-        usernames: bankdetail.name,
-        banknums: bankdetail.banknum,
-        name: bankdetail.banktype,
-        zhname: bankdetail.banklei,
-        bankdetail,
-        kaihu: bankdetail.kaihu
-      });
+        bankdetail
+      })
     })
   }
   gettype() {
@@ -196,36 +203,29 @@ class Content extends AppBase {
     })
   }
   tijiao() {
-    var username = this.Base.getMyData().username;
-    var name = this.Base.getMyData().name;
-    var cardtype = this.Base.getMyData().zhname;
-    var kaihu = this.Base.getMyData().kaihu;
-    var banknum = this.Base.getMyData().banknum;
+    var bankdetail = this.Base.getMyData().bankdetail;
+    var primary_id = this.Base.getMyData().primary_id;
     var api = new MemberApi;
     var that = this;
-    if (username == undefined || banknum == undefined || name == undefined || cardtype == undefined || username == "" || banknum == "" || name == "" || cardtype == "" || kaihu == undefined || kaihu == '') {
+    if (bankdetail.name == '' || bankdetail.banknum == '' || bankdetail.kaihu == '' || bankdetail.banklei == '' || bankdetail.banktype=='') {
       wx.showToast({
         title: '信息未填完',
         icon: 'none'
       })
       return
     }
-    if (banknum.length < 16 || banknum.length > 19) {
+    if (bankdetail.banknum.length < 16 || bankdetail.banknum.length > 19) {
       wx.showToast({
         title: '银行卡号长度不对',
         icon: 'none'
       })
       return
     }
-    var json = {
-      member_id: this.Base.getMyData().memberinfo.id,
-      name: username,
-      banknum: banknum,
-      banktype: name,
-      banklei: cardtype,
-      kaihu: kaihu
-    };
-    api.addbank(json, (ret) => {
+    if (primary_id>0){
+      bankdetail.primary_id=primary_id;
+    }
+    bankdetail.member_id = this.Base.getMyData().memberinfo.id;
+    api.addbank(bankdetail, (ret) => {
       console.log(ret);
       if (ret.code == '0') {
         that.backPage();
@@ -239,13 +239,13 @@ class Content extends AppBase {
   }
   bindbanknum(e) {
     var bankdetail = this.Base.getMyData().bankdetail;
-    if (bankdetail != undefined) {
-      bankdetail.banklei = '';
-      bankdetail.banktype = ''
-    }
+    
+    bankdetail.banknum = e.detail.value;
+    bankdetail.banklei = '';
+    bankdetail.banktype = ''
 
     this.Base.setMyData({
-      banknum: e.detail.value, name: '', zhname: '', bankdetail
+     bankdetail
     })
   }
   bindzh(e) {
@@ -259,66 +259,24 @@ class Content extends AppBase {
     })
   }
   bindname(e) {
+    var bankdetail = this.Base.getMyData().bankdetail;
+    bankdetail.name = e.detail.value;
     this.Base.setMyData({
-      username: e.detail.value
+      bankdetail
     })
   }
   bindkaihu(e) {
+    var bankdetail = this.Base.getMyData().bankdetail;
+    bankdetail.kaihu = e.detail.value;
     this.Base.setMyData({
-      kaihu: e.detail.value
+      bankdetail
     })
   }
 
-  tijiao2() {
-    var username = this.Base.getMyData().username;
-    var name = this.Base.getMyData().name;
-    var cardtype = this.Base.getMyData().zhname;
-    var kaihu = this.Base.getMyData().kaihu;
-    var banknum = this.Base.getMyData().banknum;
-    var detail = this.Base.getMyData().bankdetail;
-    var api = new MemberApi;
-    var that = this;
-    if (username == undefined || username == '') {
-      username = detail.name;
-    }
-    if (banknum == undefined || banknum == '') {
-      banknum = detail.banknum;
-    }
-    if (name == undefined || name == '') {
-      name = detail.banklei;
-    }
-    if (cardtype == undefined || cardtype == '') {
-      cardtype = detail.banktype;
-    }
-    if (kaihu == undefined || kaihu == '') {
-      kaihu = detail.banktype;
-    }
-    api.editbank({
-      id: this.Base.options.id,
-      name: username,
-      banknum: banknum,
-      banktype: cardtype,
-      banklei: name,
-      kaihu: kaihu
-    }, (ret) => {
-      console.log(ret)
-      if (ret.code == '0') {
-        wx.showToast({
-          title: '修改成功',
-          icon: 'none'
-        })
-        setTimeout(() => {
-          // wx.navigateTo({
-          //   url: '/pages/mybank/mybank',
-          // })
-          that.backPage();
-        }, 2000)
-      }
-    })
-  }
 
   asdasd() {
-    var yhk = this.Base.getMyData().banknum;
+    var bankdetail = this.Base.getMyData().bankdetail;
+    var yhk = bankdetail.banknum;
     var banks = this.Base.getMyData().banks;
     var cardTypeMap = this.Base.getMyData().cardTypeMap;
     var that = this;
@@ -344,9 +302,10 @@ class Content extends AppBase {
         console.log(bank, type);
         var name = banks[bank];
         console.log(cardTypeMap[type]);
+        bankdetail.banktype = banks[bank];
+        bankdetail.banklei = cardTypeMap[type];
         that.Base.setMyData({
-          name: banks[bank],
-          zhname: cardTypeMap[type]
+          bankdetail
         })
       },
 
@@ -368,7 +327,6 @@ body.gettype = content.gettype;
 body.pickerchange = content.pickerchange;
 body.pickerchange2 = content.pickerchange2;
 body.getinfo = content.getinfo;
-body.tijiao2 = content.tijiao2;
 body.bindkaihu = content.bindkaihu;
 body.asdasd = content.asdasd;
 Page(body)

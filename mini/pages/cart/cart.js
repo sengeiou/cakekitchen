@@ -131,7 +131,7 @@ class Content extends AppBase {
         if (con.confirm) {
           attrlist[e.currentTarget.dataset.index].buycount--;
 
-          this.Base.removecart(e.currentTarget.dataset.id, ttrlist[e.currentTarget.dataset.index].buycount);
+          this.Base.removecart(e.currentTarget.dataset.id, attrlist[e.currentTarget.dataset.index].buycount);
           this.Base.setattrlist(attrlist);
         }
       }

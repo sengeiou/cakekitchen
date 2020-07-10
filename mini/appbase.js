@@ -270,6 +270,7 @@ export class AppBase {
           UserInfo: AppBase.UserInfo
         });
       }
+      console.log(112233)
       ApiConfig.SetToken(AppBase.UserInfo.openid);
       memberapi.info({}, (memberinfo) => {
         this.Base.setMyData({
@@ -283,7 +284,7 @@ export class AppBase {
     }
 
   }
-
+  
   onMyShow() {
     console.log("onMyShow");
   }
@@ -726,6 +727,12 @@ export class AppBase {
       title: '提示',
       content: message,
       showCancel: false
+    })
+  }
+  toast(message) {
+    wx.showToast({
+      title: message,
+      icon:'none'
     })
   }
   warning(message) {

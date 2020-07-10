@@ -35,7 +35,8 @@
 
       <view class="  h5 margin-left-10">姓名</view>
       <view class="flex-1"></view>
-      <input class="text-right h6" bindinput="name" value="{{memberinfo.nickName}}" placeholder="请填写"></input>
+      <input class="text-right h6" wx:if='{{memberinfo.name==""}}' bindinput="name" value="{{memberinfo.nickName}}" placeholder="请填写"></input>
+      <input class="text-right h6" wx:if='{{memberinfo.name!=""}}' bindinput="name" value="{{memberinfo.name}}" placeholder="请填写"></input>
       <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>
     </view>
   </view>

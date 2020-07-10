@@ -23,7 +23,8 @@ class Content extends AppBase {
         mobile:'',
         shengri:'',
         diqu:'',
-        avatarUrl:''
+        avatarUrl:'',
+        name:''
       }
       })
   }
@@ -107,7 +108,7 @@ class Content extends AppBase {
   }
   name(e) {
     var memberinfo = this.Base.getMyData().memberinfo;
-    memberinfo.nickName = e.detail.value
+    memberinfo.name = e.detail.value
     this.Base.setMyData({
       memberinfo
     })

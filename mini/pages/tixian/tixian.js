@@ -31,13 +31,16 @@ class Content extends AppBase {
       var api = new MemberApi();
       api.tixianjilu({}, (tixianjilu) => {
         var jiner = 0;
-        tixianjilu.map((item) => {
+        if(tixianjilu.length>0){
+          tixianjilu.map((item) => {
 
-          jiner += Number(item.amount);
+            jiner += Number(item.amount);
 
-        })
+          })
+        }
+     
 
-        this.Base.setMyData({ yonjin, ketixian: yonjin.ketixian - jiner });
+        this.Base.setMyData({ yonjin, ketixian: yonjin.leiji - jiner });
 
 
       })
@@ -83,16 +86,16 @@ class Content extends AppBase {
     }
 
     if (amount == '') {
-      this.Base.toast("提现金额不能为空");
+      this.toast("提现金额不能为空");
       return
     }
     if (index == undefined) {
-      this.Base.toast("请选择提现银行");
+      this.toast("请选择提现银行");
       return
     }
 
     if (amount > ketixian) {
-      this.Base.toast("提现金额超出余额");
+      this.toast("提现金额超出余额");
       return
     }
 
@@ -121,6 +124,12 @@ class Content extends AppBase {
     })
 
   }
+  toast(msg){
+    wx.showToast({
+      title: msg,
+      icon:'none'
+    })
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -130,4 +139,5 @@ body.bindleixin = content.bindleixin;
 body.amount = content.amount;
 body.beizhu = content.beizhu;
 body.tijiao = content.tijiao;
+body.toast = content.toast;
 Page(body)
