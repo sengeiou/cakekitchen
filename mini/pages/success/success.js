@@ -23,7 +23,7 @@ class Content extends AppBase {
   }
   goorder(){
     wx.navigateTo({
-      url: '/pages/order/order?from=success&id='+this.Base.options.id,
+      url: '/pages/orderinfo/orderinfo?from=success&id='+this.Base.options.id,
     })
   }
 }
@@ -31,4 +31,5 @@ var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
+body.goorder = content.goorder;
 Page(body)

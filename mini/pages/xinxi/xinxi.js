@@ -21,10 +21,10 @@ class Content extends AppBase {
         region: '',
         weixinhao: '',
         mobile:'',
-        shengri:'',
+        shenri:'',
         diqu:'',
         avatarUrl:'',
-        name:''
+        name:'',
       }
       })
   }
@@ -94,7 +94,7 @@ class Content extends AppBase {
   }
   DateChange(e) {
     var memberinfo = this.Base.getMyData().memberinfo;
-    memberinfo.shengri = e.detail.value
+    memberinfo.shenri = e.detail.value
     this.setData({
       memberinfo
     })

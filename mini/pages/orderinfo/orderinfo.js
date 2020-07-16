@@ -78,7 +78,7 @@ class Content extends AppBase {
      id: shop_id
    }, (shop) => {
      this.Base.setMyData({
-       shop
+       shop, shop_id
      });
    });
 

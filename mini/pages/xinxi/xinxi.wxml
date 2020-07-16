@@ -87,10 +87,10 @@
 
       <view class="  h5 margin-left-10">生日</view>
       <view class="flex-1"></view>
-      <picker mode="date" value="{{date}}" end="2020-2-11" bindchange="DateChange">
-        <view wx:if="{{memberinfo.shengri==''}}"  class="h6">请选择</view>
-        <view wx:if="{{memberinfo.shengri!=''}}" class="picker h6">
-          {{memberinfo.shengri}}
+      <picker mode="date" value="{{date}}"  bindchange="DateChange">
+        <view wx:if="{{memberinfo.shenri==''}}"  class="h6">请选择</view>
+        <view wx:if="{{memberinfo.shenri!=''}}" class="picker h6">
+          {{memberinfo.shenri}}
         </view>
       </picker>
       <image class="icon-10" src="{{uploadpath}}resource/{{res.right}}"></image>

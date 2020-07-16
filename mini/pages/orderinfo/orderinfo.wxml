@@ -138,7 +138,7 @@
    <view class="white-block" wx:if="{{orderinfo.youhuijuan_id>0}}">
     <view class="padding-20 border-bottom">
       <view class="flex-row flex-center">
-        <view class="flex-1">优惠券</view>
+        <view class="flex-1">优惠卷</view>
         <view >¥{{orderinfo.youhuiamount}}</view>
       </view>
     </view>

@@ -41,7 +41,7 @@
 <!-- 无优惠券时 -->
 <view wx:if="{{youhuijuan==''}}">
 
-  <view class='_center txt-gray text-center h6' style="margin-top:500rpx;">暂时还没有优惠券哦</view>
+  <view class='_center txt-gray text-center h6' style="margin-top:500rpx;">暂时还没有优惠卷哦</view>
   <view class="flex-row">
     <view class="flex-1"></view>
     <view bindtap="gotohome" class="border margin-top">
@@ -59,7 +59,7 @@
   <view class='hezi'>
     <view class='yuan' class='flex-row flex-center' style='height:230rpx;background-image:url({{uploadpath}}resource/{{res.yhbg}});background-size:100% 100%;'>
       <view style='width:4.2vw'></view>
-      <view class='f-36 txt-white' style='width:5.3vw'>优惠券</view>
+      <view class='f-36 txt-white' style='width:5.3vw'>优惠卷</view>
       <view style='width:4.2vw'></view>
       <!-- <view style='height:140rpx;border-left:4rpx dashed white'></view> -->
       <view style='width:3vw'></view>

@@ -67,7 +67,7 @@ class Content extends AppBase {
       id: this.Base.options.id
     }, (info) => {
 
-      var content = that.Base.util.HtmlDecode(info.content);
+      var content = ApiUtil.HtmlDecode(info.content);
       WxParse.wxParse('content', 'html', content, that, 10);
       this.Base.setMyData({
         info

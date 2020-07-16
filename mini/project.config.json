@@ -141,10 +141,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 12,
 					"name": "/pages/success/success",
-					"pathName": "/pages/success/success",
-					"query": "",
+					"pathName": "pages/success/success",
+					"query": "id=10",
 					"scene": null
 				},
 				{
@@ -158,6 +158,7 @@
 					"id": -1,
 					"name": "pages/addbank/addbank",
 					"pathName": "pages/addbank/addbank",
+					"query": "",
 					"scene": null
 				}
 			]

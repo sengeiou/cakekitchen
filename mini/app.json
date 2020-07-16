@@ -60,12 +60,12 @@
         "text": "选购",
         "pagePath": "pages/goodslist/goodslist",
         "iconPath": "images/icons/cart-o.png",
-        "selectedIconPath": "images/icons/cart.png"
+        "selectedIconPath": "images/icons/cart-o.png"
       },
       {
         "text": "购物车",
         "pagePath": "pages/cart/cart",
-        "iconPath": "images/icons/cart-o.png",
+        "iconPath": "images/icons/cart.png",
         "selectedIconPath": "images/icons/cart.png"
       },
       {
